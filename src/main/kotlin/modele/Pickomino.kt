@@ -7,8 +7,8 @@ class Pickomino(value :Int,nbWorms :Int) {
     private val nbWorms :Int
 
     init {
-        if (value <=36 && value >=21) this.value = value else throw PickominoException()
-        if (nbWorms >=0 && nbWorms <= 5) this.nbWorms = nbWorms else throw PickominoException
+        if (value <=36 && value >=21) this.value = value else throw Exception()
+        if (nbWorms >=0 && nbWorms <= 5) this.nbWorms = nbWorms else throw Exception()
     }
 
     fun getValue() :Int{
