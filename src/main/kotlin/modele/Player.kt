@@ -11,7 +11,7 @@ class Player(id:Int, name:String) {
     public fun countWorms():Int{
         var nb_worms = 0
         for (i in 0..ListPickomino.size-1) {
-            nb_worms +=ListPickomino[i].nbWorms
+            nb_worms +=ListPickomino[i].getnbWorm()
         }
         return nb_worms
     }
