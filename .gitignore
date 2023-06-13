@@ -1,0 +1,6 @@
+# MacOS files
+.DS_Store
+# Build files
+build/
+.idea/
+.gradle/
