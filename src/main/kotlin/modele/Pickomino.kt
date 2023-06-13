@@ -1,8 +1,8 @@
 package modele
 
 class Pickomino(value :Int,nbWorms :Int) {
-    val value :Int
-    val nbWorms :Int
+    private val value :Int
+    private val nbWorms :Int
 
     init {
         this.value = value
