@@ -1,6 +1,11 @@
 import iut.info1.pickomino.data.DICE
+import iut.info1.pickomino.data.Game
+import iut.info1.pickomino.data.Pickomino
+import iut.info1.pickomino.exceptions.BadPickominoChosenException
+import iut.info1.pickomino.exceptions.PickominoException
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class TestExample {
 
@@ -67,4 +72,17 @@ class TestExample {
         var d1 = DICE.worm
         assertEquals("worm" ,d1.name)
     }
+
+//    @Test
+//    fun TestGameAccessiblePickos() {
+//        var Picko = Pickomino(27, 1)
+//        var game1 = Game(1, mutableListOf<Pickomino>(Picko), mutableMapOf<Int, MutableList<Pickomino>>(),)
+//        assertEquals()
+//    }
+
+//    @Test
+//    fun BAdPickExcept1() {
+//        var d1 = DICE.worm
+//        assertEquals("worm" ,d1.name)
+//    }
 }
