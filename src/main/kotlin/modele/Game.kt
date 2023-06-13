@@ -1,4 +1,5 @@
 package modele
 
 class Game {
+
 }
