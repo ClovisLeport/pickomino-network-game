@@ -5,7 +5,7 @@ import javafx.scene.layout.BackgroundFill
 import javafx.scene.layout.VBox
 import javafx.scene.paint.Color
 
-class HomePageView : VBox() {
+class MainView : VBox() {
 
     init {
         // Background
