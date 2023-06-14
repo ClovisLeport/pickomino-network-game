@@ -85,4 +85,8 @@ class TestExample {
 //        var d1 = DICE.worm
 //        assertEquals("worm" ,d1.name)
 //    }
+
+
+
+
 }

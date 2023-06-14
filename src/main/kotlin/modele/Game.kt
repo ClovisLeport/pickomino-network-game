@@ -1,9 +1,13 @@
 package modele
 
-class Game(name:String) {
-    private val name = name
+import iut.info1.pickomino.exceptions.IncorrectKeyException
+
+class Game(id:Int) {
+    private val id = id
     private var listPickominosEnJeu = mutableListOf<Pickomino>()
     private var listPlayer = mutableListOf<Player>()
+
+
     public fun preremplir() {
         listPickominosEnJeu.add(Pickomino(21,1))
         listPickominosEnJeu.add(Pickomino(22,1))
@@ -26,4 +30,34 @@ class Game(name:String) {
     public fun isEmpty():Boolean {
         return listPickominosEnJeu.size ==0
     }
+
+    public fun addPlayer( player : Player) : Boolean{
+        if (player !in this.listPlayer){
+            this.listPlayer.add(player)
+            return true
+        }
+        return false
+    }
+
+    public fun removeElement(Picko:Pickomino) {
+
+        try {
+            listPickominosEnJeu.remove(Picko)
+        }
+        catch (e:IndexOutOfBoundsException) {
+            throw  IncorrectKeyException()
+        }
+
+    }
+    fun playerList():MutableCollection<Player> {
+        return listPlayer
+    }
+
+    public fun getPickos(): MutableCollection<Pickomino> {
+        if (listPickominosEnJeu.size == 0) {
+            throw IncorrectKeyException()
+        }
+        return listPickominosEnJeu
+    }
+
 }

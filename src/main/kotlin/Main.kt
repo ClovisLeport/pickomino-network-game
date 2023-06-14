@@ -12,4 +12,6 @@ fun main() {
 
     val currentGame = connect.gameState(id, key)
     println("Nouvelle partie = $currentGame")
+    println("pichomins en cour = ${currentGame.accessiblePickos()}")
+    println("pichomins en cour = ${currentGame.score()}")
 }
