@@ -1,4 +1,4 @@
-package Vue.Home
+package view.Home
 
 class HomeView {
 }
