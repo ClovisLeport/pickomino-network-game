@@ -1,13 +1,12 @@
 package modele
 
-import iut.info1.pickomino.exceptions.PickominoException
 
 class Pickomino(value :Int,nbWorms :Int) {
     private val value :Int
     private val nbWorms :Int
 
     init {
-        if (value <=36 && value >=21) this.value = value else throw Exception()
+        if (value >=21 &&  value <=36) this.value = value else throw Exception()
         if (nbWorms >=0 && nbWorms <= 5) this.nbWorms = nbWorms else throw Exception()
     }
 
