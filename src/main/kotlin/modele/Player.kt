@@ -10,14 +10,19 @@ class Player(id:Int, name:String) {
     private var dicePlayed = mutableListOf<Dice>()
     public fun countWorms():Int{
         var nb_worms = 0
+
         for (i in 0..ListPickomino.size-1) {
+
             nb_worms +=ListPickomino[i].getnbWorm()
         }
         return nb_worms
     }
 
     public fun firstElement():Pickomino {
-        return ListPickomino[-1]
+        if (ListPickomino.size == 0) {
+            throw IncorrectKeyException()
+        }
+        return ListPickomino[ListPickomino.size-1]
     }
 
     public fun addElement(Picko: Pickomino) {
@@ -29,7 +34,7 @@ class Player(id:Int, name:String) {
     }
 
     public fun removeElement():Pickomino {
-        var picko = ListPickomino[-1]
+        var picko = ListPickomino[ListPickomino.size-1]
         try {
             ListPickomino.removeAt(ListPickomino.size-1)
         }
