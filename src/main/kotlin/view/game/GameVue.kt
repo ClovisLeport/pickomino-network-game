@@ -23,5 +23,6 @@ class GameVue : GridPane() {
         this.pageTitle = SmallTitle("Bonjour, monde !")
         this.menuButton = TransparentButton("Menu")
         this.header.children.addAll(pageTitle,menuButton)
+        
     }
 }
