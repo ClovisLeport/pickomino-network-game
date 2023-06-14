@@ -22,7 +22,7 @@ class GameTest {
     @Test
     fun Addplayer() {
         var game1 = Game(1)
-        var player1 = Player(1,"test")
+        var player1 = Player(1,true)
         game1.addPlayer(player1)
         assertEquals(1,game1.playerList().size)
     }
