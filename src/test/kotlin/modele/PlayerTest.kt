@@ -9,12 +9,12 @@ class PlayerTest {
 
     @Test
     fun countWorms() {
-        var player = Player(2,"test")
+        var player = Player(2,true)
         assertEquals(0,player.countWorms())
     }
     @Test
     fun countWorms2() {
-        var player = Player(2,"test")
+        var player = Player(2,true)
         player.addElement(Pickomino(21,2))
         player.addElement(Pickomino(21,3))
         assertEquals(5,player.countWorms())
@@ -22,14 +22,14 @@ class PlayerTest {
 
     @Test
     fun firstElement() {
-        var player = Player(2,"test")
+        var player = Player(2,true)
         var picko = Pickomino(21,2)
         player.addElement(picko)
         assertEquals(picko,player.firstElement())
     }
     @Test
     fun firstElementEmpty() {
-        var player = Player(2,"test")
+        var player = Player(2,true)
         assertThrows(IncorrectKeyException::class.java){player.firstElement()}
     }
 
@@ -37,7 +37,7 @@ class PlayerTest {
 
     @Test
     fun removeElement() {
-        var player = Player(2,"test")
+        var player = Player(2,true)
         var picko = Pickomino(21,2)
         var picko2 = Pickomino(21,3)
         player.addElement(picko)
@@ -46,7 +46,7 @@ class PlayerTest {
     }
     @Test
     fun removeElementEmpty() {
-        var player = Player(2,"test")
+        var player = Player(2,true)
         assertThrows(IndexOutOfBoundsException::class.java){player.removeElement()}
     }
 }
