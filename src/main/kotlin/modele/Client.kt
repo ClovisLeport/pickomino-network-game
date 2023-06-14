@@ -21,7 +21,7 @@ class Client(game: Game) {
             this.id = identification.first
             this.key = identification.second
 
-            game.addPlayer(Player(id!!,0,true))
+            game.addPlayer(Player(0,true))
 
             connected = true
         }
@@ -38,7 +38,7 @@ class Client(game: Game) {
     fun StartGame(){
         if (connected && id != null && key != null && connect != null){
 
-            game.addPlayer(Player(null,0,false))
+            game.addPlayer(Player(0,false))
 
             while (true){
                 val currentGame = connect!!.gameState(this.id!!, this.key!!)

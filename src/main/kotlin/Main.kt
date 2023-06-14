@@ -31,6 +31,7 @@ class Main : Application() {
 }
 
 fun main() {
+    /*
     println("Hello students !!!")
     val connect = Connector.factory("172.26.82.76", "8080")
     println("Parties actives sur le serveur = ${connect.listOfGameIds()}")
@@ -47,14 +48,14 @@ fun main() {
 
     println("$id, $key")
     //println(connect.rollDices(id, key))
-    println(connect.keepDices(id,key, DICE.d1))
+    // println(connect.keepDices(id,key, DICE.d1))
     //println(connect.takePickomino(id,key, 21))
 
     currentGame = connect.gameState(id, key)
     println("Nouvelle partie = $currentGame")
     println("pichomins en cour = ${currentGame.accessiblePickos()}")
     println("score en cour = ${currentGame.score()}")
-
+    */
     // Lancement de la vue
     Application.launch(Main::class.java)
 }
