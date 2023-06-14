@@ -1,4 +1,4 @@
 package view.Home.Center
 
-class Menu {
+class Menu :HomeCenter() {
 }

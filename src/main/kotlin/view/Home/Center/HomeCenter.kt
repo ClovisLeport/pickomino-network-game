@@ -1,4 +1,7 @@
 package view.Home.Center
 
-class HomeCenter {
+abstract class HomeCenter {
+    init {
+        
+    }
 }
