@@ -20,8 +20,11 @@ class GameVue : GridPane() {
         this.background = Background(BackgroundFill(Color.web("#3A83C2"), null, null))
         // HEADER Init
         this.header = VBox()
-        this.pageTitle = SmallTitle("Bonjour, monde !")
+        this.pageTitle = SmallTitle("Pickomino")
         this.menuButton = TransparentButton("Menu")
         this.header.children.addAll(pageTitle,menuButton)
+
+        // Add to page
+        this.children.addAll(header)
     }
 }
