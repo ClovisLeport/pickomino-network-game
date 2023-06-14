@@ -1,6 +1,34 @@
 import iut.info1.pickomino.Connector
 import iut.info1.pickomino.data.DICE
+import javafx.application.Application
+import javafx.scene.Scene
+import javafx.stage.Stage
+import view.game.GameVue
 
+class Main : Application() {
+    override fun start(primaryStage: Stage) {
+        val vue = GameVue()
+        // Initialisation de l'interface utilisateur et des composants JavaFX
+        val scene = Scene(vue, 600.0, 400.0)
+
+        primaryStage.minWidth = 1100.0 // Définir une largeur minimale de 600 pixels
+        primaryStage.minHeight = 700.0 // Définir une hauteur minimale de 400 pixels
+
+        // FullScreen
+        primaryStage?.apply {
+            // Mettez la scène en plein écran
+            isFullScreen = true
+            this.scene = scene
+            show()
+        }
+
+        primaryStage.title = "Pikomino"
+        primaryStage.scene = scene
+
+        // Affichez la scène sur la fenêtre principale
+        primaryStage?.show()
+    }
+}
 
 fun main() {
     println("Hello students !!!")
@@ -27,5 +55,6 @@ fun main() {
     println("pichomins en cour = ${currentGame.accessiblePickos()}")
     println("score en cour = ${currentGame.score()}")
 
-
+    // Lancement de la vue
+    Application.launch(Main::class.java)
 }
