@@ -2,9 +2,9 @@ package modele
 
 import iut.info1.pickomino.exceptions.IncorrectKeyException
 
-class Player(id:Int, name:String) {
-    private var id = id
-    private var name = name
+class Player(numberPlayer:Int,localPlayer : Boolean) {
+    private val numberPlayer : Int = numberPlayer
+    private val localPlayer : Boolean = localPlayer
     private var ListPickomino = mutableListOf<Pickomino>()
     private var diceKept = mutableListOf<Dice>()
     private var dicePlayed = mutableListOf<Dice>()
