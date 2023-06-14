@@ -5,7 +5,7 @@ internal class Dice {
     private var value: Int = -1
 
     fun getValue() : Int {
-        if (this.value > 0 && this.value <6) return this.value else throw Exception()
+        if (this.value >= 0 && this.value <6) return this.value else throw Exception()
     }
 
     fun rolls() {
