@@ -30,7 +30,7 @@ class TransparentButton(text: String) : Button() {
         val paddingSize = Insets(4.0, 45.0, 4.0, 45.0)
         this.padding = paddingSize
 
-        this.alignment = Pos.TOP_CENTER
+        
     }
 
 }

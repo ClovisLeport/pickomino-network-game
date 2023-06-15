@@ -1,5 +1,6 @@
 package view.Home
 
+import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.scene.layout.VBox
 import javafx.scene.text.Text
@@ -14,8 +15,12 @@ class HomeView: View() {
     var homcenter : HomeCenter
 
     init  {
-        backButton.alignment = Pos.CENTER
-        this.top = backButton
+        val vbox = VBox()
+        vbox.alignment = Pos.CENTER
+        vbox.padding = Insets(10.0,10.0,10.0,10.0)
+        vbox.children.add(backButton)
+
+        this.top = vbox
 
         homcenter = Menu()
 
