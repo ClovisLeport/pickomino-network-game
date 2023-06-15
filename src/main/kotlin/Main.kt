@@ -3,12 +3,13 @@ import iut.info1.pickomino.data.DICE
 import javafx.application.Application
 import javafx.scene.Scene
 import javafx.stage.Stage
+import view.Home.Center.CreateServer
 import view.Home.Center.Menu
 import view.game.GameVue
 
 class Main : Application() {
     override fun start(primaryStage: Stage) {
-        val vue = GameVue()
+        val vue = CreateServer()//GameVue()
         // Initialisation de l'interface utilisateur et des composants JavaFX
         val scene = Scene(vue, 600.0, 400.0)
 
