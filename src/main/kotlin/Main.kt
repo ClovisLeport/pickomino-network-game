@@ -1,5 +1,6 @@
 import javafx.application.Application
 import javafx.scene.Scene
+import javafx.scene.image.Image
 import javafx.stage.Stage
 import view.Home.Center.*
 import view.Home.HomeView
@@ -25,6 +26,12 @@ class Main : Application() {
 //            this.scene = scene
 //            show()
 //        }
+
+        //ajout de l'icone de page
+        val iconPath = "file:src/main/kotlin/view/assets/Logo.png" // Spécifiez le chemin vers votre icône
+        val icon = Image(iconPath)
+
+        primaryStage.icons.add(icon)
 
         primaryStage.title = "Pikomino"
         primaryStage.scene = scene

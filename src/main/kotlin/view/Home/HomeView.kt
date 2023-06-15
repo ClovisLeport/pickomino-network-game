@@ -7,6 +7,7 @@ import javafx.scene.text.Text
 import view.Home.Center.CreateServer
 import view.Home.Center.HomeCenter
 import view.Home.Center.Menu
+import view.Home.Center.Setting
 import view.View
 import view.components.TransparentButton
 
