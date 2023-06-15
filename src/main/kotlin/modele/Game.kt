@@ -1,30 +1,40 @@
 package modele
 
+import iut.info1.pickomino.data.DICE
+import iut.info1.pickomino.data.STATUS
 import iut.info1.pickomino.exceptions.IncorrectKeyException
 
-class Game(id:Int) {
-    private val id = id
+class Game(numérojoueur : Int) {
+    //private val id = id
     private var listPickominosEnJeu = mutableListOf<Pickomino>()
     private var listPlayer = mutableListOf<Player>()
+    var numérojoueur :Int = numérojoueur
+
+
+    private var diceKept = listOf<DICE>() //Dice
+    private var diceChosen = listOf<DICE>()
+
+
+
 
 
     public fun preremplir() {
-        listPickominosEnJeu.add(Pickomino(21,1))
-        listPickominosEnJeu.add(Pickomino(22,1))
-        listPickominosEnJeu.add(Pickomino(23,1))
-        listPickominosEnJeu.add(Pickomino(24,1))
-        listPickominosEnJeu.add(Pickomino(25,2))
-        listPickominosEnJeu.add(Pickomino(26,2))
-        listPickominosEnJeu.add(Pickomino(27,2))
-        listPickominosEnJeu.add(Pickomino(28,2))
-        listPickominosEnJeu.add(Pickomino(29,3))
-        listPickominosEnJeu.add(Pickomino(30,3))
-        listPickominosEnJeu.add(Pickomino(31,3))
-        listPickominosEnJeu.add(Pickomino(32,3))
-        listPickominosEnJeu.add(Pickomino(33,4))
-        listPickominosEnJeu.add(Pickomino(34,4))
-        listPickominosEnJeu.add(Pickomino(35,4))
-        listPickominosEnJeu.add(Pickomino(36,4))
+        listPickominosEnJeu.add(Pickomino(21))
+        listPickominosEnJeu.add(Pickomino(22))
+        listPickominosEnJeu.add(Pickomino(23))
+        listPickominosEnJeu.add(Pickomino(24))
+        listPickominosEnJeu.add(Pickomino(25))
+        listPickominosEnJeu.add(Pickomino(26))
+        listPickominosEnJeu.add(Pickomino(27))
+        listPickominosEnJeu.add(Pickomino(28))
+        listPickominosEnJeu.add(Pickomino(29))
+        listPickominosEnJeu.add(Pickomino(30))
+        listPickominosEnJeu.add(Pickomino(31))
+        listPickominosEnJeu.add(Pickomino(32))
+        listPickominosEnJeu.add(Pickomino(33))
+        listPickominosEnJeu.add(Pickomino(34))
+        listPickominosEnJeu.add(Pickomino(35))
+        listPickominosEnJeu.add(Pickomino(36))
     }
 
     public fun isEmpty():Boolean {
@@ -49,7 +59,7 @@ class Game(id:Int) {
         }
 
     }
-    fun playerList():MutableCollection<Player> {
+    fun playerList():MutableList<Player> {
         return listPlayer
     }
 
@@ -58,6 +68,21 @@ class Game(id:Int) {
             throw IncorrectKeyException()
         }
         return listPickominosEnJeu
+    }
+
+
+    fun setDice(diceskept : List<DICE>, diceschosen : List<DICE>){
+        diceKept = diceskept
+        diceChosen = diceschosen
+    }
+
+    fun setPickomino(Pickominos : List<Int>){
+        var newlistPickominosEnJeu = mutableListOf<Pickomino>()
+        for ( Picko in Pickominos){
+            newlistPickominosEnJeu.add(Pickomino(Picko))
+        }
+
+        this.listPickominosEnJeu = newlistPickominosEnJeu
     }
 
 }

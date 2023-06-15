@@ -1,7 +1,7 @@
 package modele
 import kotlin.random.Random
 
-internal class Dice {
+class Dice {
     private var value: Int = -1
 
     fun getValue() : Int {

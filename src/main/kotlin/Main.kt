@@ -8,8 +8,8 @@ import view.game.GameView
 
 class Main : Application() {
     override fun start(primaryStage: Stage) {
-        val vue = MainView()
 
+        val vue = GameView()
 
         // Initialisation de l'interface utilisateur et des composants JavaFX
         val scene = Scene(vue, 600.0, 400.0)

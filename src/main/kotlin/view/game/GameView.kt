@@ -3,7 +3,11 @@ package view.game
 import javafx.geometry.Insets
 import javafx.scene.layout.*
 import javafx.scene.paint.Color
+
 import view.View
+
+import view.components.Pawn
+
 import view.components.SmallTitle
 import view.components.TransparentButton
 import view.components.WhiteButton
@@ -14,7 +18,9 @@ class GameView : View() {
     val header : VBox
     val pageTitle : SmallTitle
     val menuButton : TransparentButton
-    val whitebutton : WhiteButton
+    val pawnTest : Pawn
+
+    // Players and Desk
 
     init {
 
@@ -26,11 +32,14 @@ class GameView : View() {
         this.pageTitle = SmallTitle("Pickomino")
 
         this.menuButton = TransparentButton("Menu")
-        this.whitebutton = WhiteButton("lol")
         val margin = Insets(8.0, 0.0, 0.0, 0.0)
         VBox.setMargin(menuButton, margin)
 
-        this.header.children.addAll(pageTitle,menuButton,whitebutton)
+        this.header.children.addAll(pageTitle,menuButton)
         this.top = header
+
+        // TEST PAWN
+        this.pawnTest = Pawn(22, 3)
+        this.center = pawnTest
     }
 }
