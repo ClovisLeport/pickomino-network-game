@@ -5,12 +5,7 @@ import javafx.scene.layout.*
 import javafx.scene.paint.Color
 
 import view.View
-
-import view.components.Pawn
-
-import view.components.SmallTitle
-import view.components.TransparentButton
-import view.components.WhiteButton
+import view.components.*
 
 class GameView : View() {
     // HEADER
@@ -19,6 +14,7 @@ class GameView : View() {
     val pageTitle : SmallTitle
     val menuButton : TransparentButton
     val pawnTest : Pawn
+    val diceTest : Dice
 
     // Players and Desk
 
@@ -39,7 +35,9 @@ class GameView : View() {
         this.top = header
 
         // TEST PAWN
-        this.pawnTest = Pawn(22, 3)
-        this.center = pawnTest
+        this.pawnTest = Pawn(22, 4)
+        // TEST DICE
+        this.diceTest = Dice(4)
+        this.center = VBox(pawnTest, diceTest)
     }
 }
