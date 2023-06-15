@@ -11,5 +11,6 @@ class Menu :HomeCenter() {
         println("sasas")
         title.text = "Pickomino"
         vbox.getChildren().addAll(title)
+
     }
 }
