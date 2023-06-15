@@ -15,12 +15,11 @@ class GameView : View() {
     val menuButton : TransparentButton
     val pawnTest : Pawn
     val diceTest : Dice
+    val dotted : Dotted
 
     // Players and Desk
 
     init {
-
-
         // HEADER Init
         this.header = VBox()
         this.header.style = "-fx-alignment: center;"
@@ -38,6 +37,8 @@ class GameView : View() {
         this.pawnTest = Pawn(22, 4)
         // TEST DICE
         this.diceTest = Dice(4)
-        this.center = VBox(pawnTest, diceTest)
+        // Dotted
+        this.dotted = Dotted(100.0, 100.0)
+        this.center = VBox(pawnTest, diceTest, dotted)
     }
 }
