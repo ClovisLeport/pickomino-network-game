@@ -1,6 +1,9 @@
 package view.Home.Center
 
-abstract class HomeCenter {
+import javafx.scene.layout.HBox
+
+abstract class HomeCenter: HBox() {
+
     init {
         
     }

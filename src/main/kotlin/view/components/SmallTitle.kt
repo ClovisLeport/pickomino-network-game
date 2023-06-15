@@ -12,7 +12,7 @@ class SmallTitle(text: String) : Label() {
         // Add Font
         val teslaFont = Font.loadFont(
             "file:src/main/kotlin/view/fonts/TESLA.ttf",
-            48.0)
+            34.0)
 
         if (teslaFont == null) {
             println("La police de caractères n'a pas pu être chargée.")
