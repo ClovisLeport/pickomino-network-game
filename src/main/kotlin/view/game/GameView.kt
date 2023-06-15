@@ -39,7 +39,7 @@ class GameView : View() {
         this.top = header
 
         // TEST PAWN
-        this.pawnTest = Pawn(22, 3)
+        this.pawnTest = Pawn(22, 4)
         this.center = pawnTest
     }
 }
