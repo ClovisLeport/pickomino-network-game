@@ -26,6 +26,8 @@ class HomeView: View() {
         homcenter = Menu()
 
         this.center = homcenter
+
+        //this.bottom = images()
     }
 
 
