@@ -1,27 +1,29 @@
-import iut.info1.pickomino.Connector
-import iut.info1.pickomino.data.DICE
 import javafx.application.Application
 import javafx.scene.Scene
 import javafx.stage.Stage
 import view.Home.Center.Menu
-import view.game.GameVue
+import view.Home.HomeView
+import view.MainView
+import view.game.GameView
 
 class Main : Application() {
     override fun start(primaryStage: Stage) {
-        val vue = Menu()
+        val vue = MainView()
+
+
         // Initialisation de l'interface utilisateur et des composants JavaFX
         val scene = Scene(vue, 600.0, 400.0)
 
         primaryStage.minWidth = 1100.0 // Définir une largeur minimale de 600 pixels
         primaryStage.minHeight = 700.0 // Définir une hauteur minimale de 400 pixels
 
-        // FullScreen
-        primaryStage?.apply {
-            // Mettez la scène en plein écran
-            isFullScreen = true
-            this.scene = scene
-            show()
-        }
+//        // FullScreen
+//        primaryStage?.apply {
+//            // Mettez la scène en plein écran
+//            isFullScreen = true
+//            this.scene = scene
+//            show()
+//        }
 
         primaryStage.title = "Pikomino"
         primaryStage.scene = scene

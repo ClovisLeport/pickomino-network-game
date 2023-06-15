@@ -13,4 +13,10 @@ class HomeView: View() {
         homcenter = Menu()
         this.center = homcenter
     }
+
+
+    fun update(newhomecenter : HomeCenter){
+        this.homcenter = newhomecenter
+        this.center = homcenter
+    }
 }

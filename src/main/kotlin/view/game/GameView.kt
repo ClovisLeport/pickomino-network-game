@@ -3,21 +3,22 @@ package view.game
 import javafx.geometry.Insets
 import javafx.scene.layout.*
 import javafx.scene.paint.Color
+import view.View
 import view.components.SmallTitle
 import view.components.TransparentButton
 import view.components.WhiteButton
-import java.awt.Label
 
-class GameVue : BorderPane() {
+class GameView : View() {
     // HEADER
+
     val header : VBox
     val pageTitle : SmallTitle
     val menuButton : TransparentButton
     val whitebutton : WhiteButton
 
     init {
-        // Background
-        this.background = Background(BackgroundFill(Color.web("#3A83C2"), null, null))
+
+
         // HEADER Init
         this.header = VBox()
         this.header.style = "-fx-alignment: center;"
