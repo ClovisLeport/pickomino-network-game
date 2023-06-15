@@ -13,7 +13,7 @@ class GameVue : BorderPane() {
     val header : VBox
     val pageTitle : SmallTitle
     val menuButton : TransparentButton
-    val whitebutton :WhiteButton
+    val whitebutton : WhiteButton
 
     init {
         // Background

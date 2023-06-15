@@ -11,5 +11,6 @@ abstract class View : BorderPane() {
     init {
         // Background
         this.background = Background(BackgroundFill(Color.web("#3A83C2"), null, null))
+
     }
 }
