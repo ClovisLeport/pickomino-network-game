@@ -4,10 +4,9 @@ import iut.info1.pickomino.exceptions.IncorrectKeyException
 
 class Player(numberPlayer:Int,localPlayer : Boolean) {
     private val numberPlayer : Int = numberPlayer
-    private val localPlayer : Boolean = localPlayer
+    public val localPlayer : Boolean = localPlayer
     private var ListPickomino = mutableListOf<Pickomino>()
-    private var diceKept = mutableListOf<Dice>()
-    private var dicePlayed = mutableListOf<Dice>()
+
     public fun countWorms():Int{
         var nb_worms = 0
 
@@ -43,5 +42,20 @@ class Player(numberPlayer:Int,localPlayer : Boolean) {
         }
         return picko
     }
+
+
+    fun topPickominoIs(picko : Pickomino){
+        if (picko in ListPickomino){
+            if (picko != ListPickomino[ListPickomino.size-1]){
+                this.removeElement()
+                this.topPickominoIs(picko)
+            }
+        }
+        else{
+            this.addElement(picko)
+        }
+    }
+
+
 
 }
