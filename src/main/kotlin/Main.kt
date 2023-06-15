@@ -2,7 +2,7 @@ import javafx.application.Application
 import javafx.scene.Scene
 import javafx.scene.image.Image
 import javafx.stage.Stage
-import view.Home.Center.Menu
+import view.Home.Center.*
 import view.Home.HomeView
 import view.MainView
 import view.game.GameView
@@ -10,7 +10,8 @@ import view.game.GameView
 class Main : Application() {
     override fun start(primaryStage: Stage) {
 
-        val vue = MainView()
+        val vue = HomeView()
+        vue.update(CreateOrJoin())
 
         // Initialisation de l'interface utilisateur et des composants JavaFX
         val scene = Scene(vue, 600.0, 400.0)
