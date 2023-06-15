@@ -1,6 +1,7 @@
 package view.components
 
 import javafx.geometry.Insets
+import javafx.geometry.Pos
 import javafx.scene.control.Button
 import javafx.scene.layout.*
 import javafx.scene.paint.Color
@@ -28,6 +29,8 @@ class TransparentButton(text: String) : Button() {
         // Padding
         val paddingSize = Insets(4.0, 45.0, 4.0, 45.0)
         this.padding = paddingSize
+
+        this.alignment = Pos.TOP_CENTER
     }
 
 }
