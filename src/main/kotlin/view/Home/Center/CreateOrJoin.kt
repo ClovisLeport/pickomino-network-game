@@ -12,23 +12,28 @@ import view.components.WhiteButton
 
 class CreateOrJoin() : HomeCenter(false) {
 
+    val ButtonCreate : WhiteButton
+    val ButtonJoin : WhiteButton
+
+
     init {
         val title = Title()
         val subTitle = SubTitle("Draw the worms from the dice !")
 
 
-        val buttonCreate = WhiteButton("Create a server")
-        val ButtonJoin = WhiteButton("Join a server")
+        ButtonCreate = WhiteButton("Create a server")
+        ButtonJoin = WhiteButton("Join a server")
 
         this.alignment = Pos.CENTER
         this.maxWidth = 800.0
 
         this.spacing = 20.0
 
-        this.children.addAll(title, subTitle, buttonCreate, ButtonJoin)
+        this.children.addAll(title, subTitle, ButtonCreate, ButtonJoin)
     }
 
     override fun fixeButton(listControleur: Array<EventHandler<ActionEvent>>) {
-        TODO("Not yet implemented")
+        ButtonCreate.onAction = listControleur[0]
+        ButtonJoin.onAction = listControleur[0]
     }
 }
