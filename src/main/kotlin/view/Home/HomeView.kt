@@ -1,5 +1,6 @@
 package view.Home
 
+import controleur.ControleurButtonBackHomeView
 import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.scene.image.Image
@@ -17,17 +18,20 @@ import java.io.FileInputStream
 class HomeView: View() {
     var backButton : TransparentButton = TransparentButton("back")
     var homcenter : HomeCenter
+    var historyofHomeCenter = mutableListOf<HomeCenter>()
+
+    private var vbox : VBox
 
     init  {
-        val vbox = VBox()
+        this.vbox = VBox()
         vbox.alignment = Pos.CENTER
         vbox.padding = Insets(10.0,10.0,10.0,10.0)
+
+        backButton.onAction = ControleurButtonBackHomeView(this)
+
         vbox.children.add(backButton)
 
-        this.top = vbox
-
         homcenter = Menu()
-
         this.center = homcenter
 
         val vbox2 = VBox()
@@ -41,10 +45,12 @@ class HomeView: View() {
         vbox2.children.add(image)
         this.bottom = vbox2
 
+
     }
 
 
     fun update(newhomecenter : HomeCenter){
+        historyofHomeCenter.add(this.homcenter)
         this.homcenter = newhomecenter
         this.center = homcenter
 
@@ -52,12 +58,18 @@ class HomeView: View() {
             this.top = VBox()
         }
         else{
-            val vbox = VBox()
-            vbox.alignment = Pos.CENTER
-            vbox.padding = Insets(10.0,10.0,10.0,10.0)
-            vbox.children.add(backButton)
+
 
             this.top = vbox
+        }
+    }
+
+    fun Goback(){
+        if (historyofHomeCenter.size > 1){
+            update(historyofHomeCenter[historyofHomeCenter.size-1])
+
+            historyofHomeCenter.removeAt(historyofHomeCenter.size-1)
+            historyofHomeCenter.removeAt(historyofHomeCenter.size-1)
         }
     }
 }
