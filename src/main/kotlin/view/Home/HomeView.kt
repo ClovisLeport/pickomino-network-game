@@ -23,7 +23,12 @@ import java.io.FileInputStream
 
 class HomeView(stage: Stage,mainview: MainView): View() {
     var backButton : TransparentButton = TransparentButton("back")
+<<<<<<< HEAD
     var mainview = mainview
+=======
+
+    var mainview =mainview
+>>>>>>> 692328d362f288ac0daf7309634b10a1526e3b52
     var homcenter : HomeCenter
     var historyofHomeCenter = mutableListOf<HomeCenter>()
     var stage = stage
