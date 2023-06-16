@@ -1,3 +1,4 @@
+import controleur.Binding
 import javafx.application.Application
 import javafx.scene.Scene
 import javafx.stage.Stage
@@ -9,7 +10,7 @@ import view.game.GameView
 class Main : Application() {
     override fun start(primaryStage: Stage) {
 
-        val vue = GameView()
+        val vue = Menu()
 
         // Initialisation de l'interface utilisateur et des composants JavaFX
         val scene = Scene(vue, 600.0, 400.0)
@@ -25,6 +26,8 @@ class Main : Application() {
 //            show()
 //        }
 
+        var bind = Binding(vue, scene)
+        bind.bindModeleVue()
         primaryStage.title = "Pikomino"
         primaryStage.scene = scene
 
@@ -62,4 +65,5 @@ fun main() {
     */
     // Lancement de la vue
     Application.launch(Main::class.java)
+
 }
