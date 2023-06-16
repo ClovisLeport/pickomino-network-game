@@ -1,5 +1,8 @@
 import iut.info1.pickomino.data.Game
 import controleur.Menu.PlayButton
+import controleur.Menu.QuitButton
+import controleur.Menu.RulesContoleur
+import controleur.Menu.SettingsButton
 import javafx.application.Application
 import javafx.scene.Scene
 import javafx.scene.image.Image
@@ -23,8 +26,11 @@ class Main : Application() {
         primaryStage.minHeight = 700.0 // Définir une hauteur minimale de 400 pixels
 
         var playbut = PlayButton(vue)
+        var rulesbutt = RulesContoleur(vue)
+        var settingbutt = SettingsButton(vue)
+        var Quitbutt = QuitButton(vue,primaryStage)
 
-        vue.homcenter.fixeButton(arrayOf(playbut,playbut,playbut,playbut))
+        vue.homcenter.fixeButton(arrayOf(playbut,rulesbutt,settingbutt,Quitbutt))
 
 
 //        // FullScreen
