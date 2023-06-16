@@ -1,4 +1,4 @@
-import controleur.Binding
+import iut.info1.pickomino.data.Game
 import controleur.Menu.PlayButton
 import javafx.application.Application
 import javafx.scene.Scene
@@ -13,7 +13,7 @@ class Main : Application() {
     val vue = HomeView()
     override fun start(primaryStage: Stage) {
 
-
+        val vue = HomeView()
         vue.update(Menu())
 
         // Initialisation de l'interface utilisateur et des composants JavaFX
