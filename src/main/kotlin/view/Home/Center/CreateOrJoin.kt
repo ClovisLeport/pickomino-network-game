@@ -34,6 +34,6 @@ class CreateOrJoin() : HomeCenter(false) {
 
     override fun fixeButton(listControleur: Array<EventHandler<ActionEvent>>) {
         ButtonCreate.onAction = listControleur[0]
-        ButtonJoin.onAction = listControleur[0]
+        ButtonJoin.onAction = listControleur[1]
     }
 }

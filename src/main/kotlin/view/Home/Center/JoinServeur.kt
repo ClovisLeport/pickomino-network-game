@@ -13,20 +13,24 @@ import view.components.WhiteButton
 
 class JoinServeur() : HomeCenter(false) {
 
+    val button : WhiteButton
+
+    val textFilierid : TextField
+    val textFilierkey : TextField
     init {
         val title = Title()
         val subTitle = SubTitle("Draw the worms from the dice !")
         val textid = Label("What is the ID :")
         textid.textFill = Color.web("#FBFBF2")
 
-        val textFilierid = TextField()
+        textFilierid = TextField()
 
         val textkey = Label("What is the key :")
         textkey.textFill = Color.web("#FBFBF2")
 
-        val textFilierkey = TextField()
+        textFilierkey = TextField()
 
-        val button = WhiteButton("Validate")
+        button = WhiteButton("Validate")
 
         this.alignment = Pos.CENTER
         this.maxWidth = 800.0
@@ -37,6 +41,6 @@ class JoinServeur() : HomeCenter(false) {
 
     }
     override fun fixeButton(listControleur: Array<EventHandler<ActionEvent>>) {
-        TODO("Not yet implemented")
+        button.onAction = listControleur[0]
     }
 }

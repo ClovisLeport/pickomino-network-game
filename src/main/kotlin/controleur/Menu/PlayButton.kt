@@ -1,12 +1,11 @@
 package controleur.Menu
 
-import Main
 import controleur.ControleurCreateParty
+import controleur.ControleurButtonAcceptInJoinPartyPage
+import controleur.ControleurJoinParty
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import view.Home.Center.CreateOrJoin
-import view.Home.Center.HomeCenter
-import view.Home.Center.Menu
 import view.Home.HomeView
 import view.MainView
 
@@ -15,7 +14,7 @@ class PlayButton(vue: MainView,homview : HomeView): EventHandler<ActionEvent> {
     var homeview = homview
     override fun handle(event: ActionEvent?) {
         var newPage = CreateOrJoin()
-        newPage.fixeButton(arrayOf(ControleurCreateParty(homeview,vue),ControleurCreateParty(homeview,vue)))
+        newPage.fixeButton(arrayOf(ControleurCreateParty(homeview,vue),ControleurJoinParty(homeview,vue)))
         homeview.update(newPage)
     }
 
