@@ -1,8 +1,9 @@
 import controleur.Binding
 import javafx.application.Application
 import javafx.scene.Scene
+import javafx.scene.image.Image
 import javafx.stage.Stage
-import view.Home.Center.Menu
+import view.Home.Center.*
 import view.Home.HomeView
 import view.MainView
 import view.game.GameView
@@ -10,7 +11,8 @@ import view.game.GameView
 class Main : Application() {
     override fun start(primaryStage: Stage) {
 
-        val vue = Menu()
+        val vue = HomeView()
+        vue.update(Menu())
 
         // Initialisation de l'interface utilisateur et des composants JavaFX
         val scene = Scene(vue, 600.0, 400.0)
@@ -26,8 +28,12 @@ class Main : Application() {
 //            show()
 //        }
 
-        var bind = Binding(vue, scene)
-        bind.bindModeleVue()
+        //ajout de l'icone de page
+        val iconPath = "file:src/main/kotlin/view/assets/Logo.png" // Spécifiez le chemin vers votre icône
+        val icon = Image(iconPath)
+
+        primaryStage.icons.add(icon)
+
         primaryStage.title = "Pikomino"
         primaryStage.scene = scene
 

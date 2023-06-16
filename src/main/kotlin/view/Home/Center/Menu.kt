@@ -15,7 +15,7 @@ import javafx.scene.text.Text
 import javafx.stage.Screen
 import view.components.WhiteButton
 
-class Menu() :HomeCenter() {
+class Menu() :HomeCenter(true ) {
 
     var vbox = VBox()
     var title = Text()
@@ -24,7 +24,7 @@ class Menu() :HomeCenter() {
     val SettingsButton = WhiteButton("Settings")
     val QuitButton = WhiteButton("Quit")
     init {
-        this.background = Background(BackgroundFill(Color.web("#3A83C2"), null, null))
+        this.background = Background(BackgroundFill(Color.web("#3A83C2"), null, null))//#3A83C2
 
         // ---------------- IMAGES MODALITES ----------------
         this.padding = Insets(10.0,10.0,10.0,0.0)
@@ -41,13 +41,13 @@ class Menu() :HomeCenter() {
         this.spacing = 5.0
 
         // ---------------- PRAIRIE ----------------
-        val screenBounds: Rectangle2D = Screen.getPrimary().bounds
+        /*val screenBounds: Rectangle2D = Screen.getPrimary().bounds
         val screenWidth = screenBounds.width
         val pane = Pane()
         val radius = screenWidth / 2
         val arc = Arc(radius, 0.0, radius, 100.0, 0.0, 180.0)
         arc.type = ArcType.ROUND
-        arc.fill = Color.web("#4DA35C")
+        arc.fill = Color.web("#4DA35C")*/
 
         // ---------------- TITRE ----------------
         val labelTitle = Label("Pickomino")
@@ -66,7 +66,7 @@ class Menu() :HomeCenter() {
         val vbox_choice = VBox()
         vbox_choice.children.addAll(labelTitle,labelQuote)
         vbox_choice.alignment = Pos.CENTER
-        bpTop.setLeft(imageViewPlayer)
+        //bpTop.setLeft(imageViewPlayer)
         bpTop.setCenter(vbox_choice)
 
         val bpButton = BorderPane()
@@ -77,10 +77,9 @@ class Menu() :HomeCenter() {
         vbButton.padding = Insets(40.0,20.0,20.0,20.0)
         vbButton.spacing = 10.0
         bpButton.setCenter(vbButton)
-        bpButton.bottom = arc
+        //bpButton.setBottom(arc)
 
-
-        this.children.addAll(imageViewAge,bpTop,bpButton)
+        this.children.addAll(imageViewAge,bpTop,bpButton)//imageViewAge
 
     }
 }

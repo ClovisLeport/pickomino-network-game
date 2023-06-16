@@ -1,17 +1,20 @@
 package view.components
 
+import javafx.animation.TranslateTransition
+import javafx.geometry.Insets
 import javafx.geometry.Pos
-import javafx.scene.Group
 import javafx.scene.control.Label
-import javafx.scene.effect.BlurType
 import javafx.scene.effect.DropShadow
 import javafx.scene.effect.InnerShadow
+import javafx.scene.image.Image
+import javafx.scene.image.ImageView
 import javafx.scene.layout.StackPane
 import javafx.scene.layout.VBox
 import javafx.scene.paint.Color
 import javafx.scene.shape.Rectangle
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
+import javafx.util.Duration
 
 class Pawn(value: Int, thworm: Int) : StackPane() {
     init {
@@ -46,20 +49,46 @@ class Pawn(value: Int, thworm: Int) : StackPane() {
         // Value
         val valueLabel = Label(value.toString())
         valueLabel.textFill = Color.web("#0F1820")
-        valueLabel.font = Font.font("Helvetica",FontWeight.BOLD,48.0)
+
+        // Add Font
+        val helveticaFont = Font.loadFont(
+            "file:src/main/kotlin/view/fonts/helvetica/Helvetica-Bold.ttf",
+            48.0)
+
+        valueLabel.font = helveticaFont
 
         // Line
         val line = Rectangle()
-        line.width = 91.0
+        line.width = 70.0
         line.height = 3.0
         line.fill = Color.web("#0F1820")
-        line.arcWidth = 1.5
-        line.arcHeight = 1.5
+        line.arcWidth = 5.0
+        line.arcHeight = 5.0
+
+        // Image
+        // Créer une ImageView
+        val imageView = ImageView()
+        val thwormImage : Image
+
+        when (thworm) {
+            2 -> thwormImage = Image("file:src/main/kotlin/view/assets/thworm2.png")
+            3 -> thwormImage = Image("file:src/main/kotlin/view/assets/thworm3.png")
+            4 -> thwormImage = Image("file:src/main/kotlin/view/assets/thworm4.png")
+            else -> thwormImage = Image("file:src/main/kotlin/view/assets/thworm1.png")
+        }
+
+        imageView.fitWidth = 60.0 // Largeur fixe de 200 pixels
+        val imageRatio: Double = thwormImage.getWidth() / thwormImage.getHeight()
+        val height = imageView.fitWidth / imageRatio
+        imageView.fitHeight = height
+
+        imageView.image = thwormImage
 
         // StackPane for line and value label
         val lineAndValuePane = VBox()
         lineAndValuePane.alignment = Pos.CENTER
-        lineAndValuePane.children.addAll(valueLabel, line)
+        lineAndValuePane.children.addAll(valueLabel, line, imageView)
+        VBox.setMargin(line, Insets(5.0, 0.0, 15.0, 0.0))
 
         // Set lineAndValuePane as the center node of the VBox
         this.alignment = Pos.CENTER

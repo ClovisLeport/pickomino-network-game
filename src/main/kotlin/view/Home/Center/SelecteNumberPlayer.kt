@@ -1,6 +1,7 @@
 package view.Home.Center
 
 import javafx.geometry.Pos
+import javafx.scene.control.ComboBox
 import javafx.scene.control.Label
 import javafx.scene.control.TextField
 import javafx.scene.paint.Color
@@ -8,21 +9,23 @@ import view.components.SmallTitle
 import view.components.SubTitle
 import view.components.Title
 import view.components.WhiteButton
+import javax.swing.ComboBoxEditor
 
-class JoinServeur() : HomeCenter(false) {
+class SelecteNumberPlayer(NumberPlayer : Int) : HomeCenter(false){
+
+    val NumberPlayer = NumberPlayer
 
     init {
         val title = Title()
         val subTitle = SubTitle("Draw the worms from the dice !")
-        val textid = Label("What is the ID :")
-        textid.textFill = Color.web("#FBFBF2")
+        val text = Label("with one play you want to be : ")
+        text.textFill = Color.web("#FBFBF2")
 
-        val textFilierid = TextField()
+        val Combobox = ComboBox<String>()
 
-        val textkey = Label("What is the key :")
-        textkey.textFill = Color.web("#FBFBF2")
-
-        val textFilierkey = TextField()
+        for (i in 1..this.NumberPlayer){
+            Combobox.items.add("Player N°$i")
+        }
 
         val button = WhiteButton("Validate")
 
@@ -31,7 +34,7 @@ class JoinServeur() : HomeCenter(false) {
 
         this.spacing = 20.0
 
-        this.children.addAll(title,subTitle,textid,textFilierid,textkey,textFilierkey,button)
+        this.children.addAll(title,subTitle,text,Combobox,button)
 
     }
 }
