@@ -12,7 +12,7 @@ class MainView(stage: Stage): BorderPane() {
     var view : View
     var stage = stage
     init {
-        this.view = HomeView(stage)
+        this.view = HomeView(stage,this)
         this.center = view
     }
 

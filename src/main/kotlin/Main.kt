@@ -15,7 +15,7 @@ import view.game.GameView
 class Main : Application() {
     override fun start(primaryStage: Stage) {
 
-        val vue = HomeView(primaryStage)
+        val vue = MainView(primaryStage)//HomeView(primaryStage)
         //vue.update(Menu())
 
         // Initialisation de l'interface utilisateur et des composants JavaFX

@@ -16,12 +16,14 @@ import view.Home.Center.CreateServer
 import view.Home.Center.HomeCenter
 import view.Home.Center.Menu
 import view.Home.Center.Setting
+import view.MainView
 import view.View
 import view.components.TransparentButton
 import java.io.FileInputStream
 
-class HomeView(stage: Stage): View() {
+class HomeView(stage: Stage,mainview: MainView): View() {
     var backButton : TransparentButton = TransparentButton("back")
+    var mainview =mainview
     var homcenter : HomeCenter
     var historyofHomeCenter = mutableListOf<HomeCenter>()
     var stage = stage
@@ -39,7 +41,7 @@ class HomeView(stage: Stage): View() {
         homcenter = Menu()
 
 
-        var playbut = PlayButton(this)
+        var playbut = PlayButton(mainview,this)
         var rulesbutt = RulesContoleur(this)
         var settingbutt = SettingsButton(this)
         var Quitbutt = QuitButton(this,stage)

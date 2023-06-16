@@ -16,6 +16,9 @@ import view.components.WhiteButton
 
 class CreateServer() : HomeCenter(false) {
 
+    var input : Slider
+    var nombre : Label
+    var button : WhiteButton
     init {
         val title = Title()
         val subTitle = SubTitle("Draw the worms from the dice !")
@@ -24,16 +27,16 @@ class CreateServer() : HomeCenter(false) {
         text.textFill = Color.web("#FBFBF2")
 
         var hbox = HBox()
-        val input = Slider(2.0,4.0,2.0)
+        input = Slider(2.0,4.0,2.0)
         input.prefWidth = 400.0
         //input.setMaxSize(Double.MAX_VALUE,Double.MAX_VALUE)
-        val nombre = Label("2")
+        nombre = Label("2")
         nombre.textFill = Color.web("#FBFBF2")
         hbox.children.add(input)
         hbox.children.add(nombre)
         hbox.alignment = Pos.CENTER
 
-        val button = WhiteButton("Validate")
+        button = WhiteButton("Validate")
 
         this.alignment = Pos.CENTER
         this.maxWidth = 800.0
@@ -47,6 +50,6 @@ class CreateServer() : HomeCenter(false) {
         this.children.add(button)
     }
     override fun fixeButton(listControleur: Array<EventHandler<ActionEvent>>) {
-        TODO("Not yet implemented")
+        button.onAction = listControleur[0]
     }
 }
