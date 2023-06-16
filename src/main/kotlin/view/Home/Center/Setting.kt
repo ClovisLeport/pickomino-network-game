@@ -1,5 +1,7 @@
 package view.Home.Center
 
+import javafx.event.ActionEvent
+import javafx.event.EventHandler
 import javafx.scene.layout.VBox
 import javafx.scene.text.Text
 import view.components.Title
@@ -13,5 +15,8 @@ class Setting :HomeCenter(false) {
         var back = TransparentButton("Back")
         var titre = Title()
         this.children.addAll(back,titre)
+    }
+    override fun fixeButton(listControleur: Array<EventHandler<ActionEvent>>) {
+        TODO("Not yet implemented")
     }
 }

@@ -1,5 +1,7 @@
 package view.Home.Center
 
+import javafx.event.ActionEvent
+import javafx.event.EventHandler
 import javafx.geometry.Pos
 import javafx.scene.control.Label
 import javafx.scene.control.TextField
@@ -24,5 +26,9 @@ class CreateOrJoin() : HomeCenter(false) {
         this.spacing = 20.0
 
         this.children.addAll(title, subTitle, buttonCreate, ButtonJoin)
+    }
+
+    override fun fixeButton(listControleur: Array<EventHandler<ActionEvent>>) {
+        TODO("Not yet implemented")
     }
 }

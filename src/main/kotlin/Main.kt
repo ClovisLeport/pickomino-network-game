@@ -1,4 +1,5 @@
 import controleur.Binding
+import controleur.Menu.PlayButton
 import javafx.application.Application
 import javafx.scene.Scene
 import javafx.scene.image.Image
@@ -9,9 +10,10 @@ import view.MainView
 import view.game.GameView
 
 class Main : Application() {
+    val vue = HomeView()
     override fun start(primaryStage: Stage) {
 
-        val vue = HomeView()
+
         vue.update(Menu())
 
         // Initialisation de l'interface utilisateur et des composants JavaFX
@@ -19,6 +21,11 @@ class Main : Application() {
 
         primaryStage.minWidth = 1100.0 // Définir une largeur minimale de 600 pixels
         primaryStage.minHeight = 700.0 // Définir une hauteur minimale de 400 pixels
+
+        var playbut = PlayButton(vue)
+
+        vue.homcenter.fixeButton(arrayOf(playbut,playbut,playbut,playbut))
+
 
 //        // FullScreen
 //        primaryStage?.apply {

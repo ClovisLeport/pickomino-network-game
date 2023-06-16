@@ -45,7 +45,9 @@ class HomeView: View() {
 
 
     fun update(newhomecenter : HomeCenter){
+
         this.homcenter = newhomecenter
+
         this.center = homcenter
 
         if (newhomecenter.isMenu){

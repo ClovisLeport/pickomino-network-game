@@ -1,5 +1,7 @@
 package view.Home.Center
 
+import javafx.event.ActionEvent
+import javafx.event.EventHandler
 import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.geometry.Rectangle2D
@@ -81,5 +83,12 @@ class Menu() :HomeCenter(true ) {
 
         this.children.addAll(imageViewAge,bpTop,bpButton)//imageViewAge
 
+    }
+
+    override fun fixeButton(listControleur:Array<EventHandler<ActionEvent>>) {
+            PlayButton.onAction = listControleur[0]
+            RulesButton.onAction = listControleur[1]
+            SettingsButton.onAction = listControleur[2]
+            QuitButton.onAction = listControleur[3]
     }
 }

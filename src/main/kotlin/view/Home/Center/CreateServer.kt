@@ -1,5 +1,7 @@
 package view.Home.Center
 
+import javafx.event.ActionEvent
+import javafx.event.EventHandler
 import javafx.geometry.Pos
 import javafx.scene.control.Button
 import javafx.scene.control.Label
@@ -43,5 +45,8 @@ class CreateServer() : HomeCenter(false) {
         this.children.add(text)
         this.children.add(hbox)
         this.children.add(button)
+    }
+    override fun fixeButton(listControleur: Array<EventHandler<ActionEvent>>) {
+        TODO("Not yet implemented")
     }
 }

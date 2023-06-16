@@ -1,5 +1,7 @@
 package view.Home.Center
 
+import javafx.event.ActionEvent
+import javafx.event.EventHandler
 import javafx.geometry.Pos
 import javafx.scene.control.Label
 import javafx.scene.control.TextField
@@ -33,5 +35,8 @@ class JoinServeur() : HomeCenter(false) {
 
         this.children.addAll(title,subTitle,textid,textFilierid,textkey,textFilierkey,button)
 
+    }
+    override fun fixeButton(listControleur: Array<EventHandler<ActionEvent>>) {
+        TODO("Not yet implemented")
     }
 }
