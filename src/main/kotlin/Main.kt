@@ -13,11 +13,10 @@ import view.MainView
 import view.game.GameView
 
 class Main : Application() {
-    val vue = HomeView()
     override fun start(primaryStage: Stage) {
 
-        val vue = HomeView()
-        vue.update(Menu())
+        val vue = HomeView(primaryStage)
+        //vue.update(Menu())
 
         // Initialisation de l'interface utilisateur et des composants JavaFX
         val scene = Scene(vue, 600.0, 400.0)
@@ -25,12 +24,7 @@ class Main : Application() {
         primaryStage.minWidth = 1100.0 // Définir une largeur minimale de 600 pixels
         primaryStage.minHeight = 700.0 // Définir une hauteur minimale de 400 pixels
 
-        var playbut = PlayButton(vue)
-        var rulesbutt = RulesContoleur(vue)
-        var settingbutt = SettingsButton(vue)
-        var Quitbutt = QuitButton(vue,primaryStage)
 
-        vue.homcenter.fixeButton(arrayOf(playbut,rulesbutt,settingbutt,Quitbutt))
 
 
 //        // FullScreen

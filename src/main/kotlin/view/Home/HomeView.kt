@@ -1,12 +1,17 @@
 package view.Home
 
 import controleur.ControleurButtonBackHomeView
+import controleur.Menu.PlayButton
+import controleur.Menu.QuitButton
+import controleur.Menu.RulesContoleur
+import controleur.Menu.SettingsButton
 import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.layout.VBox
 import javafx.scene.text.Text
+import javafx.stage.Stage
 import view.Home.Center.CreateServer
 import view.Home.Center.HomeCenter
 import view.Home.Center.Menu
@@ -15,11 +20,11 @@ import view.View
 import view.components.TransparentButton
 import java.io.FileInputStream
 
-class HomeView: View() {
+class HomeView(stage: Stage): View() {
     var backButton : TransparentButton = TransparentButton("back")
     var homcenter : HomeCenter
     var historyofHomeCenter = mutableListOf<HomeCenter>()
-
+    var stage = stage
     private var vbox : VBox
 
     init  {
@@ -32,6 +37,14 @@ class HomeView: View() {
         vbox.children.add(backButton)
 
         homcenter = Menu()
+
+
+        var playbut = PlayButton(this)
+        var rulesbutt = RulesContoleur(this)
+        var settingbutt = SettingsButton(this)
+        var Quitbutt = QuitButton(this,stage)
+        this.homcenter.fixeButton(arrayOf(playbut,rulesbutt,settingbutt,Quitbutt))
+
         this.center = homcenter
 
         val vbox2 = VBox()
@@ -66,9 +79,8 @@ class HomeView: View() {
     }
 
     fun Goback(){
-        if (historyofHomeCenter.size > 1){
+        if (historyofHomeCenter.size >= 1){
             update(historyofHomeCenter[historyofHomeCenter.size-1])
-
             historyofHomeCenter.removeAt(historyofHomeCenter.size-1)
             historyofHomeCenter.removeAt(historyofHomeCenter.size-1)
         }
