@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import controleur.Binding
+=======
+import iut.info1.pickomino.data.Game
+>>>>>>> d17e343 (Main)
 import javafx.application.Application
 import javafx.scene.Scene
 import javafx.scene.image.Image
@@ -11,8 +15,8 @@ import view.game.GameView
 class Main : Application() {
     override fun start(primaryStage: Stage) {
 
-        val vue = HomeView()
-        vue.update(Menu())
+        val vue = GameView()
+        //vue.update(CreateOrJoin())
 
         // Initialisation de l'interface utilisateur et des composants JavaFX
         val scene = Scene(vue, 600.0, 400.0)
