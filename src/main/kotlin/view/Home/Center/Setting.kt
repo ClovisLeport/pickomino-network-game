@@ -9,7 +9,7 @@ import view.components.Title
 import view.components.TransparentButton
 import javafx.collections.ObservableList as ObservableList1
 
-class Setting :HomeCenter() {
+class Setting :HomeCenter(false) {
     var vbox : VBox = VBox()
     var title = Text()
     var listener :ComboBox<String> = ComboBox()
@@ -32,4 +32,7 @@ class Setting :HomeCenter() {
     }
 
 
+    override fun fixeButton(listControleur: Array<EventHandler<ActionEvent>>) {
+        TODO("Not yet implemented")
+    }
 }

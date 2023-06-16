@@ -1,3 +1,8 @@
+import iut.info1.pickomino.data.Game
+import controleur.Menu.PlayButton
+import controleur.Menu.QuitButton
+import controleur.Menu.RulesContoleur
+import controleur.Menu.SettingsButton
 import javafx.application.Application
 import javafx.scene.Scene
 import javafx.scene.image.Image
@@ -12,6 +17,8 @@ class Main : Application() {
 
         val vue = MainView()
 
+        val vue = MainView(primaryStage)//HomeView(primaryStage)
+        //vue.update(Menu())
 
         // Initialisation de l'interface utilisateur et des composants JavaFX
         val scene = Scene(vue, 600.0, 400.0)
@@ -21,6 +28,9 @@ class Main : Application() {
 
         primaryStage.minWidth = 1100.0 // Définir une largeur minimale de 600 pixels
         primaryStage.minHeight = 700.0 // Définir une hauteur minimale de 400 pixels
+
+
+
 
 //        // FullScreen
 //        primaryStage?.apply {
@@ -73,4 +83,5 @@ fun main() {
     */
     // Lancement de la vue
     Application.launch(Main::class.java)
+
 }

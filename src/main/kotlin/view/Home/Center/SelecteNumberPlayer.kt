@@ -1,5 +1,7 @@
 package view.Home.Center
 
+import javafx.event.ActionEvent
+import javafx.event.EventHandler
 import javafx.geometry.Pos
 import javafx.scene.control.ComboBox
 import javafx.scene.control.Label
@@ -11,7 +13,7 @@ import view.components.Title
 import view.components.WhiteButton
 import javax.swing.ComboBoxEditor
 
-class SelecteNumberPlayer(NumberPlayer : Int) : HomeCenter(){
+class SelecteNumberPlayer(NumberPlayer : Int) : HomeCenter(false){
 
     val NumberPlayer = NumberPlayer
 
@@ -36,5 +38,8 @@ class SelecteNumberPlayer(NumberPlayer : Int) : HomeCenter(){
 
         this.children.addAll(title,subTitle,text,Combobox,button)
 
+    }
+    override fun fixeButton(listControleur: Array<EventHandler<ActionEvent>>) {
+        TODO("Not yet implemented")
     }
 }

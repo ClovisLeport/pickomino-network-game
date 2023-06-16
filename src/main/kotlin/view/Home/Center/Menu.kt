@@ -1,5 +1,7 @@
 package view.Home.Center
 
+import javafx.event.ActionEvent
+import javafx.event.EventHandler
 import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.geometry.Rectangle2D
@@ -15,35 +17,39 @@ import javafx.scene.text.Text
 import javafx.stage.Screen
 import view.components.WhiteButton
 
-class Menu :HomeCenter() {
+class Menu() :HomeCenter(true ) {
 
     var vbox = VBox()
     var title = Text()
+    val PlayButton = WhiteButton("Play")
+    val RulesButton = WhiteButton("Rules")
+    val SettingsButton = WhiteButton("Settings")
+    val QuitButton = WhiteButton("Quit")
     init {
-        this.background = Background(BackgroundFill(Color.web("#3A83C2"), null, null))
+        this.background = Background(BackgroundFill(Color.web("#3A83C2"), null, null))//#3A83C2
 
         // ---------------- IMAGES MODALITES ----------------
-        this.padding = Insets(10.0,10.0,10.0,10.0)
-        val imagePlayer = Image("file:src/main/kotlin/view/picture/Players24.png")
+        this.padding = Insets(10.0,10.0,10.0,0.0)
+        val imagePlayer = Image("file:src/main/kotlin/view/set/player.png")
         val imageViewPlayer = ImageView(imagePlayer)
         imageViewPlayer.setFitHeight(50.0);
         imageViewPlayer.setFitWidth(50.0);
 
 
-        val imageAge = Image("file:src/main/kotlin/view/picture/age.png")
+        val imageAge = Image("file:src/main/kotlin/view/set/age.png")
         val imageViewAge= ImageView(imageAge)
         imageViewAge.setFitHeight(50.0);
         imageViewAge.setFitWidth(50.0);
         this.spacing = 5.0
 
         // ---------------- PRAIRIE ----------------
-        val screenBounds: Rectangle2D = Screen.getPrimary().bounds
+        /*val screenBounds: Rectangle2D = Screen.getPrimary().bounds
         val screenWidth = screenBounds.width
         val pane = Pane()
         val radius = screenWidth / 2
         val arc = Arc(radius, 0.0, radius, 100.0, 0.0, 180.0)
         arc.type = ArcType.ROUND
-        arc.fill = Color.web("#4DA35C")
+        arc.fill = Color.web("#4DA35C")*/
 
         // ---------------- TITRE ----------------
         val labelTitle = Label("Pickomino")
@@ -67,18 +73,22 @@ class Menu :HomeCenter() {
 
         val bpButton = BorderPane()
         val vbButton = VBox()
-        val PlayButton = WhiteButton("Play")
-        val RulesButton = WhiteButton("Rules")
-        val SettingsButton = WhiteButton("Settings")
-        val SuitButton = WhiteButton("Quit")
-        vbButton.children.addAll(PlayButton,RulesButton,SettingsButton,SuitButton)
+
+        vbButton.children.addAll(PlayButton,RulesButton,SettingsButton,QuitButton)
         vbButton.alignment = Pos.CENTER
         vbButton.padding = Insets(40.0,20.0,20.0,20.0)
         vbButton.spacing = 10.0
         bpButton.setCenter(vbButton)
-        bpButton.setBottom(arc)
+        //bpButton.setBottom(arc)
 
-        this.children.addAll(imageViewAge,bpTop,bpButton)
+        this.children.addAll(imageViewAge,bpTop,bpButton)//imageViewAge
 
+    }
+
+    override fun fixeButton(listControleur:Array<EventHandler<ActionEvent>>) {
+            PlayButton.onAction = listControleur[0]
+            RulesButton.onAction = listControleur[1]
+            SettingsButton.onAction = listControleur[2]
+            QuitButton.onAction = listControleur[3]
     }
 }

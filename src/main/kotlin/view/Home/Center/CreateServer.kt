@@ -1,5 +1,7 @@
 package view.Home.Center
 
+import javafx.event.ActionEvent
+import javafx.event.EventHandler
 import javafx.geometry.Pos
 import javafx.scene.control.Button
 import javafx.scene.control.Label
@@ -12,8 +14,11 @@ import view.components.SubTitle
 import view.components.Title
 import view.components.WhiteButton
 
-class CreateServer :HomeCenter(){
+class CreateServer() : HomeCenter(false) {
 
+    var input : Slider
+    var nombre : Label
+    var button : WhiteButton
     init {
         val title = Title()
         val subTitle = SubTitle("Draw the worms from the dice !")
@@ -22,16 +27,16 @@ class CreateServer :HomeCenter(){
         text.textFill = Color.web("#FBFBF2")
 
         var hbox = HBox()
-        val input = Slider(2.0,4.0,2.0)
+        input = Slider(2.0,4.0,2.0)
         input.prefWidth = 400.0
         //input.setMaxSize(Double.MAX_VALUE,Double.MAX_VALUE)
-        val nombre = Label("2")
+        nombre = Label("2")
         nombre.textFill = Color.web("#FBFBF2")
         hbox.children.add(input)
         hbox.children.add(nombre)
         hbox.alignment = Pos.CENTER
 
-        val button = WhiteButton("Validate")
+        button = WhiteButton("Validate")
 
         this.alignment = Pos.CENTER
         this.maxWidth = 800.0
@@ -43,5 +48,8 @@ class CreateServer :HomeCenter(){
         this.children.add(text)
         this.children.add(hbox)
         this.children.add(button)
+    }
+    override fun fixeButton(listControleur: Array<EventHandler<ActionEvent>>) {
+        button.onAction = listControleur[0]
     }
 }
