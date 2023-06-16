@@ -9,7 +9,7 @@ import view.components.SubTitle
 import view.components.Title
 import view.components.WhiteButton
 
-class JoinServeur :HomeCenter(){
+class JoinServeur() : HomeCenter(false) {
 
     init {
         val title = Title()

@@ -12,7 +12,7 @@ import view.components.SubTitle
 import view.components.Title
 import view.components.WhiteButton
 
-class CreateServer :HomeCenter(){
+class CreateServer() : HomeCenter(false) {
 
     init {
         val title = Title()

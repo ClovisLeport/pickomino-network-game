@@ -8,7 +8,7 @@ import view.components.SubTitle
 import view.components.Title
 import view.components.WhiteButton
 
-class CreateOrJoin() : HomeCenter() {
+class CreateOrJoin() : HomeCenter(false) {
 
     init {
         val title = Title()

@@ -11,7 +11,7 @@ import view.components.Title
 import view.components.WhiteButton
 import javax.swing.ComboBoxEditor
 
-class SelecteNumberPlayer(NumberPlayer : Int) : HomeCenter(){
+class SelecteNumberPlayer(NumberPlayer : Int) : HomeCenter(false){
 
     val NumberPlayer = NumberPlayer
 

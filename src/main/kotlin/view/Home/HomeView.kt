@@ -35,11 +35,10 @@ class HomeView: View() {
 
         //image.scaleX = (0.5)
         image.fitWidth = 1100.0
+        image.fitHeight = 100.0
 
         vbox2.alignment = Pos.BOTTOM_LEFT
-
         vbox2.children.add(image)
-
         this.bottom = vbox2
 
     }
@@ -48,5 +47,17 @@ class HomeView: View() {
     fun update(newhomecenter : HomeCenter){
         this.homcenter = newhomecenter
         this.center = homcenter
+
+        if (newhomecenter.isMenu){
+            this.top = VBox()
+        }
+        else{
+            val vbox = VBox()
+            vbox.alignment = Pos.CENTER
+            vbox.padding = Insets(10.0,10.0,10.0,10.0)
+            vbox.children.add(backButton)
+
+            this.top = vbox
+        }
     }
 }

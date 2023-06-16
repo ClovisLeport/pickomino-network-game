@@ -5,7 +5,7 @@ import javafx.scene.text.Text
 import view.components.Title
 import view.components.TransparentButton
 
-class Setting :HomeCenter() {
+class Setting :HomeCenter(false) {
     var vbox : VBox = VBox()
     var title = Text()
 
