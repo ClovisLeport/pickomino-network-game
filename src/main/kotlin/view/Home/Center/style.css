@@ -1,0 +1,29 @@
+.combololbox
+{
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-radius: 50px;
+    -fx-border-width: 5px;
+    -fx-padding: 10 100 10 100;
+
+}
+
+.combo-box-base:hover
+{
+    -fx-color: -fx-hover-base;
+
+}
+
+.combololbox:hover {
+    -fx-background-color: transparent;
+    -fx-border-color: black;
+    -fx-border-radius: 50px;
+    -fx-border-width: 5px;
+    -fx-padding: 10 100 10 100;
+}
+
+
+
+.slider {
+    -fx-pref-whitdh: 300px;
+}

@@ -23,7 +23,7 @@ class HomeView: View() {
 
         this.top = vbox
 
-        homcenter = Menu()
+        homcenter = Setting()
 
         this.center = homcenter
 
