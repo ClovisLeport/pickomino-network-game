@@ -2,6 +2,8 @@ package view.Home
 
 import javafx.geometry.Insets
 import javafx.geometry.Pos
+import javafx.scene.image.Image
+import javafx.scene.image.ImageView
 import javafx.scene.layout.VBox
 import javafx.scene.text.Text
 import view.Home.Center.CreateServer
@@ -10,6 +12,7 @@ import view.Home.Center.Menu
 import view.Home.Center.Setting
 import view.View
 import view.components.TransparentButton
+import java.io.FileInputStream
 
 class HomeView: View() {
     var backButton : TransparentButton = TransparentButton("back")
@@ -27,7 +30,18 @@ class HomeView: View() {
 
         this.center = homcenter
 
-        //this.bottom = images()
+        val vbox2 = VBox()
+        val image = ImageView((Image(FileInputStream("/home/E226752U/reseau/Perso/Documents/Kotlin/GrandProjet/14-sae-201-2023/src/main/kotlin/view/assets/sol.png"))))
+
+        //image.scaleX = (0.5)
+        image.fitWidth = 1100.0
+
+        vbox2.alignment = Pos.BOTTOM_LEFT
+
+        vbox2.children.add(image)
+
+        this.bottom = vbox2
+
     }
 
 
