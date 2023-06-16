@@ -31,7 +31,7 @@ class HomeView: View() {
         this.center = homcenter
 
         val vbox2 = VBox()
-        val image = ImageView((Image(FileInputStream("/home/E226752U/reseau/Perso/Documents/Kotlin/GrandProjet/14-sae-201-2023/src/main/kotlin/view/assets/sol.png"))))
+        val image = ImageView((Image(FileInputStream("src/main/kotlin/view/assets/sol.png"))))
 
         //image.scaleX = (0.5)
         image.fitWidth = 1100.0

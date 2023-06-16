@@ -66,7 +66,7 @@ class Menu() :HomeCenter(true ) {
         val vbox_choice = VBox()
         vbox_choice.children.addAll(labelTitle,labelQuote)
         vbox_choice.alignment = Pos.CENTER
-        //bpTop.setLeft(imageViewPlayer)
+        bpTop.setLeft(imageViewPlayer)
         bpTop.setCenter(vbox_choice)
 
         val bpButton = BorderPane()
