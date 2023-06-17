@@ -5,12 +5,15 @@ import controleur.Menu.PlayButton
 import controleur.Menu.QuitButton
 import controleur.Menu.RulesContoleur
 import controleur.Menu.SettingsButton
+import controleur.BindingFloor
 import javafx.geometry.Insets
 import javafx.geometry.Pos
-import javafx.scene.image.Image
-import javafx.scene.image.ImageView
+import javafx.geometry.Rectangle2D
 import javafx.scene.layout.VBox
-import javafx.scene.text.Text
+import javafx.scene.paint.Color
+import javafx.scene.shape.Arc
+import javafx.scene.shape.ArcType
+import javafx.stage.Screen
 import javafx.stage.Stage
 import view.Home.Center.CreateServer
 import view.Home.Center.HomeCenter
@@ -53,16 +56,22 @@ class HomeView(stage: Stage,mainview: MainView): View() {
         this.center = homcenter
 
         val vbox2 = VBox()
-        val image = ImageView((Image(FileInputStream("src/main/kotlin/view/assets/sol.png"))))
+        // Floor
+        val screenBounds: Rectangle2D = Screen.getPrimary().bounds
+        val screenWidth = screenBounds.width
 
-        //image.scaleX = (0.5)
-        image.fitWidth = 1100.0
-        image.fitHeight = 100.0
+        val radius = screenWidth / 2
+        val arc = Arc(radius, 0.0, radius, 100.0, 0.0, 180.0)
+        arc.type = ArcType.ROUND
+        arc.fill = Color.web("#4DA35C")
+
 
         vbox2.alignment = Pos.BOTTOM_LEFT
-        vbox2.children.add(image)
+        vbox2.children.add(arc)
         this.bottom = vbox2
-
+        // Bind for the floor
+        val bindingFloor = BindingFloor(arc)
+        bindingFloor.bindArcWidthToStageWidth(stage.widthProperty())
 
     }
 
