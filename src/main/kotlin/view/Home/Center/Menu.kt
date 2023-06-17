@@ -29,17 +29,18 @@ class Menu() :HomeCenter(true ) {
         this.background = Background(BackgroundFill(Color.web("#3A83C2"), null, null))//#3A83C2
 
         // ---------------- IMAGES MODALITES ----------------
-        this.padding = Insets(10.0,10.0,10.0,0.0)
+        this.padding = Insets(10.0,10.0,10.0,10.0)
+
         val imagePlayer = Image("file:src/main/kotlin/view/set/player.png")
         val imageViewPlayer = ImageView(imagePlayer)
-        imageViewPlayer.setFitHeight(50.0);
-        imageViewPlayer.setFitWidth(50.0);
+        imageViewPlayer.setFitHeight(50.0)
+        imageViewPlayer.setFitWidth(50.0)
 
 
         val imageAge = Image("file:src/main/kotlin/view/set/age.png")
         val imageViewAge= ImageView(imageAge)
-        imageViewAge.setFitHeight(50.0);
-        imageViewAge.setFitWidth(50.0);
+        imageViewAge.setFitHeight(50.0)
+        imageViewAge.setFitWidth(50.0)
         this.spacing = 5.0
 
         // ---------------- PRAIRIE ----------------
