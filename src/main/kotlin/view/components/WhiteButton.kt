@@ -31,6 +31,8 @@ class WhiteButton (txt :String) :Button(){
         this.padding = Insets(12.0,10.0,10.0,12.0)
         this.prefWidth = 200.0
         this.prefHeight = 25.0
+        // Cursor
+        this.cursor = javafx.scene.Cursor.HAND
     }
 
 

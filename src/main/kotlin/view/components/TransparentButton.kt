@@ -29,8 +29,8 @@ class TransparentButton(text: String) : Button() {
         // Padding
         val paddingSize = Insets(4.0, 45.0, 4.0, 45.0)
         this.padding = paddingSize
-
-        
+        // Cursor
+        this.cursor = javafx.scene.Cursor.HAND
     }
 
 }
