@@ -59,6 +59,7 @@
 
 
 .slider .track{
+    -fx-pref-width: 300px;
 }
 
 .setting{

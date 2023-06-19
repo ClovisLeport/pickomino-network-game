@@ -42,6 +42,6 @@ class SelecteNumberPlayer(NumberPlayer : Int) : HomeCenter(false){
 
     }
     override fun fixeButton(listControleur: Array<EventHandler<ActionEvent>>) {
-        button.onAction = listControleur[0]
+        button.onAction = listControleur[2]
     }
 }

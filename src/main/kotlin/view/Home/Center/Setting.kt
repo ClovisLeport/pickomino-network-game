@@ -7,6 +7,7 @@ import javafx.geometry.Pos
 import javafx.scene.control.ComboBox
 import javafx.scene.control.Label
 import javafx.scene.control.Slider
+import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
 import javafx.scene.text.Text
 import view.components.Title
@@ -16,8 +17,10 @@ import javafx.collections.ObservableList as ObservableList1
 class Setting :HomeCenter(false) {
     var vbox : VBox = VBox()
     var title = Text()
+    var slide :Slider
     var listener :ComboBox<String> = ComboBox()
     var sizeScreen : Int = 0
+    var nombre :Label
 
      private var list = listOf<String>( "720 × 480","960 × 720","1280 × 1080","1440 × 1080","1440 × 1080","2048 × 1556","3656 × 2664")
     init {
@@ -25,11 +28,18 @@ class Setting :HomeCenter(false) {
         var titre = Label("Setting")
         titre.styleClass.add("setting")
 
+
+        var hbox = HBox()
         var slidetxt = Label("Volume :")
         slidetxt.styleClass.add("txt")
-        var slide = Slider(0.0,100.0,1.0)
-        slide.prefWidth = 400.0
+        nombre = Label("0")
+        var symbole = Label("%")
+        nombre.styleClass.add("txt")
+        symbole.styleClass.add("txt")
+        slide = Slider(0.0,100.0,1.0)
         slide.styleClass.add("slider")
+        hbox.children.addAll(slide,nombre,symbole)
+        hbox.alignment = Pos.CENTER
 
         var comboboxtxt = Label("Affichage :")
         comboboxtxt.styleClass.add("txt")
@@ -41,12 +51,14 @@ class Setting :HomeCenter(false) {
 
         this.alignment = Pos.CENTER
 
-        this.children.addAll(titre,comboboxtxt,listener,slidetxt,slide)
+        this.children.addAll(titre,comboboxtxt,listener,slidetxt,hbox)
     }
     fun getlist(index :Int) : String {
         return list.get(index)
     }
 
 
-    override fun fixeButton(listControleur:Array<EventHandler<ActionEvent>>){}
+    override fun fixeButton(listControleur:Array<EventHandler<ActionEvent>>){
+        //TODO
+    }
 }
