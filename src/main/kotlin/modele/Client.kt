@@ -1,6 +1,11 @@
 package modele
 
 import iut.info1.pickomino.Connector
+import iut.info1.pickomino.data.STATUS
+import javafx.animation.Animation
+import javafx.animation.KeyFrame
+import javafx.animation.Timeline
+import javafx.util.Duration
 import java.security.cert.TrustAnchor
 
 class Client(game: Game) {
@@ -11,6 +16,8 @@ class Client(game: Game) {
     var connect : Connector? = null
     var game : Game = game
     var nbJoueur : Int = 0
+
+    var canRoll = false
 
 
 
@@ -33,28 +40,30 @@ class Client(game: Game) {
                 }
             }
 
-
             connected = true
         }
     }
 
-    fun JoinGame(id:Int, key:Int){
+    fun JoinGame(id:Int, key:Int,NbJoueur :Int){
+        this.connect = Connector.factory("172.26.82.76", "8080")
         this.id = id
         this.key = key
+        this.nbJoueur = NbJoueur
         connected = true
 
     }
 
-    fun StartGame(){
+    fun update(){
         if (connected != null && id != null && key != null && connect != null){
+            canRoll = false
 
-            while (true){
+            //while (true){
                 var currentGame = connect!!.gameState(this.id!!, this.key!!)
 
                 var ActualStatu =  currentGame.current.status
 
-                if (currentGame.current.player == game.numérojoueur){
-                    //game.taketurns(ActualStatu)
+                if (currentGame.current.player+1 == game.numérojoueur && currentGame.current.status == STATUS.ROLL_DICE) {
+                    canRoll = true
                 }
                 else{
                     game.setDice(currentGame.current.rolls,currentGame.current.keptDices)
@@ -64,15 +73,25 @@ class Client(game: Game) {
                     var playerList = game.playerList()
                     var pickominoOfplayer = currentGame.pickosStackTops()
                     for ( numj in 0..playerList.size-1){
-                        if (!playerList[numj].localPlayer && numj+1 != currentGame.current.player)  playerList[numj].topPickominoIs(Pickomino(pickominoOfplayer[numj]))
+                        if (!playerList[numj].localPlayer && numj+1 != currentGame.current.player && pickominoOfplayer[numj] != 0)  playerList[numj].topPickominoIs(Pickomino(pickominoOfplayer[numj]))
 
                     }
                 }
-            }
+            //}
         }
     }
 
+    /*
+    fun updateLoop(){
+        val timeline = Timeline(KeyFrame(Duration.seconds(1.0), { this.update() }))
+        timeline.cycleCount = Animation.INDEFINITE
+        timeline.play()
+    }
 
 
+    fun keepDice(valeur : Int){
+        connect.keepDices(modele.)
+    }
+*/
 
 }

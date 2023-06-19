@@ -13,9 +13,13 @@ import view.components.Title
 import view.components.WhiteButton
 import javax.swing.ComboBoxEditor
 
-class SelecteNumberPlayer(NumberPlayer : Int) : HomeCenter(false){
+class SelecteNumberPlayer(NumberPlayer : Int,isHost: Boolean,id : Int?,key :Int?) : HomeCenter(false){
 
     val NumberPlayer = NumberPlayer
+    var isHost = isHost
+    var id = id
+    var key = key
+
     val button =  WhiteButton("Validate")
     val Combobox = ComboBox<String>()
 

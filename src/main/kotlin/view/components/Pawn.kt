@@ -15,7 +15,7 @@ import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import javafx.util.Duration
 
-class Pawn(value: Int, thworm: Int) : StackPane() {
+class Pawn(value: Int) : StackPane() {
     init {
         val rectangle = Rectangle()
         rectangle.width = 86.0
@@ -65,6 +65,18 @@ class Pawn(value: Int, thworm: Int) : StackPane() {
         line.arcHeight = 5.0
 
         // Image
+        //diffinire le nombre de worm
+        val thworm : Int
+        if (value < 25) {
+            thworm = 1
+        } else if (value < 29) {
+            thworm = 2
+        } else if (value < 33) {
+            thworm = 3
+        } else {
+            thworm = 4
+        }
+
         // Créer une ImageView
         val imageView = ImageView()
         val thwormImage : Image

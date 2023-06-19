@@ -1,5 +1,11 @@
 package view.game
 
+import controleur.Game.ActualiserGameView
+import javafx.animation.Animation
+import javafx.animation.KeyFrame
+import javafx.animation.Timeline
+import javafx.event.ActionEvent
+import javafx.event.EventHandler
 import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.scene.control.Button
@@ -9,11 +15,13 @@ import javafx.scene.image.ImageView
 import javafx.scene.layout.*
 import javafx.scene.paint.Color
 import javafx.scene.shape.Circle
+import javafx.util.Duration
 import modele.Player
 import org.controlsfx.control.spreadsheet.Grid
 
 import view.View
 import view.components.*
+import java.awt.event.MouseEvent
 import java.util.Stack
 
 class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
@@ -24,47 +32,47 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
 
 
     // CenterPart (Header/Center/Footer)
-    val centerPart : BorderPane
+    private val centerPart : BorderPane
     // HEADER
-    val header : VBox
-    val pageTitle : SmallTitle
-    val menuButton : TransparentButton
+    private val header : VBox
+    private val pageTitle : SmallTitle
+    private val menuButton : TransparentButton
 
     // LEFT : Players and Desk
-    val playersList : VBox
+    private val playersList : VBox
 
     // RIGHT : Dices
-    val diceSection : VBox
+    private val diceSection : VBox
 
-    val diceKeptSection : VBox
-    val diceKeptTitle : Label
+    private val diceKeptSection : VBox
+    private val diceKeptTitle : Label
     val diceKept : GridPane
 
-    val dicePlayedSection : VBox
-    val dicePlayedTitle :Label
+    private val dicePlayedSection : VBox
+    private val dicePlayedTitle :Label
     val dicePlayed : GridPane
 
     // CENTER : Pickomino
-    val pickominoSection : FlowPane
+    var pickominoSection : FlowPane
 
     // Bottom : PlayerSpace
-    val playerSpace : HBox
-    val rollDiceSection : VBox
-    val rollDiceBtn : Button
-    val circleBtn : Circle
-    val rollDiceImage : Image
-    val rollDiceImageView: ImageView
-    val rollDiceLabel : Label
+    private val playerSpace : HBox
+    private val rollDiceSection : VBox
+    private val rollDiceBtn : Button
+    private val circleBtn : Circle
+    private val rollDiceImage : Image
+    private val rollDiceImageView: ImageView
+    private val rollDiceLabel : Label
 
-    val playerPawnSection : VBox
-    val playerPawnPile : StackPane
-    val playerPawnDotted : Dotted
-    val playerPawn : Pawn?
-    val playerPawnLabel : Label
+    private var playerPawnSection : VBox
+    var playerPawnPile : StackPane
+    private var playerPawnDotted : Dotted
+    var playerPawn : Pawn?
+    private val playerPawnLabel : Label
 
-    val pickoSection : VBox
-    val pickoMessage : Label
-    val pickoImage : Image
+    private val pickoSection : VBox
+    private val pickoMessage : Label
+    private val pickoImage : Image
 
 
 
@@ -195,6 +203,7 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
         pickominoSection.vgap = 10.0
         pickominoSection.maxWidth = 800.0
 
+        /*
         for (pickomino in 21 until 37){
             val pickoPawn : Pawn
             if (pickomino < 25){
@@ -209,7 +218,8 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
             pickoPawn.clickable()
             pickoPawn.not_clickable()
             pickominoSection.children.add(pickoPawn)
-        }
+        }*/
+        UpDatePickomino(arrayOf(21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36))
 
         pickominoSection.alignment = Pos.CENTER
         centerPart.center = pickominoSection
@@ -304,4 +314,135 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
 
         rollDiceSection.children.addAll(rollDiceBtn, rollDiceLabel)
     }
+
+    fun UpDatePickomino(listePickomino: Array<Int>){
+        // CENTER : Pickomino
+        pickominoSection.children.clear()
+
+        for (pickomino in listePickomino) {
+            val pickoPawn: Pawn
+            pickoPawn = Pawn(pickomino)
+            //pickoPawn.clickable()
+            //pickoPawn.not_clickable()
+            pickominoSection.children.add(pickoPawn)
+        }
+    }
+
+    fun UpDatePickominoPlayer(listePickomino: Array<Int>){
+
+        /*
+        val playersListName = mutableListOf<String>()
+        for (numj in 1..NombresJoueur){
+
+            if (numj != actualNumberPlayer){
+                playersListName.add("Player N°$numj")
+            }
+        }
+        var i = 0
+        for (playerFor in playersListName){
+            if (i != actualNumberPlayer) {
+                // Player location
+                val player = VBox()
+                player.alignment = Pos.CENTER
+                // PlayerName
+                val playerName = Label(playerFor)
+                playerName.textFill = Color.web("#FBFBF3")
+                playerName.style = "-fx-font-size: 24;"
+                playerName.padding = Insets(0.0, 0.0, 10.0, 0.0)
+
+                // StackPane
+                val pile = StackPane()
+
+                // PlayerDotted
+                val dotted = Dotted(86.0, 165.0)
+                pile.children.add(dotted)
+                if (listePickomino[i] != null) {
+                    pile.children.add(Pawn(listePickomino[i]))
+                }
+
+                player.children.addAll(playerName, pile)
+                VBox.setVgrow(player, Priority.ALWAYS)
+                playersList.children.add(player)
+
+                i++
+            }
+        }*/
+
+        //joueur actuel
+        if (listePickomino[actualNumberPlayer] != null){
+            playerPawn = Pawn(listePickomino[actualNumberPlayer])
+        }
+
+        playerPawnSection = VBox() // Section
+        playerPawnSection.alignment = Pos.CENTER
+        playerPawnPile = StackPane() //Dotted and pawn
+        playerPawnDotted = Dotted(84.0, 163.0) //Dotted
+
+        playerPawnPile.children.add(playerPawnDotted)
+
+        playerPawn = null// Pawn(28) //Correspond au Pikomino le plus récent (Ici c'est un test pour IHM)
+        if (playerPawn != null){
+            playerPawnPile.children.add(playerPawn)
+        }
+            playerPawnSection.children.clear()
+            val playerPawnLabel = Label("Player N°$actualNumberPlayer")
+            playerPawnLabel.textFill = Color.web("#FBFBF3")
+            playerPawnLabel.style = "-fx-font-size: 24;"
+            playerPawnLabel.padding = Insets(10.0, 0.0, 0.0, 0.0)
+
+            playerPawnSection.children.addAll(playerPawnPile, playerPawnLabel)
+
+
+    }
+
+    fun UpDateDiceKeep(listeDice: Array<Int>){
+        dicePlayedSection.children.clear()
+
+        for (row in 0 until 2) {
+            for (col in 0 until 4) {
+                // Stack pane (Dotted & dice)
+                val stackPaneDice = StackPane()
+                val dotted = Dotted(70.0, 70.0)
+
+                stackPaneDice.children.add(dotted)
+                if (row+col < listeDice.size){
+                    stackPaneDice.children.add(Dice(listeDice[row+col]))
+                }
+
+                dicePlayed.add(stackPaneDice, col, row)
+            }
+        }
+
+        dicePlayedSection.children.addAll(dicePlayedTitle, dicePlayed)
+    }
+
+    fun UpDateDiceRolle(listeDice: Array<Int>, controleur : EventHandler<javafx.scene.input.MouseEvent>){
+        diceKeptSection.children.clear()
+
+        for (row in 0 until 4) {
+            for (col in 0 until 2) {
+                // Stack pane (Dotted & dice)
+                val stackPaneDice = StackPane()
+                val dotted = Dotted(70.0, 70.0)
+
+                stackPaneDice.children.add(dotted)
+                if (row+col < listeDice.size){
+                    var dice = Dice(listeDice[row+col])
+                    dice.onMousePressed = controleur
+                    stackPaneDice.children.add(dice)
+                }
+
+                diceKept.add(stackPaneDice, col, row)
+            }
+        }
+
+        diceKeptSection.children.addAll(diceKeptTitle, diceKept)
+    }
+
+
+    fun fixButtonRolls(controleur : EventHandler<ActionEvent>){
+        rollDiceBtn.onAction = controleur
+        rollDiceBtn.onMousePressed
+    }
+
 }
