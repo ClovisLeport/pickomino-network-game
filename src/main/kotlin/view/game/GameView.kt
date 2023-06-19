@@ -334,7 +334,7 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
         val players: List<VBox> = playersList.childrenUnmodifiable.filterIsInstance<VBox>()
 
         for (i in 0 until nombreJoueurs) {
-            if (actualNumberPlayer == i) {
+            if (actualNumberPlayer == i+1) {
                 if (playerPawnPile.children.size == 2) {
                     playerPawnPile.children.removeIf { it is Pawn }
 
@@ -346,10 +346,10 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
                 }
             } else {
                 val pile: StackPane
-                if (i > actualNumberPlayer) {
-                    pile = players[i - 1].childrenUnmodifiable.filterIsInstance<StackPane>()[1]
+                if (i > actualNumberPlayer-1) {
+                    pile = players[i - 1].children[1] as StackPane//.childrenUnmodifiable.filterIsInstance<StackPane>()[1]
                 } else {
-                    pile = players[i].childrenUnmodifiable.filterIsInstance<StackPane>()[1]
+                    pile = players[i].children[1] as StackPane//.childrenUnmodifiable.filterIsInstance<StackPane>()[1]
                 }
                 if (pile.children.size == 2) {
                     pile.children.removeIf { it is Pawn }
