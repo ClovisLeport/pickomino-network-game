@@ -9,7 +9,7 @@ import view.game.GameView
 class ControleurButtonKeepDice(vue : GameView,model : Client) : EventHandler<MouseEvent> {
 
     val vue = vue
-    val model = modele
+    val model = model
 
     override fun handle(event: MouseEvent?) {
 
