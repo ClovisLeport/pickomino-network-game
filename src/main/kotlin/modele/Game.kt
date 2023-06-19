@@ -85,4 +85,40 @@ class Game(numérojoueur : Int) {
         this.listPickominosEnJeu = newlistPickominosEnJeu
     }
 
+    fun convertIntintoDice(valeur: Int) : DICE{
+        when (valeur){
+            1 -> return DICE.d1
+            2 -> return DICE.d2
+            3 -> return DICE.d3
+            4 -> return DICE.d4
+            5 -> return DICE.d5
+            else -> return DICE.worm
+        }
+    }
+
+    fun convertArrayDiceIntoInt(array : Array<DICE>) : Array<Int>{
+        val listeInt = mutableListOf<Int>()
+
+        for (Dice in array){
+            when (Dice){
+                DICE.d1 -> listeInt.add(1)
+                DICE.d2 -> listeInt.add(2)
+                DICE.d3 -> listeInt.add(3)
+                DICE.d4 -> listeInt.add(4)
+                DICE.d5 -> listeInt.add(5)
+                DICE.worm -> listeInt.add(6)
+            }
+        }
+
+        return listeInt.toTypedArray()
+    }
+
+    fun AllDiceNumber() : Int{
+        var sum = 0
+        for (dice in convertArrayDiceIntoInt(this.diceChosen.toTypedArray())){
+            sum += dice
+        }
+        return sum
+    }
+
 }

@@ -6,8 +6,7 @@ import modele.Client
 import view.components.Dice
 import view.game.GameView
 
-
-class ControleurButtonKeepDice(vue : GameView,model : Client) : EventHandler<MouseEvent> {
+class ControleurPickomino(vue : GameView, model : Client) : EventHandler<MouseEvent> {
 
     val vue = vue
     val model = model

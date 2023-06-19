@@ -91,23 +91,14 @@ class Client(game: Game) {
 
 */
     fun keepDice(valeur : Int){
-        val v = convertIntintoDice(valeur)
+        val v = game.convertIntintoDice(valeur)
         if (v !in game.diceChosen){
             connect!!.keepDices(id!!,key!!,v)
         }
 
     }
 
-    fun convertIntintoDice(valeur: Int) : DICE{
-        when (valeur){
-            1 -> return DICE.d1
-            2 -> return DICE.d2
-            3 -> return DICE.d3
-            4 -> return DICE.d4
-            5 -> return DICE.d5
-            else -> return DICE.worm
-        }
-    }
+
 
 
 }

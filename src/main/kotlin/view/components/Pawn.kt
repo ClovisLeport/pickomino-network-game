@@ -16,6 +16,8 @@ import javafx.scene.text.FontWeight
 import javafx.util.Duration
 
 class Pawn(value: Int) : StackPane() {
+
+    var value = value
     init {
         val rectangle = Rectangle()
         rectangle.width = 86.0

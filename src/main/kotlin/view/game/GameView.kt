@@ -22,8 +22,8 @@ import org.controlsfx.control.spreadsheet.Grid
 
 import view.View
 import view.components.*
-import java.awt.event.MouseEvent
 import java.util.Stack
+import java.awt.event.MouseEvent as MouseEvent1
 
 class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
     //paramettre
@@ -456,6 +456,18 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
     fun fixButtonRolls(controleur : EventHandler<ActionEvent>){
         rollDiceBtn.onAction = controleur
         rollDiceBtn.onMousePressed
+    }
+
+    fun UpDateSelectionPickomino(number:Int,Contoleur : EventHandler<javafx.scene.input.MouseEvent>){
+         for (pickomino  in pickominoSection.children){
+             var picko = pickomino as Pawn
+
+             if (picko.value == number){
+                 picko.clickable()
+                 picko.onMouseClicked = Contoleur
+             }
+             else picko.not_clickable()
+         }
     }
 
 }
