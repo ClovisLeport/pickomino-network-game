@@ -51,6 +51,9 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
     val playerSpace : HBox
     val rollDiceSection : VBox
     val rollDiceBtn : Button
+    val circleBtn : Circle
+    val rollDiceImage : Image
+    val rollDiceImageView: ImageView
     val rollDiceLabel : Label
 
     val playerPawnSection : VBox
@@ -222,11 +225,11 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
 
         // RollDiceBTN
         rollDiceBtn = Button()
-        val circleBtn = Circle(50.0)
+        circleBtn = Circle(50.0)
         circleBtn.fill = Color.web("#FBFBF3")
         // AddImage into the button
-        val rollDiceImage = Image("file:src/main/kotlin/view/assets/diceIcon.png")
-        val rollDiceImageView = ImageView(rollDiceImage)
+        rollDiceImage = Image("file:src/main/kotlin/view/assets/diceIcon.png")
+        rollDiceImageView = ImageView(rollDiceImage)
         rollDiceImageView.fitWidth = 80.0 // Largeur de l'image
         rollDiceImageView.fitHeight = 80.0 // Hauteur de l'image
 
@@ -281,5 +284,24 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
 
 
         this.center = centerPart
+    }
+
+    fun can_play(){
+        rollDiceSection.children.removeAll(rollDiceBtn, rollDiceLabel)
+
+        circleBtn.fill = Color.web("#F5D849")
+        circleBtn.cursor = javafx.scene.Cursor.HAND
+
+        rollDiceBtn.graphic = StackPane(circleBtn, rollDiceImageView)
+
+        rollDiceSection.children.addAll(rollDiceBtn, rollDiceLabel)
+    }
+    fun cant_play(){
+        rollDiceSection.children.removeAll(rollDiceBtn, rollDiceLabel)
+        circleBtn.fill = Color.web("#FBFBF3")
+
+        rollDiceBtn.graphic = StackPane(circleBtn, rollDiceImageView)
+
+        rollDiceSection.children.addAll(rollDiceBtn, rollDiceLabel)
     }
 }
