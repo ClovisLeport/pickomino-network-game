@@ -7,8 +7,12 @@ import javafx.scene.control.Button
 import javafx.scene.control.Label
 import javafx.scene.control.Slider
 import javafx.scene.control.TextField
+import javafx.scene.layout.Background
+import javafx.scene.layout.BackgroundFill
+import javafx.scene.layout.CornerRadii
 import javafx.scene.layout.HBox
 import javafx.scene.paint.Color
+import javafx.scene.shape.Rectangle
 import view.components.SmallTitle
 import view.components.SubTitle
 import view.components.Title
@@ -16,7 +20,7 @@ import view.components.WhiteButton
 
 class CreateServer() : HomeCenter(false) {
 
-    var input : Slider
+    var slider : Slider
     var nombre : Label
     var button : WhiteButton
     init {
@@ -27,12 +31,16 @@ class CreateServer() : HomeCenter(false) {
         text.textFill = Color.web("#FBFBF2")
 
         var hbox = HBox()
-        input = Slider(2.0,4.0,2.0)
-        input.prefWidth = 400.0
-        //input.setMaxSize(Double.MAX_VALUE,Double.MAX_VALUE)
+
+        slider = Slider(2.0, 4.0, 2.0)
+        slider.prefWidth = 400.0
+
+        slider.prefHeight = 3.0
+
+
         nombre = Label("2")
         nombre.textFill = Color.web("#FBFBF2")
-        hbox.children.add(input)
+        hbox.children.add(slider)
         hbox.children.add(nombre)
         hbox.alignment = Pos.CENTER
 

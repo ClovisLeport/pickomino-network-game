@@ -26,8 +26,6 @@ class Menu() :HomeCenter(true ) {
     val SettingsButton = WhiteButton("Settings")
     val QuitButton = WhiteButton("Quit")
     init {
-        this.background = Background(BackgroundFill(Color.web("#3A83C2"), null, null))//#3A83C2
-
         // ---------------- IMAGES MODALITES ----------------
         this.padding = Insets(10.0,10.0,10.0,10.0)
 
