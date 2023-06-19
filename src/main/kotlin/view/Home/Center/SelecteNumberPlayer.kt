@@ -16,6 +16,8 @@ import javax.swing.ComboBoxEditor
 class SelecteNumberPlayer(NumberPlayer : Int) : HomeCenter(false){
 
     val NumberPlayer = NumberPlayer
+    val button =  WhiteButton("Validate")
+    val Combobox = ComboBox<String>()
 
     init {
         val title = Title()
@@ -23,13 +25,13 @@ class SelecteNumberPlayer(NumberPlayer : Int) : HomeCenter(false){
         val text = Label("with one play you want to be : ")
         text.textFill = Color.web("#FBFBF2")
 
-        val Combobox = ComboBox<String>()
+
 
         for (i in 1..this.NumberPlayer){
             Combobox.items.add("Player N°$i")
         }
 
-        val button = WhiteButton("Validate")
+
 
         this.alignment = Pos.CENTER
         this.maxWidth = 800.0
@@ -40,6 +42,6 @@ class SelecteNumberPlayer(NumberPlayer : Int) : HomeCenter(false){
 
     }
     override fun fixeButton(listControleur: Array<EventHandler<ActionEvent>>) {
-        TODO("Not yet implemented")
+        button.onAction = listControleur[0]
     }
 }

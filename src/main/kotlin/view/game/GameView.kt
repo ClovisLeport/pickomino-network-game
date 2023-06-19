@@ -9,13 +9,20 @@ import javafx.scene.image.ImageView
 import javafx.scene.layout.*
 import javafx.scene.paint.Color
 import javafx.scene.shape.Circle
+import modele.Player
 import org.controlsfx.control.spreadsheet.Grid
 
 import view.View
 import view.components.*
 import java.util.Stack
 
-class GameView : View() {
+class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
+    //paramettre
+
+    val NombresJoueur = NombresJoueur
+    val actualNumberPlayer = actualNumberPlayer
+
+
     // CenterPart (Header/Center/Footer)
     val centerPart : BorderPane
     // HEADER
@@ -85,7 +92,14 @@ class GameView : View() {
         playersList.alignment = Pos.TOP_CENTER
 
         // Loop into players
-        val playersListName = arrayOf("Clément", "Martin", "Tom")
+        val playersListName = mutableListOf<String>()
+        for (numj in 1..NombresJoueur){
+
+            if (numj != actualNumberPlayer){
+                playersListName.add("Player N°$numj")
+            }
+        }
+
         for (playerFor in playersListName){
             // Player location
             val player = VBox()
@@ -234,11 +248,11 @@ class GameView : View() {
 
         playerPawnPile.children.add(playerPawnDotted)
 
-        playerPawn = Pawn(28,4) //Correspond au Pikomino le plus récent (Ici c'est un test pour IHM)
+        playerPawn = null// Pawn(28,4) //Correspond au Pikomino le plus récent (Ici c'est un test pour IHM)
         if (playerPawn != null){
             playerPawnPile.children.add(playerPawn)
         }
-        playerPawnLabel = Label("You")
+        playerPawnLabel = Label("Player N°$actualNumberPlayer")
         playerPawnLabel.textFill = Color.web("#FBFBF3")
         playerPawnLabel.style = "-fx-font-size: 24;"
         playerPawnLabel.padding = Insets(10.0, 0.0, 0.0, 0.0)

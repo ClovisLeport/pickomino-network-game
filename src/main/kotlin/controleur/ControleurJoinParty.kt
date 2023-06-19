@@ -2,7 +2,6 @@ package controleur
 
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
-import view.Home.Center.CreateServer
 import view.Home.Center.JoinServeur
 import view.Home.HomeView
 import view.MainView
@@ -13,7 +12,7 @@ class ControleurJoinParty(vue : HomeView, Mainvue: MainView) : EventHandler<Acti
     val Mainvue = Mainvue
     override fun handle(event: ActionEvent?) {
         val NewPage = JoinServeur()
-        NewPage.fixeButton(arrayOf(ControleurButtonAcceptInJoinPartyPage(vue,Mainvue)))
+        NewPage.fixeButton(arrayOf(ControleurButtonAccept(vue,Mainvue)))
         vue.update(NewPage)
     }
 }
