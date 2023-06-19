@@ -1,6 +1,7 @@
 package modele
 
 import iut.info1.pickomino.Connector
+import iut.info1.pickomino.data.STATUS
 import javafx.animation.Animation
 import javafx.animation.KeyFrame
 import javafx.animation.Timeline
@@ -16,7 +17,7 @@ class Client(game: Game) {
     var game : Game = game
     var nbJoueur : Int = 0
 
-    var canPlay = false
+    var canRoll = false
 
 
 
@@ -52,18 +53,17 @@ class Client(game: Game) {
 
     }
 
-    fun StartGame(){
+    fun update(){
         if (connected != null && id != null && key != null && connect != null){
-            canPlay = false
+            canRoll = false
 
             //while (true){
                 var currentGame = connect!!.gameState(this.id!!, this.key!!)
 
                 var ActualStatu =  currentGame.current.status
 
-                if (currentGame.current.player == game.numérojoueur){
-                    canPlay = true
-                    //game.taketurns(ActualStatu)
+                if (currentGame.current.player+1 == game.numérojoueur && currentGame.current.status == STATUS.ROLL_DICE) {
+                    canRoll = true
                 }
                 else{
                     game.setDice(currentGame.current.rolls,currentGame.current.keptDices)
@@ -73,7 +73,7 @@ class Client(game: Game) {
                     var playerList = game.playerList()
                     var pickominoOfplayer = currentGame.pickosStackTops()
                     for ( numj in 0..playerList.size-1){
-                        if (!playerList[numj].localPlayer && numj+1 != currentGame.current.player)  playerList[numj].topPickominoIs(Pickomino(pickominoOfplayer[numj]))
+                        if (!playerList[numj].localPlayer && numj+1 != currentGame.current.player && pickominoOfplayer[numj] != 0)  playerList[numj].topPickominoIs(Pickomino(pickominoOfplayer[numj]))
 
                     }
                 }
@@ -81,12 +81,17 @@ class Client(game: Game) {
         }
     }
 
+    /*
     fun updateLoop(){
-        val timeline = Timeline(KeyFrame(Duration.seconds(1.0), { this.StartGame() }))
+        val timeline = Timeline(KeyFrame(Duration.seconds(1.0), { this.update() }))
         timeline.cycleCount = Animation.INDEFINITE
         timeline.play()
     }
 
 
+    fun keepDice(valeur : Int){
+        connect.keepDices(modele.)
+    }
+*/
 
 }

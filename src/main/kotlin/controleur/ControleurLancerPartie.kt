@@ -1,6 +1,7 @@
 package controleur
 
 import controleur.Game.ActualiserGameView
+import controleur.Game.ContoleurButtonRollsDice
 import javafx.animation.Animation
 import javafx.animation.KeyFrame
 import javafx.animation.Timeline
@@ -13,6 +14,7 @@ import modele.Game
 import view.Home.Center.SelecteNumberPlayer
 import view.Home.HomeView
 import view.MainView
+import view.View
 import view.game.GameView
 import java.lang.Exception
 
@@ -39,9 +41,10 @@ class ControleurLancerPartie(vue : HomeView, mainvue : MainView) : EventHandler<
             mainvue.updateView(NewPage)
 
 
-            var model = Client(Game(nbPlayer))
+            var model = Client(Game(actualPlayer))
 
             if (actualvue.isHost) {
+                println("Bonjour")
                 model.CreateGame(nbPlayer,actualPlayer)
             }
             else{
@@ -50,17 +53,18 @@ class ControleurLancerPartie(vue : HomeView, mainvue : MainView) : EventHandler<
                 model.JoinGame(nbPlayer,id,key)
             }
 
-
-
-
-            fun updateLoop(){
-                val timeline = Timeline(KeyFrame(Duration.seconds(1.0), { ActualiserGameView(NewPage,model) }))
-                timeline.cycleCount = Animation.INDEFINITE
-                timeline.play()
-            }
-
+            NewPage.FixButtonRolls(ContoleurButtonRollsDice(NewPage,model))
+            updateLoop(NewPage,model)
         }
+    }
 
-
+    fun updateLoop(vue: GameView, model : Client){
+        var ActuGameView = ActualiserGameView(vue,model)
+        val timeline = Timeline(KeyFrame(Duration.seconds(1.0), {
+            ActuGameView.acctualiser()
+            println(model.connect!!.gameState(model.id!!,model.key!!))
+        }))
+        timeline.cycleCount = Animation.INDEFINITE
+        timeline.play()
     }
 }

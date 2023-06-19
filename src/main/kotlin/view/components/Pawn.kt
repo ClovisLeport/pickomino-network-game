@@ -8,15 +8,14 @@ import javafx.scene.effect.DropShadow
 import javafx.scene.effect.InnerShadow
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
-import javafx.scene.layout.StackPane
-import javafx.scene.layout.VBox
+import javafx.scene.layout.*
 import javafx.scene.paint.Color
 import javafx.scene.shape.Rectangle
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import javafx.util.Duration
 
-class Pawn(value: Int, thworm: Int) : StackPane() {
+class Pawn(value: Int) : StackPane() {
     init {
         val rectangle = Rectangle()
         rectangle.width = 86.0
@@ -66,6 +65,18 @@ class Pawn(value: Int, thworm: Int) : StackPane() {
         line.arcHeight = 5.0
 
         // Image
+        //diffinire le nombre de worm
+        val thworm : Int
+        if (value < 25) {
+            thworm = 1
+        } else if (value < 29) {
+            thworm = 2
+        } else if (value < 33) {
+            thworm = 3
+        } else {
+            thworm = 4
+        }
+
         // Créer une ImageView
         val imageView = ImageView()
         val thwormImage : Image
@@ -93,5 +104,28 @@ class Pawn(value: Int, thworm: Int) : StackPane() {
         // Set lineAndValuePane as the center node of the VBox
         this.alignment = Pos.CENTER
         this.children.addAll(rectangle, lineAndValuePane)
+    }
+    // Clickable() craete the border around the pickoPawn
+    fun clickable(){
+        var w = 86.0
+        var h = 165.0
+        val rectangle = Rectangle(w, h)
+        rectangle.stroke = Color.web("#F5D849")
+        rectangle.fill = Color.TRANSPARENT
+        // Corner Radius
+        rectangle.arcHeight = 16.0 // Radius
+        rectangle.arcWidth = 16.0 // Radius
+
+        // Cursor
+        this.cursor = javafx.scene.Cursor.HAND
+
+        rectangle.strokeWidth = 3.0
+        this.children.add(rectangle)
+    }
+
+    // not_clickable() remove the border around the pickoPawn
+    fun not_clickable(){
+        this.cursor = javafx.scene.Cursor.DEFAULT
+        this.children.removeIf { it is Rectangle && it.stroke == Color.web("#F5D849") && it.fill == Color.TRANSPARENT }
     }
 }

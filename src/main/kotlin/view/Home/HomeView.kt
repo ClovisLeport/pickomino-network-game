@@ -86,8 +86,6 @@ class HomeView(stage: Stage,mainview: MainView): View() {
             this.top = VBox()
         }
         else{
-
-
             this.top = vbox
         }
     }

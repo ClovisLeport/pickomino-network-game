@@ -15,11 +15,16 @@ import view.game.GameView
 class Main : Application() {
     override fun start(primaryStage: Stage) {
 
+
+
         val vue = MainView(primaryStage)//HomeView(primaryStage)
         //vue.update(Menu())
 
         // Initialisation de l'interface utilisateur et des composants JavaFX
         val scene = Scene(vue, 600.0, 400.0)
+        scene.getStylesheets().add("file:src/main/kotlin/view/Home/Center/style.css")
+        // scene.getStylesheets().add(getClass().getRessource("file:src/main/kotlin/view/Home/Center/style.css").toExternalForm())
+
 
         primaryStage.minWidth = 1100.0 // Définir une largeur minimale de 600 pixels
         primaryStage.minHeight = 700.0 // Définir une hauteur minimale de 400 pixels
