@@ -1,5 +1,9 @@
 package view.game
 
+import controleur.Game.ActualiserGameView
+import javafx.animation.Animation
+import javafx.animation.KeyFrame
+import javafx.animation.Timeline
 import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.scene.control.Button
@@ -9,6 +13,7 @@ import javafx.scene.image.ImageView
 import javafx.scene.layout.*
 import javafx.scene.paint.Color
 import javafx.scene.shape.Circle
+import javafx.util.Duration
 import modele.Player
 import org.controlsfx.control.spreadsheet.Grid
 
@@ -24,44 +29,44 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
 
 
     // CenterPart (Header/Center/Footer)
-    val centerPart : BorderPane
+    private val centerPart : BorderPane
     // HEADER
-    val header : VBox
-    val pageTitle : SmallTitle
-    val menuButton : TransparentButton
+    private val header : VBox
+    private val pageTitle : SmallTitle
+    private val menuButton : TransparentButton
 
     // LEFT : Players and Desk
-    val playersList : VBox
+    private val playersList : VBox
 
     // RIGHT : Dices
-    val diceSection : VBox
+    private val diceSection : VBox
 
-    val diceKeptSection : VBox
-    val diceKeptTitle : Label
+    private val diceKeptSection : VBox
+    private val diceKeptTitle : Label
     val diceKept : GridPane
 
-    val dicePlayedSection : VBox
-    val dicePlayedTitle :Label
+    private val dicePlayedSection : VBox
+    private val dicePlayedTitle :Label
     val dicePlayed : GridPane
 
     // CENTER : Pickomino
     val pickominoSection : FlowPane
 
     // Bottom : PlayerSpace
-    val playerSpace : HBox
-    val rollDiceSection : VBox
-    val rollDiceBtn : Button
-    val rollDiceLabel : Label
+    private val playerSpace : HBox
+    private val rollDiceSection : VBox
+    private val rollDiceBtn : Button
+    private val rollDiceLabel : Label
 
-    val playerPawnSection : VBox
+    private val playerPawnSection : VBox
     val playerPawnPile : StackPane
-    val playerPawnDotted : Dotted
+    private val playerPawnDotted : Dotted
     val playerPawn : Pawn?
-    val playerPawnLabel : Label
+    private val playerPawnLabel : Label
 
-    val pickoSection : VBox
-    val pickoMessage : Label
-    val pickoImage : Image
+    private val pickoSection : VBox
+    private val pickoMessage : Label
+    private val pickoImage : Image
 
 
 

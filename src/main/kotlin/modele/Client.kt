@@ -1,6 +1,10 @@
 package modele
 
 import iut.info1.pickomino.Connector
+import javafx.animation.Animation
+import javafx.animation.KeyFrame
+import javafx.animation.Timeline
+import javafx.util.Duration
 import java.security.cert.TrustAnchor
 
 class Client(game: Game) {
@@ -11,6 +15,8 @@ class Client(game: Game) {
     var connect : Connector? = null
     var game : Game = game
     var nbJoueur : Int = 0
+
+    var canPlay = false
 
 
 
@@ -33,27 +39,30 @@ class Client(game: Game) {
                 }
             }
 
-
             connected = true
         }
     }
 
-    fun JoinGame(id:Int, key:Int){
+    fun JoinGame(id:Int, key:Int,NbJoueur :Int){
+        this.connect = Connector.factory("172.26.82.76", "8080")
         this.id = id
         this.key = key
+        this.nbJoueur = NbJoueur
         connected = true
 
     }
 
     fun StartGame(){
         if (connected != null && id != null && key != null && connect != null){
+            canPlay = false
 
-            while (true){
+            //while (true){
                 var currentGame = connect!!.gameState(this.id!!, this.key!!)
 
                 var ActualStatu =  currentGame.current.status
 
                 if (currentGame.current.player == game.numérojoueur){
+                    canPlay = true
                     //game.taketurns(ActualStatu)
                 }
                 else{
@@ -68,10 +77,15 @@ class Client(game: Game) {
 
                     }
                 }
-            }
+            //}
         }
     }
 
+    fun updateLoop(){
+        val timeline = Timeline(KeyFrame(Duration.seconds(1.0), { this.StartGame() }))
+        timeline.cycleCount = Animation.INDEFINITE
+        timeline.play()
+    }
 
 
 
