@@ -6,8 +6,8 @@ import iut.info1.pickomino.exceptions.IncorrectKeyException
 
 class Game(numérojoueur : Int) {
     //private val id = id
-    private var listPickominosEnJeu = mutableListOf<Pickomino>()
-    private var listPlayer = mutableListOf<Player>()
+    private var listPickominosEnJeu :MutableList<Pickomino> = mutableListOf<Pickomino>()
+    private var listPlayer :MutableList<Player> = mutableListOf<Player>()
     var numérojoueur :Int = numérojoueur
 
 

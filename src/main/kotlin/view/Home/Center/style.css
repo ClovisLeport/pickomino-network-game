@@ -16,6 +16,16 @@
 
 }
 
+.combobox:hover {
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+    -fx-border-color: #CCFFFF;
+    -fx-border-radius: 50px;
+    -fx-border-width: 5px;
+    -fx-padding: 10 50 10 50;
+}
+
+
 .combo-box .list-cell{
     -fx-background-color: transparent;
     -fx-border-width: 5px;
@@ -26,10 +36,16 @@
 }
 
 .combo-box .list-view {
-    -fx-background-color: red;
+    -fx-background-color: #3399CC;
     -fx-border-width: 5px;
     -fx-border-radius: 20px;
+}
 
+.combo-box .list-view:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #000000;
+    -fx-border-width: 5px;
+    -fx-border-radius: 20px;
 }
 
 
@@ -48,23 +64,18 @@
 
 }
 
-.combololbox:hover {
-    -fx-background-color: transparent;
-    -fx-border-color: black;
-    -fx-border-radius: 50px;
-    -fx-border-width: 5px;
-    -fx-padding: 10 50 10 50;
-}
-
-
-
-.slider .track{
+.slider{
     -fx-pref-width: 300px;
+    -fx-cursor: hand;
 }
+.slider:hover{
+    -fx-pref-width: 300px;
+    -fx-cursor: hand;
+    }
 
 .setting{
     -fx-text-fill: #FFFFFF;
-    -fx-font: 28px TESLA;
+    -fx-font: 36px TESLA;
 }
 
 

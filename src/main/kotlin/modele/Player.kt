@@ -4,8 +4,8 @@ import iut.info1.pickomino.exceptions.IncorrectKeyException
 
 class Player(numberPlayer:Int,localPlayer : Boolean) {
     private val numberPlayer : Int = numberPlayer
-    public val localPlayer : Boolean = localPlayer
-    private var ListPickomino = mutableListOf<Pickomino>()
+    val localPlayer : Boolean = localPlayer
+    private var ListPickomino :MutableList<Pickomino> = mutableListOf<Pickomino>()
 
     public fun countWorms():Int{
         var nb_worms = 0

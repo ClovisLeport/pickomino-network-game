@@ -31,13 +31,13 @@ class Menu() :HomeCenter(true ) {
         // ---------------- IMAGES MODALITES ----------------
         this.padding = Insets(10.0,10.0,10.0,10.0)
 
-        val imagePlayer = Image("file:src/main/kotlin/view/set/player.png")
+        val imagePlayer = Image("file:src/main/kotlin/view/assets/age.png")
         val imageViewPlayer = ImageView(imagePlayer)
         imageViewPlayer.setFitHeight(50.0)
         imageViewPlayer.setFitWidth(50.0)
 
 
-        val imageAge = Image("file:src/main/kotlin/view/set/age.png")
+        val imageAge = Image("file:src/main/kotlin/view/assets/Players24.png")
         val imageViewAge= ImageView(imageAge)
         imageViewAge.setFitHeight(50.0)
         imageViewAge.setFitWidth(50.0)
