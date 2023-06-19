@@ -1,7 +1,6 @@
 package controleur.Menu
 
 import controleur.ControleurCreateParty
-import controleur.ControleurButtonAcceptInJoinPartyPage
 import controleur.ControleurJoinParty
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
