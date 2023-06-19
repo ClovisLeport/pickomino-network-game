@@ -41,7 +41,7 @@ class HomeView(stage: Stage,mainview: MainView): View() {
 
         vbox.children.add(backButton)
 
-        homcenter = Setting()
+        homcenter = Menu()
 
 
         var playbut = PlayButton(mainview,this)

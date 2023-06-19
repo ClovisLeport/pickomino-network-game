@@ -15,7 +15,7 @@ import view.game.GameView
 class Main : Application() {
     override fun start(primaryStage: Stage) {
 
-        val vue = MainView()
+
 
         val vue = MainView(primaryStage)//HomeView(primaryStage)
         //vue.update(Menu())

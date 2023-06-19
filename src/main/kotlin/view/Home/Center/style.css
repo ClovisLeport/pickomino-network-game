@@ -1,11 +1,45 @@
-.combololbox
-{
+@font-face {
+    font-family: TESLA;
+    src: url("file:src/main/kotlin/view/fonts/TESLA.ttf");
+}
+
+.combobox {
     -fx-background-color: transparent;
     -fx-border-color: white;
     -fx-border-radius: 50px;
     -fx-border-width: 5px;
-    -fx-padding: 10 100 10 100;
+    -fx-padding: 10 50 10 50;
+    -fx-pref-width: 300px;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
 
+}
+
+.combo-box .list-cell{
+    -fx-background-color: transparent;
+    -fx-border-width: 5px;
+    -fx-border-radius: 50px;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.combo-box .list-view {
+    -fx-background-color: red;
+    -fx-border-width: 5px;
+    -fx-border-radius: 20px;
+
+}
+
+
+.arrow-button {
+    -fx-shape:"M 0 0 L 6 6 L 12 0 L 9 0 L 6 3 L 3 0 Z"; /* Forme personnalisée de la flèche */
+    -fx-background-color: white; /* Couleur d'arrière-plan de la flèche */
+    -fx-border-color: white; /* Couleur de la bordure de la flèche */
+    -fx-padding: 1px;
+    -fx-background-insets: 0;
+    /* Autres styles */
 }
 
 .combo-box-base:hover
@@ -19,11 +53,20 @@
     -fx-border-color: black;
     -fx-border-radius: 50px;
     -fx-border-width: 5px;
-    -fx-padding: 10 100 10 100;
+    -fx-padding: 10 50 10 50;
 }
 
 
 
-.slider {
-    -fx-pref-whitdh: 300px;
+.slider .track{
+}
+
+.setting{
+    -fx-text-fill: #FFFFFF;
+    -fx-font: 28px TESLA;
+}
+
+
+.txt{
+    -fx-text-fill: #FFFFFF;
 }
