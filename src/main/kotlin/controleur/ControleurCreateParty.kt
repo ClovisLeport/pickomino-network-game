@@ -20,7 +20,7 @@ class ControleurCreateParty(vue : HomeView,Mainvue: MainView) : EventHandler<Act
 
         val NewPage = CreateServer()
         NewPage.nombre.textProperty().bindBidirectional(i,NumberStringConverter())
-        NewPage.input.valueProperty().bindBidirectional(i)
+        NewPage.slider.valueProperty().bindBidirectional(i)
         NewPage.fixeButton(arrayOf(ControleurButtonAccept(vue,Mainvue)))
         vue.update(NewPage)
     }
