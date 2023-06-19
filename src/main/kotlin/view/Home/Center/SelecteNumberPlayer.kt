@@ -46,6 +46,6 @@ class SelecteNumberPlayer(NumberPlayer : Int,isHost: Boolean,id : Int?,key :Int?
 
     }
     override fun fixeButton(listControleur: Array<EventHandler<ActionEvent>>) {
-        button.onAction = listControleur[2]
+        button.onAction = listControleur[0]
     }
 }

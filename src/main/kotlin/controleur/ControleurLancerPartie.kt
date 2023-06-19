@@ -53,7 +53,7 @@ class ControleurLancerPartie(vue : HomeView, mainvue : MainView) : EventHandler<
                 model.JoinGame(nbPlayer,id,key)
             }
 
-            NewPage.FixButtonRolls(ContoleurButtonRollsDice(NewPage,model))
+            NewPage.fixButtonRolls(ContoleurButtonRollsDice(NewPage,model))
             updateLoop(NewPage,model)
         }
     }
