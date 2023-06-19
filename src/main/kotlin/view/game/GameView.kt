@@ -203,6 +203,8 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
             } else {
                 pickoPawn = Pawn(pickomino, 4)
             }
+            pickoPawn.clickable()
+            pickoPawn.not_clickable()
             pickominoSection.children.add(pickoPawn)
         }
 
