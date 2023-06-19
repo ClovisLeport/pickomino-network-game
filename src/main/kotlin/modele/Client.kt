@@ -1,6 +1,7 @@
 package modele
 
 import iut.info1.pickomino.Connector
+import iut.info1.pickomino.data.DICE
 import iut.info1.pickomino.data.STATUS
 import javafx.animation.Animation
 import javafx.animation.KeyFrame
@@ -62,7 +63,7 @@ class Client(game: Game) {
 
                 var ActualStatu =  currentGame.current.status
 
-                if (currentGame.current.player+1 == game.numérojoueur && currentGame.current.status == STATUS.ROLL_DICE) {
+                if (currentGame.current.player+1 == game.numérojoueur &&( currentGame.current.status == STATUS.ROLL_DICE || currentGame.current.status == STATUS.ROLL_DICE_OR_TAKE_PICKOMINO)) {
                     canRoll = true
                 }
                 else{
@@ -88,10 +89,25 @@ class Client(game: Game) {
         timeline.play()
     }
 
-
-    fun keepDice(valeur : Int){
-        connect.keepDices(modele.)
-    }
 */
+    fun keepDice(valeur : Int){
+        val v = convertIntintoDice(valeur)
+        if (v !in game.diceChosen){
+            connect!!.keepDices(id!!,key!!,v)
+        }
+
+    }
+
+    fun convertIntintoDice(valeur: Int) : DICE{
+        when (valeur){
+            1 -> return DICE.d1
+            2 -> return DICE.d2
+            3 -> return DICE.d3
+            4 -> return DICE.d4
+            5 -> return DICE.d5
+            else -> return DICE.worm
+        }
+    }
+
 
 }

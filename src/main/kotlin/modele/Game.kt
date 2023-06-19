@@ -11,8 +11,8 @@ class Game(numérojoueur : Int) {
     var numérojoueur :Int = numérojoueur
 
 
-    private var diceKept = listOf<DICE>() //Dice
-    private var diceChosen = listOf<DICE>()
+    var diceKept = listOf<DICE>() //Dice
+    var diceChosen = listOf<DICE>()
 
 
 

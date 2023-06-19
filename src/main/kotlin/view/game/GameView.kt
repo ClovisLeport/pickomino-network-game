@@ -1,6 +1,7 @@
 package view.game
 
 import controleur.Game.ActualiserGameView
+import iut.info1.pickomino.data.DICE
 import javafx.animation.Animation
 import javafx.animation.KeyFrame
 import javafx.animation.Timeline
@@ -395,9 +396,11 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
 
     }
 
-    fun UpDateDiceKeep(listeDice: Array<Int>){
+    fun UpDateDiceRoll(listeDice: Array<Int>, controleur : EventHandler<javafx.scene.input.MouseEvent>, dicesKeeped : Array<Int>){
         dicePlayedSection.children.clear()
+        dicePlayed.children.clear()
 
+        var cpt = 0
         for (row in 0 until 2) {
             for (col in 0 until 4) {
                 // Stack pane (Dotted & dice)
@@ -405,10 +408,20 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
                 val dotted = Dotted(70.0, 70.0)
 
                 stackPaneDice.children.add(dotted)
-                if (row+col < listeDice.size){
-                    stackPaneDice.children.add(Dice(listeDice[row+col]))
+
+                if (cpt < listeDice.size){
+                    var dice = Dice(listeDice[cpt])
+                    if (dice.diceNumber !in dicesKeeped){
+                        stackPaneDice.children.add(Iluminate(70.0,70.0))
+                    }
+                    dice.onMousePressed = controleur
+                    dice.cursor = javafx.scene.Cursor.HAND
+
+                    stackPaneDice.children.add(dice)
+
                 }
 
+                cpt++
                 dicePlayed.add(stackPaneDice, col, row)
             }
         }
@@ -416,9 +429,9 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
         dicePlayedSection.children.addAll(dicePlayedTitle, dicePlayed)
     }
 
-    fun UpDateDiceRolle(listeDice: Array<Int>, controleur : EventHandler<javafx.scene.input.MouseEvent>){
+    fun UpDateDiceKeep(listeDice: Array<Int>){
         diceKeptSection.children.clear()
-
+        var cpt = 0
         for (row in 0 until 4) {
             for (col in 0 until 2) {
                 // Stack pane (Dotted & dice)
@@ -426,13 +439,13 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
                 val dotted = Dotted(70.0, 70.0)
 
                 stackPaneDice.children.add(dotted)
-                if (row+col < listeDice.size){
-                    var dice = Dice(listeDice[row+col])
-                    dice.onMousePressed = controleur
+                if (cpt < listeDice.size){
+                    var dice = Dice(listeDice[cpt])
                     stackPaneDice.children.add(dice)
                 }
 
                 diceKept.add(stackPaneDice, col, row)
+                cpt++
             }
         }
 

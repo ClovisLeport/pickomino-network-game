@@ -60,7 +60,7 @@ class ControleurLancerPartie(vue : HomeView, mainvue : MainView) : EventHandler<
 
     fun updateLoop(vue: GameView, model : Client){
         var ActuGameView = ActualiserGameView(vue,model)
-        val timeline = Timeline(KeyFrame(Duration.seconds(1.0), {
+        val timeline = Timeline(KeyFrame(Duration.seconds(0.5), {
             ActuGameView.acctualiser()
             println(model.connect!!.gameState(model.id!!,model.key!!))
         }))

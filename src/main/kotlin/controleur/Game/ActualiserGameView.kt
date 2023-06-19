@@ -37,8 +37,9 @@ class ActualiserGameView(vue: GameView, model : Client) {
         }else{
             vue.cant_play()
         }
+
+        vue.UpDateDiceRoll(Intdicerolls,ControleurButtonKeepDice(vue,model),IntdiceKept)
         vue.UpDateDiceKeep(IntdiceKept)
-        vue.UpDateDiceRolle(Intdicerolls,ControleurButtonKeepDice(vue,model))
     }
 
     fun convertDiceIntoInt(array : Array<DICE>) : Array<Int>{
