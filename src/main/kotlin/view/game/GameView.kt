@@ -26,17 +26,20 @@ import view.components.*
 import java.util.Stack
 import java.awt.event.MouseEvent as MouseEvent1
 
-class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
+class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int) : View() {
     //paramettre
 
     val nombreJoueurs = NombresJoueur
     val actualNumberPlayer = actualNumberPlayer
 
+    val id = id
+    val key = key
+
 
     // CenterPart (Header/Center/Footer)
     private val centerPart : BorderPane
     // HEADER
-    private val header : VBox
+    private val headerCenter : VBox
     private val pageTitle : SmallTitle
     private val menuButton : TransparentButton
 
@@ -86,8 +89,8 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
         centerPart = BorderPane()
 
         // HEADER Init
-        this.header = VBox()
-        this.header.style = "-fx-alignment: center;"
+        this.headerCenter = VBox()
+        this.headerCenter.style = "-fx-alignment: center;"
 
         this.pageTitle = SmallTitle("Pickomino")
 
@@ -95,7 +98,21 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
         val margin = Insets(8.0, 0.0, 0.0, 0.0)
         VBox.setMargin(menuButton, margin)
 
-        this.header.children.addAll(pageTitle,menuButton)
+        this.headerCenter.children.addAll(pageTitle,menuButton)
+
+        val headerRight = VBox()
+
+        val labelid = Label("Id : $id")
+        labelid.styleClass.add("txt")
+        val labelkey = Label("Key : $key")
+        labelkey.styleClass.add("txt")
+
+        headerRight.children.addAll(labelid, labelkey)
+        headerRight.alignment = Pos.TOP_RIGHT
+
+        val header = BorderPane()
+        header.center = headerCenter
+        header.right =  headerRight
         centerPart.top = header
 
         // LEFT : PlayerList
@@ -161,7 +178,7 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
             for (col in 0 until 2) {
                 // Stack pane (Dotted & dice)
                 val stackPaneDice = StackPane()
-                val dotted = Dotted(70.0, 70.0)
+                val dotted = Dotted(68.0, 68.0)
 
                 stackPaneDice.children.add(dotted)
                 diceKept.add(stackPaneDice, col, row)
@@ -187,7 +204,7 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
             for (col in 0 until 4) {
                 // Stack pane (Dotted & dice)
                 val stackPaneDice = StackPane()
-                val dotted = Dotted(70.0, 70.0)
+                val dotted = Dotted(68.0, 68.0)
 
                 stackPaneDice.children.add(dotted)
                 dicePlayed.add(stackPaneDice, col, row)
@@ -205,22 +222,6 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
         pickominoSection.vgap = 10.0
         pickominoSection.maxWidth = 800.0
 
-        /*
-        for (pickomino in 21 until 37){
-            val pickoPawn : Pawn
-            if (pickomino < 25){
-                pickoPawn = Pawn(pickomino, 1)
-            } else if (pickomino < 29){
-                pickoPawn = Pawn(pickomino, 2)
-            } else if (pickomino < 33){
-                pickoPawn = Pawn(pickomino, 3)
-            } else {
-                pickoPawn = Pawn(pickomino, 4)
-            }
-            pickoPawn.clickable()
-            pickoPawn.not_clickable()
-            pickominoSection.children.add(pickoPawn)
-        }*/
         UpDatePickomino(arrayOf(21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36))
 
         pickominoSection.alignment = Pos.CENTER
@@ -332,29 +333,34 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
 
     fun UpDatePickominoPlayer(listePickomino: Array<Int>) {
         val players: List<VBox> = playersList.childrenUnmodifiable.filterIsInstance<VBox>()
+        val playerPawnValue = playerPawn?.value ?: 0 //Pour le joueur qui joue
 
         for (i in 0 until nombreJoueurs) {
-            if (actualNumberPlayer == i+1) {
-                if (playerPawnPile.children.size == 2) {
-                    playerPawnPile.children.removeIf { it is Pawn }
+            val currentPickominoValue = listePickomino[i]
 
+            // Si I est le joueur qui joue
+            if (actualNumberPlayer == i + 1 && listePickomino[i] != 0) {
+                if (playerPawnPile.children.size == 2 && listePickomino[i] != playerPawnValue) {
+                    playerPawnPile.children.removeIf { it is Pawn }
+                }
+
+                if (listePickomino[i] != playerPawnValue) {
                     playerPawn = Pawn(listePickomino[i])
                     playerPawnPile.children.add(playerPawn)
                     playerPawnSection.children.add(0, playerPawnPile)
                     playerSpace.children.add(1, playerPawnSection)
                     centerPart.bottom = playerSpace
                 }
-            } else {
-                val pile: StackPane
-                if (i > actualNumberPlayer-1) {
-                    pile = players[i - 1].children[1] as StackPane//.childrenUnmodifiable.filterIsInstance<StackPane>()[1]
-                } else {
-                    pile = players[i].children[1] as StackPane//.childrenUnmodifiable.filterIsInstance<StackPane>()[1]
-                }
+            }
+            // Sinon c'est un autre joueur
+            else if (currentPickominoValue != 0) {
+                val pileIndex = if (i > actualNumberPlayer - 1) i - 1 else i
+                val pile = players[pileIndex].children[1] as StackPane
+
                 if (pile.children.size == 2) {
                     pile.children.removeIf { it is Pawn }
                     val newPile = pile
-                    newPile.children.add(Pawn(listePickomino[i]))
+                    newPile.children.add(Pawn(currentPickominoValue))
                     val parent = pile.parent as? Pane
                     parent?.children?.add(newPile)
 
@@ -374,9 +380,9 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
             for (col in 0 until 4) {
                 // Stack pane (Dotted & dice)
                 val stackPaneDice = StackPane()
-                val dotted = Dotted(70.0, 70.0)
-
+                val dotted = Dotted(68.0, 68.0)
                 stackPaneDice.children.add(dotted)
+
 
                 if (cpt < listeDice.size){
                     var dice = Dice(listeDice[cpt])
@@ -405,7 +411,7 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
             for (col in 0 until 2) {
                 // Stack pane (Dotted & dice)
                 val stackPaneDice = StackPane()
-                val dotted = Dotted(70.0, 70.0)
+                val dotted = Dotted(68.0, 68.0)
 
                 stackPaneDice.children.add(dotted)
                 if (cpt < listeDice.size){
@@ -424,6 +430,10 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
 
     fun fixButtonRolls(controleur : EventHandler<ActionEvent>){
         rollDiceBtn.onAction = controleur
+        rollDiceBtn.onMousePressed
+    }
+    fun fixButtonMenu(controleur : EventHandler<ActionEvent>){
+        menuButton.onAction = controleur
         rollDiceBtn.onMousePressed
     }
 

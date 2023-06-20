@@ -2,12 +2,14 @@ package controleur
 
 import controleur.Game.ActualiserGameView
 import controleur.Game.ContoleurButtonRollsDice
+import controleur.Game.ControleurButtonMenu
 import javafx.animation.Animation
 import javafx.animation.KeyFrame
 import javafx.animation.Timeline
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.scene.control.Alert
+import javafx.stage.Stage
 import javafx.util.Duration
 import modele.Client
 import modele.Game
@@ -37,8 +39,7 @@ class ControleurLancerPartie(vue : HomeView, mainvue : MainView) : EventHandler<
         }
         else{
             val actualPlayer = (actual.substring(actual.length-1)).toInt()
-            val NewPage = GameView(nbPlayer,actualPlayer)
-            mainvue.updateView(NewPage)
+
 
 
             var model = Client(Game(actualPlayer))
@@ -53,7 +54,11 @@ class ControleurLancerPartie(vue : HomeView, mainvue : MainView) : EventHandler<
                 model.JoinGame(nbPlayer,id,key)
             }
 
+            val NewPage = GameView(nbPlayer,actualPlayer,model.id!!,model.key!!)
+            mainvue.updateView(NewPage)
+
             NewPage.fixButtonRolls(ContoleurButtonRollsDice(NewPage,model))
+            //NewPage.fixButtonMenu(ControleurButtonMenu(mainvue,vue.stage))
             updateLoop(NewPage,model)
         }
     }
