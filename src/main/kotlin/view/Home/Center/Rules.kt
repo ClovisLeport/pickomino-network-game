@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
 import javafx.scene.text.Text
+import view.Home.HomeView
 import view.components.WhiteButton
 
 class Rules() :HomeCenter(false ) {
@@ -23,9 +24,8 @@ class Rules() :HomeCenter(false ) {
 
 
     init {
-
         val title = Label("Rules")
-        title.setTextFill(Color.web("#FFFFFF"))
+        title.setTextFill(Color.web("#FBFBF3"))
         val TeslaFont = Font.loadFont("file:src/main/kotlin/view/fonts/TESLA.ttf", 40.0)
         title.font = TeslaFont
         this.alignment = Pos.CENTER
@@ -45,12 +45,11 @@ class Rules() :HomeCenter(false ) {
                 "In case of a tie, the player with the highest number of pickominos wins the game. If the tie persists, the players share the victory.\n\n" +
                 "Extensions :\n" +
                 "The base game can be expanded with extensions that include special pickominos and additional rules for more variety and strategy.")
-        rulestext.setTextFill(Color.web("#FFFFFF"))
+        rulestext.setTextFill(Color.web("#FBFBF3"))
         val rulesFont = Font.loadFont("file:src/main/kotlin/view/fonts/helvetica/Helvetica.ttf", 14.0)
         rulestext.font = rulesFont
         this.children.addAll(title,rulestext)
-
-
+        this.childrenUnmodifiable
     }
 
     override fun fixeButton(listControleur: Array<EventHandler<ActionEvent>>) {
