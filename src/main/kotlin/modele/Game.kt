@@ -116,9 +116,35 @@ class Game(numérojoueur : Int) {
     fun AllDiceNumber() : Int{
         var sum = 0
         for (dice in convertArrayDiceIntoInt(this.diceChosen.toTypedArray())){
-            sum += dice
+            if (dice !in arrayOf(1,2,3,4,5)) {
+                sum += 5
+            }
+            else{
+                sum += dice
+            }
+
         }
         return sum
+    }
+
+    fun setpickominoPlayer(pickominos : List<Pickomino>){
+        for ( i in 0..listPlayer.size-1){
+            listPlayer[i].topPickominoIs(pickominos[i])
+        }
+    }
+
+    fun pickominoPlayer() : MutableList<Pickomino>{
+        val list = mutableListOf<Pickomino>()
+        for (player in  listPlayer){
+            try {
+                list.add(player.firstElement())
+            }
+            catch (e : IncorrectKeyException){
+
+            }
+            //list.add(player.firstElement())
+        }
+        return list
     }
 
 }
