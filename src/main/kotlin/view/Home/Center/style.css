@@ -3,26 +3,26 @@
     src: url("file:src/main/kotlin/view/fonts/TESLA.ttf");
 }
 
-.combobox {
+.combo-box{
     -fx-background-color: transparent;
     -fx-border-color: white;
     -fx-border-radius: 50px;
     -fx-border-width: 5px;
-    -fx-padding: 10 50 10 50;
-    -fx-pref-width: 300px;
+    -fx-border-radius: 50px;
+    -fx-pref-width: 200px;
     -fx-text-fill: #FFFFFF;
     -fx-font-weight: bold;
     -fx-font-size: 14px;
-
 }
 
-.combobox:hover {
-    -fx-cursor: hand;
-    -fx-background-color: transparent;
-    -fx-border-color: #CCFFFF;
-    -fx-border-radius: 50px;
-    -fx-border-width: 5px;
+.combobox {
     -fx-padding: 10 50 10 50;
+    -fx-pref-width: 300px;
+    }
+
+.combo-box:hover {
+    -fx-cursor: hand;
+    -fx-border-color: #CCFFFF;
 }
 
 
@@ -43,10 +43,27 @@
 
 .combo-box .list-view:hover {
     -fx-cursor: hand;
-    -fx-background-color: #000000;
+    -fx-background-color: #3090CC;
     -fx-border-width: 5px;
     -fx-border-radius: 20px;
 }
+
+.combo-box-popup .list-view .list-cell:filled:selected, .combo-box-popup .list-view .list-cell:filled:selected:hover
+{
+    -fx-background: #3999CC;
+    -fx-background-color: -fx-selection-bar;
+    -fx-text-fill: white;
+}
+
+.combo-box-popup .list-view .list-cell:filled:hover
+{
+    -fx-background-color: white;
+    -fx-text-fill: -fx-text-inner-color;
+}
+
+
+
+
 
 
 .arrow-button {
@@ -64,15 +81,6 @@
 
 }
 
-.slider{
-    -fx-pref-width: 300px;
-    -fx-cursor: hand;
-}
-.slider:hover{
-    -fx-pref-width: 300px;
-    -fx-cursor: hand;
-    }
-
 .setting{
     -fx-text-fill: #FFFFFF;
     -fx-font: 36px TESLA;
@@ -82,3 +90,30 @@
 .txt{
     -fx-text-fill: #FFFFFF;
 }
+.slider{
+    -fx-pref-width: 300px;
+}
+
+.slider .track {
+    -fx-background-color: linear-gradient(to right, #ADADAD 0%, white 100%);
+
+    }
+
+.slider .thumb {
+    -fx-background-color: white;
+}
+.slider .thumb:hover {
+    -fx-cursor: hand;
+}
+
+
+.slider .thumb:pressed {
+    -fx-cursor: hand;
+    -fx-border-color: grey;
+    -fx-border-radius: 50px;
+}
+
+
+
+
+

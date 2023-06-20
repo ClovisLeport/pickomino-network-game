@@ -37,7 +37,6 @@ class Setting :HomeCenter(false) {
         nombre.styleClass.add("txt")
         symbole.styleClass.add("txt")
         slide = Slider(0.0,100.0,1.0)
-        slide.styleClass.add("slider")
         hbox.children.addAll(slide,nombre,symbole)
         hbox.alignment = Pos.CENTER
 

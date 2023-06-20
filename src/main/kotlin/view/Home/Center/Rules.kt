@@ -23,7 +23,7 @@ class Rules() :HomeCenter(false ) {
 
 
     init {
-        this.background = Background(BackgroundFill(Color.web("#3A83C2"), null, null))//#3A83C2
+
         val title = Label("Rules")
         title.setTextFill(Color.web("#FFFFFF"))
         val TeslaFont = Font.loadFont("file:src/main/kotlin/view/fonts/TESLA.ttf", 40.0)
