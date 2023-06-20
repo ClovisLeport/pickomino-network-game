@@ -66,20 +66,29 @@
 
 
 
-.arrow-button {
-    -fx-shape:"M 0 0 L 6 6 L 12 0 L 9 0 L 6 3 L 3 0 Z"; /* Forme personnalisée de la flèche */
-    -fx-background-color: white; /* Couleur d'arrière-plan de la flèche */
-    -fx-border-color: white; /* Couleur de la bordure de la flèche */
+/*.arrow-button {
+    -fx-shape:"M 0 0 L 6 6 L 12 0 L 9 0 L 6 3 L 3 0 Z"; *//* Forme personnalisée de la flèche *//*
+    -fx-background-color: white; *//* Couleur d'arrière-plan de la flèche *//*
+    -fx-border-color: white; *//* Couleur de la bordure de la flèche *//*
     -fx-padding: 1px;
     -fx-background-insets: 0;
-    /* Autres styles */
-}
+    *//* Autres styles *//*
+}*/
 
 .combo-box-base:hover
 {
     -fx-color: -fx-hover-base;
 
 }
+.combo-box .arrow-button  {
+    -fx-background:transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-image: url("file:src/main/kotlin/view/assets/arrow.png");
+    -fx-shape: "";
+}
+
+
 
 .setting{
     -fx-text-fill: #FBFBF3;
@@ -95,9 +104,15 @@
 }
 
 .slider .track {
+<<<<<<< HEAD
+    -fx-background-color: linear-gradient(to right, #DCDCDC 0%, white 100%);
+
+    }
+=======
     -fx-background-color: #FBFBF3;
     -fx-pref-height: 3px;
 }
+>>>>>>> eee6821d25fef9fcec5676969f9286ab3e278d7a
 
 .slider .thumb {
     -fx-background-color: white;
@@ -113,6 +128,18 @@
     -fx-border-radius: 50px;
 }
 
+
+
+.text-field{
+   -fx-padding: 1,30,1,30;
+   -fx-background-border-width: 2;
+   -fx-background-border: gone;
+   -fx-background-radius: 10;
+   -fx-background-border: grey;
+   -fx-background-color: white;
+   -fx-text-fill: grey;
+   -fx-pref-width: 200px;
+}
 
 
 

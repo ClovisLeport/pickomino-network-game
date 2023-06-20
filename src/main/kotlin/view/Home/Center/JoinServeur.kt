@@ -24,16 +24,18 @@ class JoinServeur() : HomeCenter(false) {
         textid.textFill = Color.web("#FBFBF2")
 
         textFilierid = TextField()
+        textFilierid.promptText = "15684"
 
         val textkey = Label("What is the key :")
         textkey.textFill = Color.web("#FBFBF2")
 
         textFilierkey = TextField()
+        textFilierkey.promptText = "123"
 
         button = WhiteButton("Validate")
 
-        this.alignment = Pos.TOP_CENTER
-        this.maxWidth = 800.0
+        this.alignment = Pos.CENTER
+        this.maxWidth =500.0
 
         this.spacing = 20.0
 

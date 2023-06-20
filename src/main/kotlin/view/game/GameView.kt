@@ -433,6 +433,10 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
         rollDiceBtn.onAction = controleur
         rollDiceBtn.onMousePressed
     }
+    fun fixButtonMenu(controleur : EventHandler<ActionEvent>){
+        menuButton.onAction = controleur
+        rollDiceBtn.onMousePressed
+    }
 
     fun UpDateSelectionPickomino(number:Int,Contoleur : EventHandler<javafx.scene.input.MouseEvent>){
 
