@@ -406,6 +406,7 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
 
     fun UpDateDiceKeep(listeDice: Array<Int>){
         diceKeptSection.children.clear()
+        diceKept.children.clear()
         var cpt = 0
         for (row in 0 until 4) {
             for (col in 0 until 2) {
@@ -441,10 +442,8 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
 
         if (21 <= number && number <= 36) {
             var findit = false
-            println(number)
             for (pickomino in pickominoSection.children) {
                 var picko = pickomino as Pawn
-                println("${picko.value} : $number ")
                 if (picko.value == number) {
                     findit = true
                     picko.clickable()

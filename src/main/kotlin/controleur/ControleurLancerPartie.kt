@@ -58,7 +58,7 @@ class ControleurLancerPartie(vue : HomeView, mainvue : MainView) : EventHandler<
             mainvue.updateView(NewPage)
 
             NewPage.fixButtonRolls(ContoleurButtonRollsDice(NewPage,model))
-            //NewPage.fixButtonMenu(ControleurButtonMenu(mainvue,vue.stage))
+            NewPage.fixButtonMenu(ControleurButtonMenu(mainvue,vue.stage))
             updateLoop(NewPage,model)
         }
     }

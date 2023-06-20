@@ -48,9 +48,7 @@ class ActualiserGameView(vue: GameView, model : Client) {
 
 
         var ValueDice = model.game.AllDiceNumber()
-        println("----------- $ValueDice")
         if (21 <= ValueDice && ValueDice <= 36 && DICE.worm in diceKept){
-            println(ValueDice)
             vue.UpDateSelectionPickomino(ValueDice,ControleurPickomino(vue,model))
         }
 

@@ -9,15 +9,15 @@
     -fx-border-radius: 50px;
     -fx-border-width: 5px;
     -fx-border-radius: 50px;
-    -fx-pref-width: 200px;
+    -fx-pref-width: 400px;
     -fx-text-fill: #FFFFFF;
     -fx-font-weight: bold;
     -fx-font-size: 14px;
 }
 
 .combobox {
-    -fx-padding: 10 50 10 50;
-    -fx-pref-width: 300px;
+    -fx-padding: 10;
+    -fx-pref-width: 500px;
     }
 
 .combo-box:hover {
@@ -98,21 +98,18 @@
 
 .txt{
     -fx-text-fill: #FBFBF3;
+    -fx-font-size: 24px;
+    -fx-font-weight: light;
 }
 .slider{
-    -fx-pref-width: 300px;
+    -fx-pref-width: 450px;
 }
 
 .slider .track {
-<<<<<<< HEAD
     -fx-background-color: linear-gradient(to right, #DCDCDC 0%, white 100%);
-
-    }
-=======
     -fx-background-color: #FBFBF3;
     -fx-pref-height: 3px;
 }
->>>>>>> eee6821d25fef9fcec5676969f9286ab3e278d7a
 
 .slider .thumb {
     -fx-background-color: white;
@@ -139,6 +136,12 @@
    -fx-background-color: white;
    -fx-text-fill: grey;
    -fx-pref-width: 200px;
+}
+
+.text-field {
+  -fx-border-color: grey;
+  -fx-border width: 0 0 1 0; // top, right, bottom, left
+  -fx-background-color: transparent;
 }
 
 
