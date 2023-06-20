@@ -37,7 +37,7 @@ class SelecteNumberPlayer(NumberPlayer : Int,isHost: Boolean,id : Int?,key :Int?
 
 
 
-        this.alignment = Pos.CENTER
+        this.alignment = Pos.TOP_CENTER
         this.maxWidth = 800.0
 
         this.spacing = 20.0

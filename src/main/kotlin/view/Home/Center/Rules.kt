@@ -28,7 +28,7 @@ class Rules() : HomeCenter(false ) {
         title.setTextFill(Color.web("#FBFBF3"))
         val TeslaFont = Font.loadFont("file:src/main/kotlin/view/fonts/TESLA.ttf", 40.0)
         title.font = TeslaFont
-        this.alignment = Pos.CENTER
+        this.alignment = Pos.TOP_CENTER
         var rulestext = Label(
             "Equipment: The base game includes 16 numbered pickomino dice ranging from 21 to 36, one \"21\" tile, eight \"X5\" tiles (with worms), and a game board.\n\n" +
                 "Objective: The goal of the game is to score the most points by collecting pickominos with high values.\n\n" +

@@ -32,7 +32,7 @@ class JoinServeur() : HomeCenter(false) {
 
         button = WhiteButton("Validate")
 
-        this.alignment = Pos.CENTER
+        this.alignment = Pos.TOP_CENTER
         this.maxWidth = 800.0
 
         this.spacing = 20.0
