@@ -50,8 +50,8 @@ class ControleurLancerPartie(vue : HomeView, mainvue : MainView) : EventHandler<
             }
             else{
                 val id : Int = actualvue.id!!
-                val key : Int= actualvue.key!!
-                model.JoinGame(nbPlayer,id,key)
+                val key : Int = actualvue.key!!
+                model.JoinGame(id,key,nbPlayer)
             }
 
             val NewPage = GameView(nbPlayer,actualPlayer,model.id!!,model.key!!)

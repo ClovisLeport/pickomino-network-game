@@ -19,6 +19,8 @@ class Client(game: Game) {
     var nbJoueur : Int = 0
 
     var canRoll = false
+    var cankeepDice = false
+    var cankeepPICKO = false
 
 
 
@@ -57,15 +59,28 @@ class Client(game: Game) {
     fun update(){
         if (connected != null && id != null && key != null && connect != null){
             canRoll = false
+            cankeepDice = false
+            cankeepPICKO = false
+
 
 
                 var currentGame = connect!!.gameState(this.id!!, this.key!!)
 
                 var ActualStatu =  currentGame.current.status
 
-                if (currentGame.current.player+1 == game.numérojoueur &&( currentGame.current.status == STATUS.ROLL_DICE || currentGame.current.status == STATUS.ROLL_DICE_OR_TAKE_PICKOMINO)) {
-                    canRoll = true
+                if (currentGame.current.player+1 == game.numérojoueur){
+                    if (( currentGame.current.status == STATUS.ROLL_DICE || currentGame.current.status == STATUS.ROLL_DICE_OR_TAKE_PICKOMINO)) {
+                        canRoll = true
+                    }
+                    if (currentGame.current.status == STATUS.KEEP_DICE){
+                        cankeepDice = true
+                    }
+                    if (currentGame.current.status == STATUS.ROLL_DICE_OR_TAKE_PICKOMINO || currentGame.current.status == STATUS.TAKE_PICKOMINO){
+                        cankeepPICKO = true
+                    }
+
                 }
+
                 else{
                     game.setDice(currentGame.current.rolls,currentGame.current.keptDices)
                     game.setPickomino(currentGame.accessiblePickos())

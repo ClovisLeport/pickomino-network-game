@@ -24,7 +24,7 @@ class CreateOrJoin() : HomeCenter(false) {
         ButtonCreate = WhiteButton("Create a server")
         ButtonJoin = WhiteButton("Join a server")
 
-        this.alignment = Pos.CENTER
+        this.alignment = Pos.TOP_CENTER
         this.maxWidth = 800.0
 
         this.spacing = 20.0

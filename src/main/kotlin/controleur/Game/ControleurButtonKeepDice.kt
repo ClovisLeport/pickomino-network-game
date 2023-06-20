@@ -13,7 +13,10 @@ class ControleurButtonKeepDice(vue : GameView,model : Client) : EventHandler<Mou
     val model = model
 
     override fun handle(event: MouseEvent) {
-        val objet = event.source as Dice
-        model.keepDice(objet.diceNumber)
+        if (model.cankeepDice){
+            val objet = event.source as Dice
+            model.keepDice(objet.diceNumber)
+        }
+
     }
 }

@@ -371,7 +371,7 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
         }
     }
 
-    fun UpDateDiceRoll(listeDice: Array<Int>, controleur : EventHandler<javafx.scene.input.MouseEvent>, dicesKeeped : Array<Int>){
+    fun UpDateDiceRoll(listeDice: Array<Int>, controleur : EventHandler<javafx.scene.input.MouseEvent>, dicesKeeped : Array<Int>, canplay : Boolean){
         dicePlayedSection.children.clear()
         dicePlayed.children.clear()
 
@@ -388,9 +388,9 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
                     var dice = Dice(listeDice[cpt])
                     if (dice.diceNumber !in dicesKeeped){
                         stackPaneDice.children.add(Iluminate(70.0,70.0))
+                        dice.onMousePressed = controleur
+                        dice.cursor = javafx.scene.Cursor.HAND
                     }
-                    dice.onMousePressed = controleur
-                    dice.cursor = javafx.scene.Cursor.HAND
 
                     stackPaneDice.children.add(dice)
 
@@ -438,15 +438,24 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
     }
 
     fun UpDateSelectionPickomino(number:Int,Contoleur : EventHandler<javafx.scene.input.MouseEvent>){
-         for (pickomino  in pickominoSection.children){
-             var picko = pickomino as Pawn
 
-             if (picko.value == number){
-                 picko.clickable()
-                 picko.onMouseClicked = Contoleur
-             }
-             else picko.not_clickable()
-         }
+        if (21 <= number && number <= 36) {
+            var findit = false
+            println(number)
+            for (pickomino in pickominoSection.children) {
+                var picko = pickomino as Pawn
+                println("${picko.value} : $number ")
+                if (picko.value == number) {
+                    findit = true
+                    picko.clickable()
+                    picko.onMouseClicked = Contoleur
+                } else picko.not_clickable()
+            }
+
+            if (findit == false) {
+                UpDateSelectionPickomino(number - 1, Contoleur)
+            }
+        }
     }
 
 }
