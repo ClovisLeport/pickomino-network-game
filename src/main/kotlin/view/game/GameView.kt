@@ -26,17 +26,20 @@ import view.components.*
 import java.util.Stack
 import java.awt.event.MouseEvent as MouseEvent1
 
-class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
+class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int) : View() {
     //paramettre
 
     val nombreJoueurs = NombresJoueur
     val actualNumberPlayer = actualNumberPlayer
 
+    val id = id
+    val key = key
+
 
     // CenterPart (Header/Center/Footer)
     private val centerPart : BorderPane
     // HEADER
-    private val header : VBox
+    private val headerCenter : VBox
     private val pageTitle : SmallTitle
     private val menuButton : TransparentButton
 
@@ -86,8 +89,8 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
         centerPart = BorderPane()
 
         // HEADER Init
-        this.header = VBox()
-        this.header.style = "-fx-alignment: center;"
+        this.headerCenter = VBox()
+        this.headerCenter.style = "-fx-alignment: center;"
 
         this.pageTitle = SmallTitle("Pickomino")
 
@@ -95,7 +98,21 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
         val margin = Insets(8.0, 0.0, 0.0, 0.0)
         VBox.setMargin(menuButton, margin)
 
-        this.header.children.addAll(pageTitle,menuButton)
+        this.headerCenter.children.addAll(pageTitle,menuButton)
+
+        val headerRight = VBox()
+
+        val labelid = Label("Id : $id")
+        labelid.styleClass.add("txt")
+        val labelkey = Label("Key : $key")
+        labelkey.styleClass.add("txt")
+
+        headerRight.children.addAll(labelid, labelkey)
+        headerRight.alignment = Pos.TOP_RIGHT
+
+        val header = BorderPane()
+        header.center = headerCenter
+        header.right =  headerRight
         centerPart.top = header
 
         // LEFT : PlayerList
@@ -205,22 +222,6 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
         pickominoSection.vgap = 10.0
         pickominoSection.maxWidth = 800.0
 
-        /*
-        for (pickomino in 21 until 37){
-            val pickoPawn : Pawn
-            if (pickomino < 25){
-                pickoPawn = Pawn(pickomino, 1)
-            } else if (pickomino < 29){
-                pickoPawn = Pawn(pickomino, 2)
-            } else if (pickomino < 33){
-                pickoPawn = Pawn(pickomino, 3)
-            } else {
-                pickoPawn = Pawn(pickomino, 4)
-            }
-            pickoPawn.clickable()
-            pickoPawn.not_clickable()
-            pickominoSection.children.add(pickoPawn)
-        }*/
         UpDatePickomino(arrayOf(21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36))
 
         pickominoSection.alignment = Pos.CENTER

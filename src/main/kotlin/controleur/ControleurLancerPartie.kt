@@ -37,8 +37,7 @@ class ControleurLancerPartie(vue : HomeView, mainvue : MainView) : EventHandler<
         }
         else{
             val actualPlayer = (actual.substring(actual.length-1)).toInt()
-            val NewPage = GameView(nbPlayer,actualPlayer)
-            mainvue.updateView(NewPage)
+
 
 
             var model = Client(Game(actualPlayer))
@@ -52,6 +51,9 @@ class ControleurLancerPartie(vue : HomeView, mainvue : MainView) : EventHandler<
                 val key : Int= actualvue.key!!
                 model.JoinGame(nbPlayer,id,key)
             }
+
+            val NewPage = GameView(nbPlayer,actualPlayer,model.id!!,model.key!!)
+            mainvue.updateView(NewPage)
 
             NewPage.fixButtonRolls(ContoleurButtonRollsDice(NewPage,model))
             updateLoop(NewPage,model)
