@@ -336,6 +336,8 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
         val playerPawnValue = playerPawn?.value ?: 0 //Pour le joueur qui joue
 
         for (i in 0 until nombreJoueurs) {
+            val currentPickominoValue = listePickomino[i]
+
             // Si I est le joueur qui joue
             if (actualNumberPlayer == i + 1 && listePickomino[i] != 0) {
                 if (playerPawnPile.children.size == 2 && listePickomino[i] != playerPawnValue) {
@@ -351,17 +353,14 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
                 }
             }
             // Sinon c'est un autre joueur
-            else {
-                val pile: StackPane
-                if (i > actualNumberPlayer-1) {
-                    pile = players[i - 1].children[1] as StackPane//.childrenUnmodifiable.filterIsInstance<StackPane>()[1]
-                } else {
-                    pile = players[i].children[1] as StackPane//.childrenUnmodifiable.filterIsInstance<StackPane>()[1]
-                }
+            else if (currentPickominoValue != 0) {
+                val pileIndex = if (i > actualNumberPlayer - 1) i - 1 else i
+                val pile = players[pileIndex].children[1] as StackPane
+
                 if (pile.children.size == 2) {
                     pile.children.removeIf { it is Pawn }
                     val newPile = pile
-                    newPile.children.add(Pawn(listePickomino[i]))
+                    newPile.children.add(Pawn(currentPickominoValue))
                     val parent = pile.parent as? Pane
                     parent?.children?.add(newPile)
 
