@@ -325,8 +325,6 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
         for (pickomino in listePickomino) {
             val pickoPawn: Pawn
             pickoPawn = Pawn(pickomino)
-            //pickoPawn.clickable()
-            //pickoPawn.not_clickable()
             pickominoSection.children.add(pickoPawn)
         }
     }
