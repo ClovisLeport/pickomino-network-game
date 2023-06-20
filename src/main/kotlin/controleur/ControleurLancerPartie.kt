@@ -58,7 +58,6 @@ class ControleurLancerPartie(vue : HomeView, mainvue : MainView) : EventHandler<
             val NewPage = GameView(nbPlayer,actualPlayer,model.id!!,model.key!!)
             mainvue.updateView(NewPage)
 
-
             updateLoop(NewPage,model)
             NewPage.fixButtonRolls(ContoleurButtonRollsDice(NewPage,model))
             NewPage.fixButtonMenu(ControleurButtonMenu(mainvue,vue.stage,timeline!!))
