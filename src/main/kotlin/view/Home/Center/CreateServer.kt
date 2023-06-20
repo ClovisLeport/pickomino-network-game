@@ -2,6 +2,7 @@ package view.Home.Center
 
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
+import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.scene.control.Button
 import javafx.scene.control.Label
@@ -13,6 +14,7 @@ import javafx.scene.layout.CornerRadii
 import javafx.scene.layout.HBox
 import javafx.scene.paint.Color
 import javafx.scene.shape.Rectangle
+import javafx.scene.text.Font
 import view.components.SmallTitle
 import view.components.SubTitle
 import view.components.Title
@@ -26,7 +28,8 @@ class CreateServer() : HomeCenter(false) {
     init {
         val title = Title()
         val subTitle = SubTitle("Draw the worms from the dice !")
-        val text = Label("How many players at most")
+        val text = Label("How many players at most ?")
+        text.font = Font("Helvetica", 24.0)
 
         text.textFill = Color.web("#FBFBF2")
 
@@ -39,6 +42,8 @@ class CreateServer() : HomeCenter(false) {
 
 
         nombre = Label("2")
+        nombre.font =  Font("Helvetica", 24.0)
+        nombre.padding = Insets(0.0, 0.0, 0.0, 7.0)
         nombre.textFill = Color.web("#FBFBF2")
         hbox.children.add(slider)
         hbox.children.add(nombre)

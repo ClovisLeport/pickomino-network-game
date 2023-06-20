@@ -82,22 +82,22 @@
 }
 
 .setting{
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: #FBFBF3;
     -fx-font: 36px TESLA;
 }
 
 
 .txt{
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: #FBFBF3;
 }
 .slider{
     -fx-pref-width: 300px;
 }
 
 .slider .track {
-    -fx-background-color: linear-gradient(to right, #ADADAD 0%, white 100%);
-
-    }
+    -fx-background-color: #FBFBF3;
+    -fx-pref-height: 3px;
+}
 
 .slider .thumb {
     -fx-background-color: white;
