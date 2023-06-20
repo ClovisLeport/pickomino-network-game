@@ -11,8 +11,11 @@ import view.Home.Center.*
 import view.Home.HomeView
 import view.MainView
 import view.game.GameView
+import java.util.prefs.Preferences
 
 class Main : Application() {
+    private val preferences: Preferences = Preferences.userRoot().node(this.javaClass.name)
+
     override fun start(primaryStage: Stage) {
 
 
@@ -29,16 +32,8 @@ class Main : Application() {
         primaryStage.minWidth = 1100.0 // Définir une largeur minimale de 600 pixels
         primaryStage.minHeight = 700.0 // Définir une hauteur minimale de 400 pixels
 
-
-
-
-//        // FullScreen
-//        primaryStage?.apply {
-//            // Mettez la scène en plein écran
-//            isFullScreen = true
-//            this.scene = scene
-//            show()
-//        }
+        // LoadScreenConfig
+        loadScreenConfig(primaryStage)
 
         //ajout de l'icone de page
         val iconPath = "file:src/main/kotlin/view/assets/Logo.png" // Spécifiez le chemin vers votre icône
@@ -51,6 +46,33 @@ class Main : Application() {
 
         // Affichez la scène sur la fenêtre principale
         primaryStage?.show()
+    }
+
+    fun loadScreenConfig(primaryStage : Stage){
+        // Récupérer les préférences de taille de la fenêtre
+        val storedWidth = preferences.getDouble("windowWidth", 800.0)
+        val storedHeight = preferences.getDouble("windowHeight", 600.0)
+        val storedIsFullscreen = preferences.getBoolean("isFullscreen", false)
+
+        // Si la dernière fois la fenêtre était en plein écran, restaurer cet état
+        if (storedIsFullscreen) {
+            primaryStage.isFullScreen = true
+        } else {
+            primaryStage.width = storedWidth
+            primaryStage.height = storedHeight
+        }
+
+        // Gérer le changement de taille de la fenêtre
+        primaryStage.widthProperty().addListener { _, _, newWidth ->
+            preferences.putDouble("windowWidth", newWidth.toDouble())
+        }
+        primaryStage.heightProperty().addListener { _, _, newHeight ->
+            preferences.putDouble("windowHeight", newHeight.toDouble())
+        }
+        primaryStage.fullScreenProperty().addListener { _, _, isFullscreen ->
+            preferences.putBoolean("isFullscreen", isFullscreen)
+        }
+
     }
 }
 
@@ -85,3 +107,4 @@ fun main() {
     Application.launch(Main::class.java)
 
 }
+
