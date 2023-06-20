@@ -14,21 +14,21 @@ import javafx.scene.layout.VBox
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
 import javafx.scene.text.Text
+import view.Home.HomeView
 import view.components.WhiteButton
 
-class Rules() :HomeCenter(false ) {
+class Rules() : HomeCenter(false ) {
 
     var vbox = VBox()
     var title = Text()
 
 
     init {
-
         val title = Label("Rules")
-        title.setTextFill(Color.web("#FFFFFF"))
+        title.setTextFill(Color.web("#FBFBF3"))
         val TeslaFont = Font.loadFont("file:src/main/kotlin/view/fonts/TESLA.ttf", 40.0)
         title.font = TeslaFont
-        this.alignment = Pos.CENTER
+        this.alignment = Pos.TOP_CENTER
         var rulestext = Label(
             "Equipment: The base game includes 16 numbered pickomino dice ranging from 21 to 36, one \"21\" tile, eight \"X5\" tiles (with worms), and a game board.\n\n" +
                 "Objective: The goal of the game is to score the most points by collecting pickominos with high values.\n\n" +
@@ -45,12 +45,11 @@ class Rules() :HomeCenter(false ) {
                 "In case of a tie, the player with the highest number of pickominos wins the game. If the tie persists, the players share the victory.\n\n" +
                 "Extensions :\n" +
                 "The base game can be expanded with extensions that include special pickominos and additional rules for more variety and strategy.")
-        rulestext.setTextFill(Color.web("#FFFFFF"))
+        rulestext.setTextFill(Color.web("#FBFBF3"))
         val rulesFont = Font.loadFont("file:src/main/kotlin/view/fonts/helvetica/Helvetica.ttf", 14.0)
         rulestext.font = rulesFont
         this.children.addAll(title,rulestext)
-
-
+        this.childrenUnmodifiable
     }
 
     override fun fixeButton(listControleur: Array<EventHandler<ActionEvent>>) {

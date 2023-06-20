@@ -97,7 +97,7 @@ class HomeView(stage: Stage,mainview: MainView): View() {
             imageView.fitWidth = image.width * 0.7 // Réduire la largeur de l'image à 80% de sa taille d'origine
             imageView.fitHeight = image.height * 0.7 // Réduire la hauteur de l'image à 80% de sa taille d'origine
 
-            imageView.layoutXProperty().bind((arc.radiusXProperty().multiply(2).divide(2.5).multiply(i)))
+            imageView.layoutXProperty().bind((arc.radiusXProperty().multiply(2).divide(2.5).multiply(i).add(30.0)))
 
             imageView.layoutY = imagesPane.height - imageView.fitHeight
 

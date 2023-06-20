@@ -48,7 +48,7 @@ class Setting :HomeCenter(false) {
 
 
 
-        this.alignment = Pos.CENTER
+        this.alignment = Pos.TOP_CENTER
 
         this.children.addAll(titre,comboboxtxt,listener,slidetxt,hbox)
     }
