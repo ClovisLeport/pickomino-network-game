@@ -178,7 +178,7 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
             for (col in 0 until 2) {
                 // Stack pane (Dotted & dice)
                 val stackPaneDice = StackPane()
-                val dotted = Dotted(70.0, 70.0)
+                val dotted = Dotted(68.0, 68.0)
 
                 stackPaneDice.children.add(dotted)
                 diceKept.add(stackPaneDice, col, row)
@@ -204,7 +204,7 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
             for (col in 0 until 4) {
                 // Stack pane (Dotted & dice)
                 val stackPaneDice = StackPane()
-                val dotted = Dotted(70.0, 70.0)
+                val dotted = Dotted(68.0, 68.0)
 
                 stackPaneDice.children.add(dotted)
                 dicePlayed.add(stackPaneDice, col, row)
@@ -381,9 +381,9 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
             for (col in 0 until 4) {
                 // Stack pane (Dotted & dice)
                 val stackPaneDice = StackPane()
-                val dotted = Dotted(70.0, 70.0)
-
+                val dotted = Dotted(68.0, 68.0)
                 stackPaneDice.children.add(dotted)
+
 
                 if (cpt < listeDice.size){
                     var dice = Dice(listeDice[cpt])
@@ -412,7 +412,7 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
             for (col in 0 until 2) {
                 // Stack pane (Dotted & dice)
                 val stackPaneDice = StackPane()
-                val dotted = Dotted(70.0, 70.0)
+                val dotted = Dotted(68.0, 68.0)
 
                 stackPaneDice.children.add(dotted)
                 if (cpt < listeDice.size){

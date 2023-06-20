@@ -17,7 +17,7 @@ import javafx.scene.text.Text
 import view.Home.HomeView
 import view.components.WhiteButton
 
-class Rules() :HomeCenter(false ) {
+class Rules() : HomeCenter(false ) {
 
     var vbox = VBox()
     var title = Text()
