@@ -29,6 +29,7 @@ class ActualiserGameView(vue: GameView, model : Client) {
         var IntdiceKept = model.game.convertArrayDiceIntoInt(diceKept.toTypedArray())
 
         model.game.setDice(dicerolls,diceKept)
+        model.game.setPickomino(midelPokomino)
 
 
         vue.UpDatePickomino(midelPokomino.toTypedArray())
@@ -40,14 +41,16 @@ class ActualiserGameView(vue: GameView, model : Client) {
             vue.cant_play()
         }
 
-        vue.UpDateDiceRoll(Intdicerolls,ControleurButtonKeepDice(vue,model),IntdiceKept)
+        vue.UpDateDiceRoll(Intdicerolls,ControleurButtonKeepDice(vue,model),IntdiceKept,model.cankeepDice)
         vue.UpDateDiceKeep(IntdiceKept)
 
 
 
 
         var ValueDice = model.game.AllDiceNumber()
+        println("----------- $ValueDice")
         if (21 <= ValueDice && ValueDice <= 36 && DICE.worm in diceKept){
+            println(ValueDice)
             vue.UpDateSelectionPickomino(ValueDice,ControleurPickomino(vue,model))
         }
 

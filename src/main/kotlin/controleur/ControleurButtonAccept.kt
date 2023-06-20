@@ -26,7 +26,7 @@ class ControleurButtonAccept(vue : HomeView, Mainvue: MainView) : EventHandler<A
                 val connect = Connector.factory("172.26.82.76", "8080")
                 var currentGame = connect.gameState(id, key)
 
-                val NewPage = SelecteNumberPlayer((currentGame.accessiblePickos().size),false,id, key)
+                val NewPage = SelecteNumberPlayer((currentGame.pickosStackTops().size),false,id, key)
                 NewPage.fixeButton(arrayOf(ControleurLancerPartie(vue,Mainvue)))
                 vue.update(NewPage)
             } catch (e : Exception){
