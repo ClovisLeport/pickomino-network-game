@@ -1,9 +1,11 @@
 package view.game
 
 import controleur.Game.ActualiserGameView
+import iut.info1.pickomino.data.DICE
 import javafx.animation.Animation
 import javafx.animation.KeyFrame
 import javafx.animation.Timeline
+import javafx.collections.ObservableList
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.geometry.Insets
@@ -21,13 +23,13 @@ import org.controlsfx.control.spreadsheet.Grid
 
 import view.View
 import view.components.*
-import java.awt.event.MouseEvent
 import java.util.Stack
+import java.awt.event.MouseEvent as MouseEvent1
 
 class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
     //paramettre
 
-    val NombresJoueur = NombresJoueur
+    val nombreJoueurs = NombresJoueur
     val actualNumberPlayer = actualNumberPlayer
 
 
@@ -328,76 +330,46 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
         }
     }
 
-    fun UpDatePickominoPlayer(listePickomino: Array<Int>){
+    fun UpDatePickominoPlayer(listePickomino: Array<Int>) {
+        val players: List<VBox> = playersList.childrenUnmodifiable.filterIsInstance<VBox>()
 
-        /*
-        val playersListName = mutableListOf<String>()
-        for (numj in 1..NombresJoueur){
+        for (i in 0 until nombreJoueurs) {
+            if (actualNumberPlayer == i+1) {
+                if (playerPawnPile.children.size == 2) {
+                    playerPawnPile.children.removeIf { it is Pawn }
 
-            if (numj != actualNumberPlayer){
-                playersListName.add("Player N°$numj")
-            }
-        }
-        var i = 0
-        for (playerFor in playersListName){
-            if (i != actualNumberPlayer) {
-                // Player location
-                val player = VBox()
-                player.alignment = Pos.CENTER
-                // PlayerName
-                val playerName = Label(playerFor)
-                playerName.textFill = Color.web("#FBFBF3")
-                playerName.style = "-fx-font-size: 24;"
-                playerName.padding = Insets(0.0, 0.0, 10.0, 0.0)
-
-                // StackPane
-                val pile = StackPane()
-
-                // PlayerDotted
-                val dotted = Dotted(86.0, 165.0)
-                pile.children.add(dotted)
-                if (listePickomino[i] != null) {
-                    pile.children.add(Pawn(listePickomino[i]))
+                    playerPawn = Pawn(listePickomino[i])
+                    playerPawnPile.children.add(playerPawn)
+                    playerPawnSection.children.add(0, playerPawnPile)
+                    playerSpace.children.add(1, playerPawnSection)
+                    centerPart.bottom = playerSpace
                 }
+            } else {
+                val pile: StackPane
+                if (i > actualNumberPlayer-1) {
+                    pile = players[i - 1].children[1] as StackPane//.childrenUnmodifiable.filterIsInstance<StackPane>()[1]
+                } else {
+                    pile = players[i].children[1] as StackPane//.childrenUnmodifiable.filterIsInstance<StackPane>()[1]
+                }
+                if (pile.children.size == 2) {
+                    pile.children.removeIf { it is Pawn }
+                    val newPile = pile
+                    newPile.children.add(Pawn(listePickomino[i]))
+                    val parent = pile.parent as? Pane
+                    parent?.children?.add(newPile)
 
-                player.children.addAll(playerName, pile)
-                VBox.setVgrow(player, Priority.ALWAYS)
-                playersList.children.add(player)
-
-                i++
+                    val grandParent = parent?.parent as? Pane
+                    grandParent?.children?.add(newPile)
+                }
             }
-        }*/
-
-        //joueur actuel
-        if (listePickomino[actualNumberPlayer] != null){
-            playerPawn = Pawn(listePickomino[actualNumberPlayer])
         }
-
-        playerPawnSection = VBox() // Section
-        playerPawnSection.alignment = Pos.CENTER
-        playerPawnPile = StackPane() //Dotted and pawn
-        playerPawnDotted = Dotted(84.0, 163.0) //Dotted
-
-        playerPawnPile.children.add(playerPawnDotted)
-
-        playerPawn = null// Pawn(28) //Correspond au Pikomino le plus récent (Ici c'est un test pour IHM)
-        if (playerPawn != null){
-            playerPawnPile.children.add(playerPawn)
-        }
-            playerPawnSection.children.clear()
-            val playerPawnLabel = Label("Player N°$actualNumberPlayer")
-            playerPawnLabel.textFill = Color.web("#FBFBF3")
-            playerPawnLabel.style = "-fx-font-size: 24;"
-            playerPawnLabel.padding = Insets(10.0, 0.0, 0.0, 0.0)
-
-            playerPawnSection.children.addAll(playerPawnPile, playerPawnLabel)
-
-
     }
 
-    fun UpDateDiceKeep(listeDice: Array<Int>){
+    fun UpDateDiceRoll(listeDice: Array<Int>, controleur : EventHandler<javafx.scene.input.MouseEvent>, dicesKeeped : Array<Int>){
         dicePlayedSection.children.clear()
+        dicePlayed.children.clear()
 
+        var cpt = 0
         for (row in 0 until 2) {
             for (col in 0 until 4) {
                 // Stack pane (Dotted & dice)
@@ -405,10 +377,20 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
                 val dotted = Dotted(70.0, 70.0)
 
                 stackPaneDice.children.add(dotted)
-                if (row+col < listeDice.size){
-                    stackPaneDice.children.add(Dice(listeDice[row+col]))
+
+                if (cpt < listeDice.size){
+                    var dice = Dice(listeDice[cpt])
+                    if (dice.diceNumber !in dicesKeeped){
+                        stackPaneDice.children.add(Iluminate(70.0,70.0))
+                    }
+                    dice.onMousePressed = controleur
+                    dice.cursor = javafx.scene.Cursor.HAND
+
+                    stackPaneDice.children.add(dice)
+
                 }
 
+                cpt++
                 dicePlayed.add(stackPaneDice, col, row)
             }
         }
@@ -416,9 +398,9 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
         dicePlayedSection.children.addAll(dicePlayedTitle, dicePlayed)
     }
 
-    fun UpDateDiceRolle(listeDice: Array<Int>, controleur : EventHandler<javafx.scene.input.MouseEvent>){
+    fun UpDateDiceKeep(listeDice: Array<Int>){
         diceKeptSection.children.clear()
-
+        var cpt = 0
         for (row in 0 until 4) {
             for (col in 0 until 2) {
                 // Stack pane (Dotted & dice)
@@ -426,13 +408,13 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
                 val dotted = Dotted(70.0, 70.0)
 
                 stackPaneDice.children.add(dotted)
-                if (row+col < listeDice.size){
-                    var dice = Dice(listeDice[row+col])
-                    dice.onMousePressed = controleur
+                if (cpt < listeDice.size){
+                    var dice = Dice(listeDice[cpt])
                     stackPaneDice.children.add(dice)
                 }
 
                 diceKept.add(stackPaneDice, col, row)
+                cpt++
             }
         }
 
@@ -443,6 +425,18 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int) : View() {
     fun fixButtonRolls(controleur : EventHandler<ActionEvent>){
         rollDiceBtn.onAction = controleur
         rollDiceBtn.onMousePressed
+    }
+
+    fun UpDateSelectionPickomino(number:Int,Contoleur : EventHandler<javafx.scene.input.MouseEvent>){
+         for (pickomino  in pickominoSection.children){
+             var picko = pickomino as Pawn
+
+             if (picko.value == number){
+                 picko.clickable()
+                 picko.onMouseClicked = Contoleur
+             }
+             else picko.not_clickable()
+         }
     }
 
 }

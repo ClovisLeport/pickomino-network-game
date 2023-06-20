@@ -24,4 +24,21 @@ class Pickomino(value :Int) {
         return this.nbWorms
     }
 
+    override fun toString(): String {
+        return "$value"
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Pickomino
+
+        if (value != other.value) return false
+
+        return true
+    }
+
+
+
 }

@@ -2,8 +2,13 @@ package view.components
 
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
+import javafx.scene.paint.Color
+import javafx.scene.shape.Rectangle
 
 class Dice(diceNumber: Int) : ImageView() {
+
+    val diceNumber = diceNumber
+
     init {
         // Dice image
         val diceImage = when (diceNumber) {
@@ -20,4 +25,6 @@ class Dice(diceNumber: Int) : ImageView() {
 
         this.image = diceImage
     }
+
+
 }

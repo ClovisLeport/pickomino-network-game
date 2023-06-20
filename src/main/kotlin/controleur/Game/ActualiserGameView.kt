@@ -23,10 +23,12 @@ class ActualiserGameView(vue: GameView, model : Client) {
         var isMyTurne = model.canRoll
 
         var dicerolls = model.connect!!.gameState(id,key).current.rolls
-        var Intdicerolls = this.convertDiceIntoInt(dicerolls.toTypedArray())
+        var Intdicerolls = model.game.convertArrayDiceIntoInt(dicerolls.toTypedArray())
 
         var diceKept = model.connect!!.gameState(id,key).current.keptDices
-        var IntdiceKept = this.convertDiceIntoInt(diceKept.toTypedArray())
+        var IntdiceKept = model.game.convertArrayDiceIntoInt(diceKept.toTypedArray())
+
+        model.game.setDice(dicerolls,diceKept)
 
 
         vue.UpDatePickomino(midelPokomino.toTypedArray())
@@ -37,24 +39,19 @@ class ActualiserGameView(vue: GameView, model : Client) {
         }else{
             vue.cant_play()
         }
+
+        vue.UpDateDiceRoll(Intdicerolls,ControleurButtonKeepDice(vue,model),IntdiceKept)
         vue.UpDateDiceKeep(IntdiceKept)
-        vue.UpDateDiceRolle(Intdicerolls,ControleurButtonKeepDice(vue,model))
-    }
 
-    fun convertDiceIntoInt(array : Array<DICE>) : Array<Int>{
-        val listeInt = mutableListOf<Int>()
 
-        for (Dice in array){
-            when (Dice){
-                DICE.d1 -> listeInt.add(1)
-                DICE.d2 -> listeInt.add(2)
-                DICE.d3 -> listeInt.add(3)
-                DICE.d4 -> listeInt.add(4)
-                DICE.d5 -> listeInt.add(5)
-                DICE.worm -> listeInt.add(6)
-            }
+
+
+        var ValueDice = model.game.AllDiceNumber()
+        if (21 <= ValueDice && ValueDice <= 36 && DICE.worm in diceKept){
+            vue.UpDateSelectionPickomino(ValueDice,ControleurPickomino(vue,model))
         }
 
-        return listeInt.toTypedArray()
     }
+
+
 }

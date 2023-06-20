@@ -11,8 +11,8 @@ class Game(numérojoueur : Int) {
     var numérojoueur :Int = numérojoueur
 
 
-    private var diceKept = listOf<DICE>() //Dice
-    private var diceChosen = listOf<DICE>()
+    var diceKept = listOf<DICE>() //Dice
+    var diceChosen = listOf<DICE>()
 
 
 
@@ -83,6 +83,68 @@ class Game(numérojoueur : Int) {
         }
 
         this.listPickominosEnJeu = newlistPickominosEnJeu
+    }
+
+    fun convertIntintoDice(valeur: Int) : DICE{
+        when (valeur){
+            1 -> return DICE.d1
+            2 -> return DICE.d2
+            3 -> return DICE.d3
+            4 -> return DICE.d4
+            5 -> return DICE.d5
+            else -> return DICE.worm
+        }
+    }
+
+    fun convertArrayDiceIntoInt(array : Array<DICE>) : Array<Int>{
+        val listeInt = mutableListOf<Int>()
+
+        for (Dice in array){
+            when (Dice){
+                DICE.d1 -> listeInt.add(1)
+                DICE.d2 -> listeInt.add(2)
+                DICE.d3 -> listeInt.add(3)
+                DICE.d4 -> listeInt.add(4)
+                DICE.d5 -> listeInt.add(5)
+                DICE.worm -> listeInt.add(6)
+            }
+        }
+
+        return listeInt.toTypedArray()
+    }
+
+    fun AllDiceNumber() : Int{
+        var sum = 0
+        for (dice in convertArrayDiceIntoInt(this.diceChosen.toTypedArray())){
+            if (dice !in arrayOf(1,2,3,4,5)) {
+                sum += 5
+            }
+            else{
+                sum += dice
+            }
+
+        }
+        return sum
+    }
+
+    fun setpickominoPlayer(pickominos : List<Pickomino>){
+        for ( i in 0..listPlayer.size-1){
+            listPlayer[i].topPickominoIs(pickominos[i])
+        }
+    }
+
+    fun pickominoPlayer() : MutableList<Pickomino>{
+        val list = mutableListOf<Pickomino>()
+        for (player in  listPlayer){
+            try {
+                list.add(player.firstElement())
+            }
+            catch (e : IncorrectKeyException){
+
+            }
+            //list.add(player.firstElement())
+        }
+        return list
     }
 
 }

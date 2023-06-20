@@ -1,6 +1,7 @@
 package modele
 
 import iut.info1.pickomino.Connector
+import iut.info1.pickomino.data.DICE
 import iut.info1.pickomino.data.STATUS
 import javafx.animation.Animation
 import javafx.animation.KeyFrame
@@ -57,12 +58,12 @@ class Client(game: Game) {
         if (connected != null && id != null && key != null && connect != null){
             canRoll = false
 
-            //while (true){
+
                 var currentGame = connect!!.gameState(this.id!!, this.key!!)
 
                 var ActualStatu =  currentGame.current.status
 
-                if (currentGame.current.player+1 == game.numérojoueur && currentGame.current.status == STATUS.ROLL_DICE) {
+                if (currentGame.current.player+1 == game.numérojoueur &&( currentGame.current.status == STATUS.ROLL_DICE || currentGame.current.status == STATUS.ROLL_DICE_OR_TAKE_PICKOMINO)) {
                     canRoll = true
                 }
                 else{
@@ -77,21 +78,27 @@ class Client(game: Game) {
 
                     }
                 }
-            //}
+
         }
     }
 
-    /*
-    fun updateLoop(){
-        val timeline = Timeline(KeyFrame(Duration.seconds(1.0), { this.update() }))
-        timeline.cycleCount = Animation.INDEFINITE
-        timeline.play()
-    }
-
-
     fun keepDice(valeur : Int){
-        connect.keepDices(modele.)
+        val v = game.convertIntintoDice(valeur)
+        if (v !in game.diceChosen){
+            connect!!.keepDices(id!!,key!!,v)
+        }
     }
-*/
+
+    fun keepPickomino(valeur :Int){
+        println("$valeur : ${game.getPickos()} : ${game.pickominoPlayer()}")
+        println("${Pickomino(valeur) in game.getPickos()} :: ${Pickomino(valeur) in game.pickominoPlayer()}")
+        if (Pickomino(valeur) in game.getPickos() || Pickomino(valeur) in game.pickominoPlayer()){
+            connect!!.takePickomino(id!!,key!!,valeur)
+        }
+
+    }
+
+
+
 
 }
