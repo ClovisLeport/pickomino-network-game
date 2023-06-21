@@ -30,7 +30,6 @@ class CreateServer() : HomeCenter(false) {
         val subTitle = SubTitle("Draw the worms from the dice !")
         val text = Label("How many players at most ?")
         text.font = Font("Helvetica", 24.0)
-
         text.textFill = Color.web("#FBFBF2")
 
         var hbox = HBox()

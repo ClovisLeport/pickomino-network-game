@@ -7,6 +7,7 @@ import javafx.scene.control.ComboBox
 import javafx.scene.control.Label
 import javafx.scene.control.TextField
 import javafx.scene.paint.Color
+import javafx.scene.text.Font
 import view.components.SmallTitle
 import view.components.SubTitle
 import view.components.Title
@@ -27,15 +28,13 @@ class SelecteNumberPlayer(NumberPlayer : Int,isHost: Boolean,id : Int?,key :Int?
         val title = Title()
         val subTitle = SubTitle("Draw the worms from the dice !")
         val text = Label("with one play you want to be : ")
+        text.font = Font("Helvetica", 24.0)
         text.textFill = Color.web("#FBFBF2")
-
 
 
         for (i in 1..this.NumberPlayer){
             Combobox.items.add("Player N°$i")
         }
-
-
 
         this.alignment = Pos.TOP_CENTER
         this.maxWidth = 800.0
