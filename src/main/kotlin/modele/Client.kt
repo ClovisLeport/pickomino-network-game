@@ -62,8 +62,6 @@ class Client(game: Game) {
             cankeepDice = false
             cankeepPICKO = false
 
-
-
                 var currentGame = connect!!.gameState(this.id!!, this.key!!)
 
                 var ActualStatu =  currentGame.current.status
