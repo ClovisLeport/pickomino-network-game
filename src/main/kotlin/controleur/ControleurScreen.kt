@@ -20,10 +20,10 @@ class ControleurScreen(vue: HomeView, stage : Stage): EventHandler<ActionEvent> 
 
         if (actualChoice == "Plein écran") {
             stage.setFullScreen(true);
-            println(actualChoice)
+
         }else if (actualChoice == "Fenetré sans bordure") {
             stage.setFullScreen(false);
-            println(actualChoice)
+
         }else {
             stage.setFullScreen(false);
             println(actualChoice)
