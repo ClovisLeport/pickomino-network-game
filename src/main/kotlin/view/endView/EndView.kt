@@ -68,10 +68,10 @@ class EndView(listpickominoPlayer: MutableList<MutableList<Pawn>>) : View() {
 
         val MessageVictoire : Label
         if (nbGagnant > 1){
-            MessageVictoire = Label("Les ${joueurGagner} On Gagner")
+            MessageVictoire = Label("Les ${joueurGagner} On Gagnés")
         }
         else{
-            MessageVictoire = Label("Le ${joueurGagner} a Gagner")
+            MessageVictoire = Label("Le ${joueurGagner} a Gagnés")
         }
         MessageVictoire.font = rulesFont
         vbox.children.add(MessageVictoire)
