@@ -344,6 +344,11 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
 
                 if (listePickomino[i] != playerPawnValue) {
                     playerPawn = Pawn(listePickomino[i])
+
+                    // Supprimer les éléments existants avant l'ajout
+                    playerSpace.children.removeAt(1) // Remove index 1
+                    playerPawnSection.children.removeIf { it is StackPane }
+
                     playerPawnPile.children.add(playerPawn)
                     playerPawnSection.children.add(0, playerPawnPile)
                     playerSpace.children.add(1, playerPawnSection)
