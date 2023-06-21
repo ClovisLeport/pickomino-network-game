@@ -285,7 +285,7 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
         pickoMessage.textFill = Color.web("#FBFBF3")
         pickoMessage.style = "-fx-font-size: 20;"
 
-        pickoImage = Image("file:src/main/kotlin/view/assets/worm-6 3.png")
+        pickoImage = Image("file:src/main/kotlin/view/assets/worm-16 1.png")
         val pickoImageView = ImageView(pickoImage)
 
         pickoSection.children.addAll(pickoMessage,pickoImageView)
@@ -325,8 +325,6 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
         for (pickomino in listePickomino) {
             val pickoPawn: Pawn
             pickoPawn = Pawn(pickomino)
-            //pickoPawn.clickable()
-            //pickoPawn.not_clickable()
             pickominoSection.children.add(pickoPawn)
         }
     }

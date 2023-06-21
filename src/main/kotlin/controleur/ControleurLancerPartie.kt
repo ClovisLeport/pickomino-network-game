@@ -24,6 +24,7 @@ class ControleurLancerPartie(vue : HomeView, mainvue : MainView) : EventHandler<
 
     var mainvue = mainvue
     var vue = vue
+    var timeline : Timeline? = null
     override fun handle(event: ActionEvent?) {
 
         val actualvue = vue.center as SelecteNumberPlayer
@@ -56,19 +57,19 @@ class ControleurLancerPartie(vue : HomeView, mainvue : MainView) : EventHandler<
             val NewPage = GameView(nbPlayer,actualPlayer,model.id!!,model.key!!)
             mainvue.updateView(NewPage)
 
-            NewPage.fixButtonRolls(ContoleurButtonRollsDice(NewPage,model))
-            NewPage.fixButtonMenu(ControleurButtonMenu(mainvue,vue.stage))
             updateLoop(NewPage,model)
+            NewPage.fixButtonRolls(ContoleurButtonRollsDice(NewPage,model))
+            NewPage.fixButtonMenu(ControleurButtonMenu(mainvue,vue.stage,timeline!!))
         }
     }
 
     fun updateLoop(vue: GameView, model : Client){
         var ActuGameView = ActualiserGameView(vue,model)
-        val timeline = Timeline(KeyFrame(Duration.seconds(0.5), {
+        timeline = Timeline(KeyFrame(Duration.seconds(0.5), {
             ActuGameView.acctualiser()
             //println(model.connect!!.gameState(model.id!!,model.key!!))
         }))
-        timeline.cycleCount = Animation.INDEFINITE
-        timeline.play()
+        timeline!!.cycleCount = Animation.INDEFINITE
+        timeline!!.play()
     }
 }
