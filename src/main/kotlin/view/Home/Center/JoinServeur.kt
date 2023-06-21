@@ -20,7 +20,10 @@ class JoinServeur() : HomeCenter(false) {
     val textFilierkey : TextField
     init {
         val title = Title()
-        val subTitle = SubTitle("Draw the worms from the dice !")
+        val labelQuote = Label("Draw the worms from the dice !")
+        labelQuote.setTextFill(Color.web("#FFFFFF"))
+        val HelveFont = Font.loadFont("file:src/main/kotlin/view/fonts/helvetica/Helvetica.ttf", 20.0)
+        labelQuote.font = HelveFont
 
         val textid = Label("What is the ID :")
         textid.font = Font("Helvetica", 24.0)
@@ -43,7 +46,7 @@ class JoinServeur() : HomeCenter(false) {
 
         this.spacing = 20.0
 
-        this.children.addAll(title,subTitle,textid,textFilierid,textkey,textFilierkey,button)
+        this.children.addAll(title,labelQuote,textid,textFilierid,textkey,textFilierkey,button)
 
     }
     override fun fixeButton(listControleur: Array<EventHandler<ActionEvent>>) {
