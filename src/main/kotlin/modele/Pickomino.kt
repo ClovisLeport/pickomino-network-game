@@ -6,15 +6,22 @@ class Pickomino(value :Int) {
     private val nbWorms :Int
 
     init {
-        if (value >=21 &&  value <=36) this.value = value
-        else throw Exception()
+        if (value == 0) {
+            this.value = 0
+            nbWorms = 0
+        }
+        else{
+            if (value >=21 &&  value <=36) this.value = value
+            else throw Exception()
 
-        if (value >=21 &&  value <=24) this.nbWorms = 1
+            if (value >=21 &&  value <=24) this.nbWorms = 1
 
-        else if (value >=25 &&  value <=28) this.nbWorms = 2
-        else if (value >=29 &&  value <=32) this.nbWorms = 3
-        else if (value >=33 &&  value <=36) this.nbWorms = 4
-        else throw Exception()
+            else if (value >=25 &&  value <=28) this.nbWorms = 2
+            else if (value >=29 &&  value <=32) this.nbWorms = 3
+            else if (value >=33 &&  value <=36) this.nbWorms = 4
+            else throw Exception()
+        }
+
     }
 
     fun getValue() :Int{

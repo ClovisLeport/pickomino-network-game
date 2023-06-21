@@ -22,6 +22,8 @@ class Client(game: Game) {
     var cankeepDice = false
     var cankeepPICKO = false
 
+    var gameFinish = false
+
 
 
     fun CreateGame(nbJoueur : Int,numJoueur:Int){
@@ -67,13 +69,13 @@ class Client(game: Game) {
                 var ActualStatu =  currentGame.current.status
 
                 if (currentGame.current.player+1 == game.numérojoueur){
-                    if (( currentGame.current.status == STATUS.ROLL_DICE || currentGame.current.status == STATUS.ROLL_DICE_OR_TAKE_PICKOMINO)) {
+                    if (( ActualStatu == STATUS.ROLL_DICE || ActualStatu == STATUS.ROLL_DICE_OR_TAKE_PICKOMINO)) {
                         canRoll = true
                     }
-                    if (currentGame.current.status == STATUS.KEEP_DICE){
+                    if (ActualStatu == STATUS.KEEP_DICE){
                         cankeepDice = true
                     }
-                    if (currentGame.current.status == STATUS.ROLL_DICE_OR_TAKE_PICKOMINO || currentGame.current.status == STATUS.TAKE_PICKOMINO){
+                    if (ActualStatu == STATUS.ROLL_DICE_OR_TAKE_PICKOMINO || ActualStatu == STATUS.TAKE_PICKOMINO){
                         cankeepPICKO = true
                     }
 
@@ -87,10 +89,17 @@ class Client(game: Game) {
                     var playerList = game.playerList()
                     var pickominoOfplayer = currentGame.pickosStackTops()
                     for ( numj in 0..playerList.size-1){
-                        if (!playerList[numj].localPlayer && numj+1 != currentGame.current.player && pickominoOfplayer[numj] != 0)  playerList[numj].topPickominoIs(Pickomino(pickominoOfplayer[numj]))
 
+                        if (!playerList[numj].localPlayer && numj+1 != currentGame.current.player) {// && pickominoOfplayer[numj] != 0)
+                            playerList[numj].topPickominoIs(Pickomino(pickominoOfplayer[numj]))
+                        }
                     }
                 }
+
+                if(ActualStatu == STATUS.GAME_FINISHED){
+                    gameFinish = true
+                }
+
 
         }
     }

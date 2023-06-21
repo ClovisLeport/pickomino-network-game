@@ -45,7 +45,12 @@ class Player(numberPlayer:Int,localPlayer : Boolean) {
 
 
     fun topPickominoIs(picko : Pickomino){
-        if (picko in ListPickomino){
+        if (picko.getValue() == 0 && ListPickomino.size != 0){
+            this.removeElement()
+            this.topPickominoIs(picko)
+        }
+
+        else if (picko in ListPickomino){
             if (picko != ListPickomino[ListPickomino.size-1]){
                 this.removeElement()
                 this.topPickominoIs(picko)
@@ -54,6 +59,12 @@ class Player(numberPlayer:Int,localPlayer : Boolean) {
         else{
             this.addElement(picko)
         }
+    }
+
+    fun allPickomino() : MutableList<Pickomino>{
+        print("picko")
+        println(ListPickomino)
+        return ListPickomino
     }
 
 
