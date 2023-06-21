@@ -10,6 +10,7 @@ import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.geometry.Insets
 import javafx.geometry.Pos
+import javafx.scene.Cursor
 import javafx.scene.control.Button
 import javafx.scene.control.Label
 import javafx.scene.image.Image
@@ -253,6 +254,7 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
 
         rollDiceBtn.graphic = StackPane(circleBtn, rollDiceImageView) // Add circle and image into BTN
         rollDiceBtn.style = "-fx-background-color: transparent;" // Remove default background
+        rollDiceBtn.cursor = Cursor.HAND
 
         rollDiceLabel = Label("Roll the dice")
         rollDiceLabel.textFill = Color.web("#FBFBF3")
