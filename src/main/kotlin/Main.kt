@@ -43,6 +43,7 @@ class Main : Application() {
 
         primaryStage.title = "Pikomino"
         primaryStage.scene = scene
+        primaryStage.setFullScreen(true);
 
         // Affichez la scène sur la fenêtre principale
         primaryStage.show()
