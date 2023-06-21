@@ -358,18 +358,29 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
             // Sinon c'est un autre joueur
             else if (currentPickominoValue != 0) {
                 val pileIndex = if (i > actualNumberPlayer - 1) i - 1 else i
-                val pile = players[pileIndex].children[1] as StackPane
+
+                val playerList = playersList //VBOX
+                val player = playersList.children[pileIndex] as VBox // VBox
+                val pile = players[pileIndex].children[1] as StackPane // StackPane
 
                 if (pile.children.size == 2) {
                     pile.children.removeIf { it is Pawn }
-                    val newPile = pile
-                    newPile.children.add(Pawn(currentPickominoValue))
-                    val parent = pile.parent as? Pane
-                    parent?.children?.add(newPile)
-
-                    val grandParent = parent?.parent as? Pane
-                    grandParent?.children?.add(newPile)
                 }
+
+                val newPawn = Pawn(listePickomino[pileIndex])
+                val playerStackPane = players[pileIndex].children[pileIndex]
+
+                // Supprimer les éléments existannts avant l'ajout
+                players[pileIndex].children.removeAt(pileIndex)
+                player.children.removeAt(1)
+                playerList.children.removeAt(pileIndex)
+
+                // Rajouter les enfants
+                pile.children.add(1, newPawn)
+                player.children.add(1, pile)
+                playerList.children.add(pileIndex, player)
+
+                val otherPlayerPawn = Pawn(listePickomino[pileIndex])
             }
         }
     }
