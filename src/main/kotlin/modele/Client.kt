@@ -30,7 +30,7 @@ class Client(game: Game) {
         println("Hello students !!!")
         this.connect = Connector.factory("172.26.82.76", "8080")
         if (connect != null){
-            println("Parties actives sur le serveur = ${connect!!.listOfGameIds()}")
+            //println("Parties actives sur le serveur = ${connect!!.listOfGameIds()}")
             val identification = connect!!.newGame(nbJoueur)
             this.nbJoueur = nbJoueur
             this.id = identification.first
@@ -64,8 +64,6 @@ class Client(game: Game) {
             cankeepDice = false
             cankeepPICKO = false
 
-
-
                 var currentGame = connect!!.gameState(this.id!!, this.key!!)
 
                 var ActualStatu =  currentGame.current.status
@@ -92,9 +90,8 @@ class Client(game: Game) {
                     var pickominoOfplayer = currentGame.pickosStackTops()
                     for ( numj in 0..playerList.size-1){
 
-                        if (!playerList[numj].localPlayer && numj+1 != currentGame.current.player) {// && pickominoOfplayer[numj] != 0)
-                            playerList[numj].topPickominoIs(Pickomino(pickominoOfplayer[numj]))
-                        }
+                        println("numj : ${numj+1}")
+                        playerList[numj].topPickominoIs(Pickomino(pickominoOfplayer[numj]))
                     }
                 }
 

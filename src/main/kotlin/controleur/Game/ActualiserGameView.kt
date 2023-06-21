@@ -62,13 +62,14 @@ class ActualiserGameView(mainvue : MainView,vue: GameView, model : Client) {
 
 
 
-        if (model.gameFinish || model.connect!!.gameState(id,key).current.player == 1 ){
+        if (model.gameFinish){
 
             var ListePawnPlayer = mutableListOf<MutableList<Pawn>>()
             var ListePickominoPlayer = model.game.playerList()
 
             for (p in 0..ListePickominoPlayer.size-1){
                 ListePawnPlayer.add(mutableListOf())
+
                 for (PickominoPlayer in ListePickominoPlayer[p].allPickomino()){
 
                     ListePawnPlayer[p].add(Pawn(PickominoPlayer.getValue()))

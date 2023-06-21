@@ -1,8 +1,10 @@
 package view.endView
 
+import javafx.geometry.Pos
 import javafx.scene.control.Label
 import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
+import javafx.scene.text.Font
 import view.View
 import view.components.Pawn
 
@@ -21,15 +23,17 @@ class EndView(listpickominoPlayer: MutableList<MutableList<Pawn>>) : View() {
         //center
         val vbox = VBox()
         val sumworm = mutableListOf<Int>()
+        val rulesFont = Font.loadFont("file:src/main/kotlin/view/fonts/helvetica/Helvetica.ttf", 19.0)
 
         var numj = 0
         for (pickominoPlayer in  listpickominoPlayer){
+
             numj++
             val vbocplayer = VBox()
             val nomjoueur = Label("Player N°$numj")
             nomjoueur.styleClass.add("txt")
 
-
+            nomjoueur.font = rulesFont
             val hboxpicko = HBox()
 
             var sum = 0
@@ -40,7 +44,7 @@ class EndView(listpickominoPlayer: MutableList<MutableList<Pawn>>) : View() {
 
             vbocplayer.children.addAll(nomjoueur,hboxpicko)
             sumworm.add(sum)
-            vbox.children.add(vbocplayer)//
+            vbox.children.add(vbocplayer)
         }
 
 
@@ -50,26 +54,27 @@ class EndView(listpickominoPlayer: MutableList<MutableList<Pawn>>) : View() {
                 max = sumworm[i]
             }
         }
-
-        var joueurGanier :String = ""
-        var nbGaninant = 0
+        var joueurGagner :String = ""
+        var nbGagnant = 0
         for (i in 0..sumworm.size-1){
             if (sumworm[i] == max){
-                nbGaninant++
-                joueurGanier += " Joueur N°${i+1},"
+                nbGagnant++
+                joueurGagner += " Joueur N°${i+1},"
             }
         }
-        joueurGanier.dropLast(1)
+
+        joueurGagner.dropLast(1)
 
         val MessageVictoire : Label
-        if (nbGaninant > 1){
-            MessageVictoire = Label("Les ${joueurGanier} ont Gagnés")
+        if (nbGagnant > 1){
+            MessageVictoire = Label("Les ${joueurGagner} On Gagner")
         }
         else{
-            MessageVictoire = Label("Le ${joueurGanier} a Gagnés")
+            MessageVictoire = Label("Le ${joueurGagner} a Gagner")
         }
-
+        MessageVictoire.font = rulesFont
         vbox.children.add(MessageVictoire)
+        vbox.alignment = Pos.CENTER
 
         this.center = vbox
 
