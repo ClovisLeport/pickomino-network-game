@@ -40,7 +40,9 @@ class EndView(listpickominoPlayer: MutableList<MutableList<Pawn>>) : View() {
 
             vbocplayer.children.addAll(nomjoueur,hboxpicko)
             sumworm.add(sum)
+            vbox.children.add(vbocplayer)//
         }
+
 
         var max = sumworm[0]
         for (i in 1..sumworm.size-1){
@@ -61,10 +63,10 @@ class EndView(listpickominoPlayer: MutableList<MutableList<Pawn>>) : View() {
 
         val MessageVictoire : Label
         if (nbGaninant > 1){
-            MessageVictoire = Label("Les ${joueurGanier} On Gagner")
+            MessageVictoire = Label("Les ${joueurGanier} ont Gagnés")
         }
         else{
-            MessageVictoire = Label("Le ${joueurGanier} a Gagner")
+            MessageVictoire = Label("Le ${joueurGanier} a Gagnés")
         }
 
         vbox.children.add(MessageVictoire)
