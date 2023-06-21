@@ -87,9 +87,9 @@ class Main : Application() {
 
             val clipInfo = DataLine.Info(Clip::class.java, musicFile.format)
             clip = AudioSystem.getLine(clipInfo) as Clip
-            clip.open(musicFile)
+            clip!!.open(musicFile)
 
-            clip.start()
+            clip!!.start()
         } catch (ex: Exception) {
             ex.printStackTrace()
         }
