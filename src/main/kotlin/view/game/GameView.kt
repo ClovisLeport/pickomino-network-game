@@ -359,6 +359,18 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
                     playerSpace.children.add(1, playerPawnSection)
                     centerPart.bottom = playerSpace
                 }
+            } else if (actualNumberPlayer == i + 1 && listePickomino[i] == 0){
+                if (playerPawnPile.children.size == 2 && listePickomino[i] != playerPawnValue) {
+                    playerPawnPile.children.removeIf { it is Pawn }
+                }
+                // Supprimer les éléments existants avant l'ajout
+                playerSpace.children.removeAt(1) // Remove index 1
+                playerPawnSection.children.removeIf { it is StackPane }
+
+                playerPawnSection.children.add(0, playerPawnPile)
+                playerSpace.children.add(1, playerPawnSection)
+                centerPart.bottom = playerSpace
+
             }
             // Sinon c'est un autre joueur
             else if (currentPickominoValue != 0) {
@@ -380,6 +392,27 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
 
                 // Rajouter les enfants
                 pile.children.add(1, newPawn)
+                player.children.add(1, pile)
+                playerList.children.add(pileIndex, player)
+
+                this.left = playersList
+
+            } else if (currentPickominoValue == 0){
+                val pileIndex = if (i > actualNumberPlayer - 1) i - 1 else i
+
+                val playerList = playersList as VBox//VBOX
+                val player = playersList.children[pileIndex] as VBox // VBox
+                val pile = player.children[1] as StackPane // StackPane
+
+                if (pile.children.size == 2) {
+                    pile.children.removeIf { it is Pawn }
+                }
+
+                // Supprimer les éléments existannts avant l'ajout
+                player.children.removeAt(1)
+                playerList.children.removeAt(pileIndex)
+
+                // Rajouter les enfants
                 player.children.add(1, pile)
                 playerList.children.add(pileIndex, player)
 
