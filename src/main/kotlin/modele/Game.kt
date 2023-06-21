@@ -3,6 +3,7 @@ package modele
 import iut.info1.pickomino.data.DICE
 import iut.info1.pickomino.data.STATUS
 import iut.info1.pickomino.exceptions.IncorrectKeyException
+import javafx.scene.control.Label
 
 class Game(numérojoueur : Int) {
     //private val id = id
@@ -148,3 +149,5 @@ class Game(numérojoueur : Int) {
     }
 
 }
+
+

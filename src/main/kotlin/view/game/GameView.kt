@@ -51,6 +51,7 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
 
     private val diceKeptSection : VBox
     private val diceKeptTitle : Label
+    var countDice : Label
     val diceKept : GridPane
 
     private val dicePlayedSection : VBox
@@ -76,7 +77,7 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
     private val playerPawnLabel : Label
 
     private val pickoSection : VBox
-    private val pickoMessage : Label
+    val pickoMessage : Label
     private val pickoImage : Image
 
 
@@ -169,6 +170,7 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
         diceKeptTitle.textFill = Color.web("#FBFBF3")
         diceKeptTitle.padding = Insets(0.0, 0.0, 10.0, 0.0)
 
+
         diceKept = GridPane()
         diceKept.hgap = 8.0 // Espacement horizontal entre les colonnes
         diceKept.vgap = 8.0 // Espacement vertical entre les lignes
@@ -184,8 +186,9 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
                 diceKept.add(stackPaneDice, col, row)
             }
         }
-
-        diceKeptSection.children.addAll(diceKeptTitle,diceKept)
+        countDice = Label("d")
+        //countDice
+        diceKeptSection.children.addAll(diceKeptTitle,countDice,diceKept)
 
         // dicePlayedSection
         dicePlayedSection = VBox()
@@ -438,7 +441,7 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
 
     fun UpDateSelectionPickomino(number:Int,Contoleur : EventHandler<javafx.scene.input.MouseEvent>){
 
-        if (21 <= number && number <= 36) {
+        if (21 <= number) {
             var findit = false
             for (pickomino in pickominoSection.children) {
                 var picko = pickomino as Pawn
