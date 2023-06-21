@@ -49,11 +49,21 @@ class Client(game: Game) {
         }
     }
 
-    fun JoinGame(id:Int, key:Int,NbJoueur :Int){
+    fun JoinGame(id:Int, key:Int,NbJoueur :Int,numJoueur:Int){
         this.connect = Connector.factory("172.26.82.76", "8080")
         this.id = id
         this.key = key
         this.nbJoueur = NbJoueur
+
+        for ( numJ in 1..nbJoueur){
+            if (numJ == numJoueur){
+                game.addPlayer(Player(numJ,true))
+            }
+            else{
+                game.addPlayer(Player(numJ,false))
+            }
+        }
+
         connected = true
 
     }
