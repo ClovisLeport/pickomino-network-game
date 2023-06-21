@@ -44,6 +44,7 @@ class EndView(listpickominoPlayer: MutableList<MutableList<Pawn>>) : View() {
 
             vbocplayer.children.addAll(nomjoueur,hboxpicko)
             sumworm.add(sum)
+            vbocplayer.alignment = Pos.CENTER
             vbox.children.add(vbocplayer)
         }
 

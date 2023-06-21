@@ -62,8 +62,8 @@ class ActualiserGameView(mainvue : MainView,vue: GameView, model : Client) {
 
 
 
-        if (model.gameFinish){
-
+        if (model.gameFinish || model.connect!!.gameState(id,key).current.player == 1){
+            model.update()
             var ListePawnPlayer = mutableListOf<MutableList<Pawn>>()
             var ListePickominoPlayer = model.game.playerList()
 
