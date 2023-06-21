@@ -45,7 +45,7 @@ class Main : Application() {
         primaryStage.scene = scene
 
         // Affichez la scène sur la fenêtre principale
-        primaryStage?.show()
+        primaryStage.show()
     }
 
     fun loadScreenConfig(primaryStage : Stage){
