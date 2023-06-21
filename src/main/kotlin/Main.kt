@@ -12,9 +12,13 @@ import view.Home.HomeView
 import view.MainView
 import view.game.GameView
 import java.util.prefs.Preferences
+import javax.sound.sampled.AudioSystem
+import javax.sound.sampled.Clip
+import javax.sound.sampled.DataLine
 
 class Main : Application() {
     private val preferences: Preferences = Preferences.userRoot().node(this.javaClass.name)
+    private var clip : Clip? = null
 
     override fun start(primaryStage: Stage) {
 
@@ -44,8 +48,10 @@ class Main : Application() {
         primaryStage.title = "Pikomino"
         primaryStage.scene = scene
 
+        music()
+
         // Affichez la scène sur la fenêtre principale
-        primaryStage?.show()
+        primaryStage.show()
     }
 
     fun loadScreenConfig(primaryStage : Stage){
@@ -72,7 +78,26 @@ class Main : Application() {
         primaryStage.fullScreenProperty().addListener { _, _, isFullscreen ->
             preferences.putBoolean("isFullscreen", isFullscreen)
         }
+    }
 
+    fun music(){
+        try {
+            val musicPath = "src/main/kotlin/music/background_music.wav" // Replace with the actual path to your music file
+            val musicFile = AudioSystem.getAudioInputStream(java.io.File(musicPath))
+
+            val clipInfo = DataLine.Info(Clip::class.java, musicFile.format)
+            clip = AudioSystem.getLine(clipInfo) as Clip
+            clip.open(musicFile)
+
+            clip.start()
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+        }
+
+    }
+
+    private fun stopMusic() {
+        clip?.stop()
     }
 }
 
@@ -107,4 +132,5 @@ fun main() {
     Application.launch(Main::class.java)
 
 }
+
 
