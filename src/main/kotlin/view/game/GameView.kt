@@ -367,7 +367,7 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
                     pile.children.removeIf { it is Pawn }
                 }
 
-                val newPawn = Pawn(listePickomino[pileIndex])
+                val newPawn = Pawn(listePickomino[i])
 
                 // Supprimer les éléments existannts avant l'ajout
                 player.children.removeAt(1)
