@@ -24,6 +24,9 @@ class Client(game: Game) {
 
     var gameFinish = false
 
+    var estmodifier = false
+    var laststatu : STATUS? = null
+
 
 
     fun CreateGame(nbJoueur : Int,numJoueur:Int){
@@ -109,7 +112,10 @@ class Client(game: Game) {
                     gameFinish = true
                 }
 
-
+                if (laststatu != ActualStatu){
+                    laststatu = ActualStatu
+                    estmodifier = true
+                }
         }
     }
 
@@ -129,7 +135,26 @@ class Client(game: Game) {
 
     }
 
+    override fun equals(other: Any?): Boolean {
+        println("-------")
+        //if (this === other) return true
+        if (javaClass != other?.javaClass) return false
 
+        other as Client
+
+        if (id != other.id) return false
+        if (key != other.key) return false
+        if (connected != other.connected) return false
+        if (connect != other.connect) return false
+        if (game != other.game) return false
+        if (nbJoueur != other.nbJoueur) return false
+        if (canRoll != other.canRoll) return false
+        if (cankeepDice != other.cankeepDice) return false
+        if (cankeepPICKO != other.cankeepPICKO) return false
+        if (gameFinish != other.gameFinish) return false
+
+        return true
+    }
 
 
 }

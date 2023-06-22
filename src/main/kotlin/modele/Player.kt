@@ -70,6 +70,18 @@ class Player(numberPlayer:Int,localPlayer : Boolean) {
         return ListPickomino
     }
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Player
+
+        if (numberPlayer != other.numberPlayer) return false
+        if (localPlayer != other.localPlayer) return false
+        if (ListPickomino != other.ListPickomino) return false
+
+        return true
+    }
 
 
 }

@@ -148,6 +148,47 @@ class Game(numérojoueur : Int) {
         return list
     }
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Game
+
+        if (listPickominosEnJeu != other.listPickominosEnJeu) return false
+        if (listPlayer != other.listPlayer) return false
+        if (numérojoueur != other.numérojoueur) return false
+
+        var min : Int
+        if (diceKept.size != other.diceKept.size || diceChosen.size != other.diceChosen.size) return false
+        else {
+            min = if (diceKept.size < other.diceKept.size) diceKept.size else other.diceKept.size
+        }
+
+        for (i in 0..min-1){
+            if( diceKept[i] != other.diceKept[i]){
+                return false
+            }
+        }
+
+
+        min = if (diceChosen.size < other.diceChosen.size) diceChosen.size else other.diceChosen.size
+
+        for (i in 0..min-1){
+            if( diceChosen[i] != other.diceChosen[i]){
+                return false
+            }
+        }
+
+
+
+        //if (diceKept != other.diceKept) return false
+        //if (diceChosen != other.diceChosen) return false
+
+        return true
+    }
+
+
+
 }
 
 

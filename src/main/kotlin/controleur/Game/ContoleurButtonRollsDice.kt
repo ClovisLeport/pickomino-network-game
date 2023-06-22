@@ -14,7 +14,7 @@ class ContoleurButtonRollsDice(vue : GameView, model : Client) : EventHandler<Ac
 
     override fun handle(event: ActionEvent?) {
         if (model.canRoll){
-            model.connect!!.rollDices(model.id!!,model.key!!)
+            model.game.setDice(model.game.diceKept, model.connect!!.rollDices(model.id!!,model.key!!))
         }
     }
 
