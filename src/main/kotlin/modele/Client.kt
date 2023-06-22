@@ -27,7 +27,7 @@ class Client(game: Game) {
 
 
     fun CreateGame(nbJoueur : Int,numJoueur:Int){
-        println("Hello students !!!")
+        //println("Hello students !!!")
         this.connect = Connector.factory("172.26.82.76", "8080")
         if (connect != null){
             //println("Parties actives sur le serveur = ${connect!!.listOfGameIds()}")
@@ -91,19 +91,19 @@ class Client(game: Game) {
 
                 }
 
-                else{
-                    game.setDice(currentGame.current.rolls,currentGame.current.keptDices)
-                    game.setPickomino(currentGame.accessiblePickos())
+
+                game.setDice(currentGame.current.rolls,currentGame.current.keptDices)
+                game.setPickomino(currentGame.accessiblePickos())
 
 
-                    var playerList = game.playerList()
-                    var pickominoOfplayer = currentGame.pickosStackTops()
-                    for ( numj in 0..playerList.size-1){
+                var playerList = game.playerList()
+                var pickominoOfplayer = currentGame.pickosStackTops()
+                for ( numj in 0..playerList.size-1){
 
-                        println("numj : ${numj+1}")
-                        playerList[numj].topPickominoIs(Pickomino(pickominoOfplayer[numj]))
-                    }
+                    //println("numj : ${numj+1}")
+                    playerList[numj].topPickominoIs(Pickomino(pickominoOfplayer[numj]))
                 }
+
 
                 if(ActualStatu == STATUS.GAME_FINISHED){
                     gameFinish = true
@@ -121,8 +121,8 @@ class Client(game: Game) {
     }
 
     fun keepPickomino(valeur :Int){
-        println("$valeur : ${game.getPickos()} : ${game.pickominoPlayer()}")
-        println("${Pickomino(valeur) in game.getPickos()} :: ${Pickomino(valeur) in game.pickominoPlayer()}")
+        //println("$valeur : ${game.getPickos()} : ${game.pickominoPlayer()}")
+        //println("${Pickomino(valeur) in game.getPickos()} :: ${Pickomino(valeur) in game.pickominoPlayer()}")
         if (Pickomino(valeur) in game.getPickos() || Pickomino(valeur) in game.pickominoPlayer()){
             connect!!.takePickomino(id!!,key!!,valeur)
         }

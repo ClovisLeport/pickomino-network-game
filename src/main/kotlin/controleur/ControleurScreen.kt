@@ -26,7 +26,7 @@ class ControleurScreen(vue: HomeView, stage : Stage): EventHandler<ActionEvent> 
 
         }else {
             stage.setFullScreen(false);
-            println(actualChoice)
+            //println(actualChoice)
         }
 
 

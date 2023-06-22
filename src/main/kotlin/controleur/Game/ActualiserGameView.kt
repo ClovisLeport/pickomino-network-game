@@ -22,6 +22,7 @@ class ActualiserGameView(mainvue : MainView,vue: GameView, model : Client) {
     fun acctualiser(){
         model.update()
 
+
         var topPokomino = model.connect!!.gameState(id,key).pickosStackTops()
         var midelPokomino = model.connect!!.gameState(id,key).accessiblePickos()
 
@@ -57,6 +58,7 @@ class ActualiserGameView(mainvue : MainView,vue: GameView, model : Client) {
         vue.countDice.text = "count : ${ValueDice.toString()}"
         if (21 <= ValueDice && DICE.worm in diceKept){
             vue.UpDateSelectionPickomino(ValueDice,ControleurPickomino(vue,model))
+            vue.UpDateSelectionPickominoPlayer(ValueDice,ControleurPickomino(vue,model))
         }
 
 
@@ -82,6 +84,7 @@ class ActualiserGameView(mainvue : MainView,vue: GameView, model : Client) {
 
             mainvue.updateView(EndView(ListePawnPlayer))
         }
+
 
     }
 

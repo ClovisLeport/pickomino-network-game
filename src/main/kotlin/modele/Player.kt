@@ -54,12 +54,15 @@ class Player(numberPlayer:Int,localPlayer : Boolean) {
             }
         }
         else{
-            this.addElement(picko)
+            if (picko.getValue() == 0 && ListPickomino.size != 0) {
+                this.removeElement()
+            }
+            else if (picko.getValue() != 0){
+                this.addElement(picko)
+            }
         }
 
-        if (picko.getValue() == 0 && ListPickomino.size != 0) {
-            this.removeElement()
-        }
+
     }
 
     fun allPickomino() : MutableList<Pickomino>{

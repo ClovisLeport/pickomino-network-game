@@ -318,6 +318,32 @@ class GameView(NombresJoueur : Int, actualNumberPlayer : Int , id :Int,key :Int)
         this.center = centerPart
     }
 
+    fun UpDateSelectionPickominoPlayer(number:Int,Contoleur : EventHandler<javafx.scene.input.MouseEvent>){
+
+        val valeur = 0
+
+        for (i in 0..nombreJoueurs-2){
+            val pileIndex = i
+            var playerList = playersList as VBox//VBOX
+            var player = playersList.children[pileIndex] as VBox // VBox
+            var pile = player.children[1] as StackPane // StackPane
+
+
+
+            if (pile.children.size == 2) {
+                var thepawn = pile.children[1] as Pawn
+                if (number == thepawn.value){
+                    thepawn.onMouseClicked = Contoleur
+                    thepawn.clickable()
+                }else{
+                    thepawn.not_clickable()
+                }
+            }
+
+        }
+
+    }
+
     fun can_play(){
         rollDiceSection.children.removeAll(rollDiceBtn, rollDiceLabel)
 

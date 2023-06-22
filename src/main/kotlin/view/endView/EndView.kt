@@ -20,8 +20,6 @@ class EndView(listpickominoPlayer: MutableList<MutableList<Pawn>>) : View() {
 
 
 
-
-
         //center
         val vbox = VBox()
         val sumworm = mutableListOf<Int>()
@@ -31,28 +29,31 @@ class EndView(listpickominoPlayer: MutableList<MutableList<Pawn>>) : View() {
         for (pickominoPlayer in  listpickominoPlayer){
 
             numj++
-            val flowpain = FlowPane()
+            val vboxplayer = VBox()
             val nomjoueur = Label("Player N°$numj")
             nomjoueur.styleClass.add("txt")
 
             nomjoueur.font = rulesFont
-            val hboxpicko = HBox()
+            val flowpain = FlowPane()
 
             var sum = 0
             for (picko in pickominoPlayer) {
-                hboxpicko.children.add(picko)
+                flowpain.children.add(picko)
                 sum += picko.thworm
             }
             if (sum == 0){
-                hboxpicko.children.add(Dotted(84.0, 163.0))
+                flowpain.children.add(Dotted(84.0, 163.0))
             }
-            
+
             flowpain.alignment = Pos.CENTER
-            flowpain.children.addAll(nomjoueur,hboxpicko)
+            vboxplayer.children.addAll(nomjoueur,flowpain)
+            vboxplayer.spacing = 10.0
             sumworm.add(sum)
-            flowpain.alignment = Pos.CENTER
-            vbox.children.add(flowpain)
+            vboxplayer.alignment = Pos.CENTER
+            vbox.children.add(vboxplayer)
         }
+
+        vbox.spacing = 20.0
 
 
         var max = sumworm[0]
