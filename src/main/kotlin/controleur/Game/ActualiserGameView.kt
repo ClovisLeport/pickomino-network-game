@@ -2,7 +2,6 @@ package controleur.Game
 
 import iut.info1.pickomino.data.DICE
 import modele.Client
-import modele.Dice
 import modele.Pickomino
 import view.MainView
 import view.components.Pawn

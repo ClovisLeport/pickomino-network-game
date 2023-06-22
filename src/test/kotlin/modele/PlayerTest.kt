@@ -12,13 +12,14 @@ class PlayerTest {
         var player = Player(2,true)
         assertEquals(0,player.countWorms())
     }
-    @Test
-    fun countWorms2() {
-        var player = Player(2,true)
-        player.addElement(Pickomino(21))
-        player.addElement(Pickomino(21))
-        assertEquals(5,player.countWorms())
-    }
+
+        @Test
+        fun countWorms2() {
+            var player = Player(2,true)
+            player.addElement(Pickomino(21))
+            player.addElement(Pickomino(35))
+            assertEquals(5,player.countWorms())
+        }
 
     @Test
     fun firstElement() {
