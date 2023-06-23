@@ -1,6 +1,7 @@
 package controleur.Game
 
 import iut.info1.pickomino.data.DICE
+import javafx.animation.Timeline
 import modele.Client
 import modele.Pickomino
 import view.MainView
@@ -13,6 +14,7 @@ class ActualiserGameView(mainvue : MainView,vue: GameView, model : Client) {
     val vue = vue
     val model = model
     val mainvue = mainvue
+    var timeline :Timeline? = null
 
     val id :Int = model.id!!
     val key :Int = model.key!!
@@ -22,7 +24,7 @@ class ActualiserGameView(mainvue : MainView,vue: GameView, model : Client) {
 
     fun acctualiser(){
         model.update()
-        println(model.game.diceKept)
+        //println(model.game.diceKept)
 
         var topPokomino = model.connect!!.gameState(id,key).pickosStackTops()
         var midelPokomino = model.connect!!.gameState(id,key).accessiblePickos()
@@ -79,9 +81,15 @@ class ActualiserGameView(mainvue : MainView,vue: GameView, model : Client) {
                 }
             }
 
-            mainvue.updateView(EndView(ListePawnPlayer))
+            val NewPage = EndView(ListePawnPlayer)
+            NewPage.fixButtonMenu(ControleurButtonMenu(mainvue,mainvue.stage,timeline!!))
+            mainvue.updateView(NewPage)
         }
 
+    }
+
+    fun getTimeline(timeline: Timeline){
+        this.timeline = timeline
     }
 
 

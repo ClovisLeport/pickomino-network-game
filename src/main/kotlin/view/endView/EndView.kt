@@ -1,5 +1,8 @@
 package view.endView
 
+import javafx.event.ActionEvent
+import javafx.event.EventHandler
+import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.scene.control.Label
 import javafx.scene.layout.FlowPane
@@ -9,14 +12,30 @@ import javafx.scene.text.Font
 import view.View
 import view.components.Dotted
 import view.components.Pawn
+import view.components.SmallTitle
+import view.components.TransparentButton
 
 class EndView(listpickominoPlayer: MutableList<MutableList<Pawn>>) : View() {
 
     val listpickominoPlayer = listpickominoPlayer
+    val menuButton : TransparentButton
 
     init {
         //top
-        //this.top =
+        val headerCenter = VBox()
+        headerCenter.alignment = Pos.CENTER
+
+        headerCenter.style = "-fx-alignment: center;"
+
+        val pageTitle = SmallTitle("Pickomino")
+
+        menuButton = TransparentButton("Menu")
+        val margin = Insets(8.0, 0.0, 0.0, 0.0)
+        VBox.setMargin(menuButton, margin)
+
+        headerCenter.children.addAll(pageTitle,menuButton)
+
+        this.top = headerCenter
 
 
 
@@ -47,13 +66,13 @@ class EndView(listpickominoPlayer: MutableList<MutableList<Pawn>>) : View() {
 
             flowpain.alignment = Pos.CENTER
             vboxplayer.children.addAll(nomjoueur,flowpain)
-            vboxplayer.spacing = 10.0
+            vboxplayer.spacing = 5.0
             sumworm.add(sum)
             vboxplayer.alignment = Pos.CENTER
             vbox.children.add(vboxplayer)
         }
 
-        vbox.spacing = 20.0
+        vbox.spacing = 10.0
 
 
         var max = sumworm[0]
@@ -88,5 +107,11 @@ class EndView(listpickominoPlayer: MutableList<MutableList<Pawn>>) : View() {
         this.center = vbox
 
 
+    }
+
+
+    fun fixButtonMenu(controleur : EventHandler<ActionEvent>){
+        menuButton.onAction = controleur
+        //menuButton.onMousePressed
     }
 }

@@ -67,9 +67,10 @@ class ControleurLancerPartie(vue : HomeView, mainvue : MainView) : EventHandler<
         var ActuGameView = ActualiserGameView(mainvue,vue,model)
         timeline = Timeline(KeyFrame(Duration.seconds(0.5), {
             ActuGameView.acctualiser()
-            println(model.connect!!.gameState(model.id!!,model.key!!))
+            //println(model.connect!!.gameState(model.id!!,model.key!!))
         }))
         timeline!!.cycleCount = Animation.INDEFINITE
+        ActuGameView.getTimeline(timeline!!)
         timeline!!.play()
     }
 }
